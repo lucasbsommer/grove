@@ -36,5 +36,32 @@ Auth is email magic-code; the session token is stored in `localStorage`
 
 ## Deploy
 
-Serve `index.html` from the same origin as the `/api/*` backend, and expose
-that origin through the Cloudflare Tunnel bound to `grove.lucassommer.com`.
+Architecture is unchanged: the local server serves `index.html` **and** the
+`/api/*` backend from one origin, exposed through the Cloudflare Tunnel bound to
+`grove.lucassommer.com`. This repo is the source of truth for the **page**; the
+server just tracks it with git.
+
+### One-time server setup
+
+Replace the standalone HTML file with a checkout of this repo, and point the
+server at the checkout's `index.html`:
+
+```bash
+git clone https://github.com/lucasbsommer/grove.git /path/to/grove
+cd /path/to/grove
+```
+
+### Updating
+
+- **Manual:** `./deploy.sh` — fast-forwards to `origin/main`. Only the static
+  page changes; the `/api` process is untouched, so no restart.
+- **Automatic:** `./scripts/install-autopull.sh [minutes]` (default every 2 min)
+  installs a cron job that runs `deploy.sh`, so pushes to `main` roll out on
+  their own. Remove with `./scripts/install-autopull.sh --remove`.
+
+`deploy.sh` honors `GROVE_RELOAD_CMD` if the server ever needs a restart hook,
+and `GROVE_BRANCH` to track a branch other than `main`.
+
+> Push-based deploy (GitHub Action → SSH into the box on push) is also possible
+> but needs an SSH key/host as repo secrets — ask if you want it instead of the
+> cron poll.
