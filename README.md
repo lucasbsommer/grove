@@ -6,7 +6,17 @@ Served at `grove.lucassommer.com` (local file behind a Cloudflare Tunnel).
 
 ## Contents
 
-- `index.html` — the full single-file frontend (styles + JS inline). No build step.
+- `index.html` — **public marketing site** for investors and partners (static,
+  no build step, no backend required). Light wine-estate design.
+- `ops.html` — the internal project dashboard (permits, checklist, meeting prep,
+  county contacts). Gated behind the email magic-code sign-in; links to `/api/*`.
+
+> **Security note on `ops.html`:** the sign-in gate is **client-side only** — it
+> hides the content visually but the HTML is still present in the page source
+> (View Source / devtools reveal it). For real privacy, the server must refuse to
+> serve `ops.html` without a valid `grove_session`, or the sensitive content
+> should move behind an authenticated `/api/*` fetch. Treat the current gate as a
+> deterrent, not a lock, until the backend enforces it.
 
 ## How it runs
 

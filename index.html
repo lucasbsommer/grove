@@ -3,1870 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NW Timmerman Rd — Grove Vineyard Access & Infrastructure</title>
+<title>Grove — A Permitted Vineyard Estate in Oregon Wine Country</title>
+<meta name="description" content="Grove Vineyard — ±26 permitted, build-ready acres in the hills above Forest Grove, in the heart of Oregon's Willamette Valley. Entitlements cleared, permits issued January 2026.">
+<meta property="og:title" content="Grove — A Permitted Vineyard Estate in Oregon Wine Country">
+<meta property="og:description" content="±26 permitted, build-ready acres in Oregon's Willamette Valley. The hard part is done.">
+<meta property="og:type" content="website">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-  :root {
-    --bg: #121212;
-    --surface: #1a1a1a;
-    --surface2: #222222;
-    --border: #2a2a2a;
-    --border-light: #3a3a3a;
-    --text: #e0e0e0;
-    --text-muted: #999999;
-    --text-dim: #666666;
-    --accent: #b0b0b0;
-    --accent-glow: rgba(180,180,180,0.08);
-    --green: #4ade80;
-    --green-glow: rgba(74,222,128,0.1);
-    --amber: #fbbf24;
-    --amber-glow: rgba(251,191,36,0.1);
-    --red: #f87171;
-    --red-glow: rgba(248,113,113,0.1);
-    --purple: #a78bfa;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── HERO MAP SECTION ── */
-  .hero {
-    position: relative;
-    height: 55vh;
-    min-height: 420px;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-map {
-    width: 100%;
-    height: 100%;
-    filter: brightness(0.5) saturate(0.3);
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(10,15,26,0.3) 0%, rgba(10,15,26,0.95) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 3rem;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(16,185,129,0.12);
-    border: 1px solid rgba(16,185,129,0.25);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 999px;
-    width: fit-content;
-    margin-bottom: 1rem;
-  }
-
-  .hero-badge .pulse {
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    font-weight: 400;
-  }
-
-  .hero-meta {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.25rem;
-    flex-wrap: wrap;
-  }
-
-  .hero-meta-item {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-  }
-
-  .hero-meta-item span {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  /* ── METRIC CARDS ── */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .metric-card {
-    background: var(--surface);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .metric-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .metric-value {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-
-  .metric-sub {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .metric-value.green { color: var(--green); }
-  .metric-value.amber { color: var(--amber); }
-  .metric-value.red { color: var(--red); }
-  .metric-value.accent { color: #fff; }
-
-  /* ── MAIN CONTENT ── */
-  .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .section-header:first-child { margin-top: 0; }
-
-  .section-header h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .section-header .line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── GANTT CHART ── */
-  .gantt-container {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .gantt-header {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .gantt-header-label {
-    padding: 0.75rem 1rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .gantt-months {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    border-left: 1px solid var(--border);
-  }
-
-  .gantt-month {
-    padding: 0.75rem 0.25rem;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    text-align: center;
-    border-right: 1px solid var(--border);
-  }
-
-  .gantt-month.current {
-    color: #fff;
-    background: rgba(255,255,255,0.06);
-  }
-
-  .gantt-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-
-  .gantt-row:last-child { border-bottom: none; }
-  .gantt-row:hover { background: rgba(255,255,255,0.02); }
-
-  .gantt-row-label {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .gantt-row-label .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .gantt-bars {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    border-left: 1px solid var(--border);
-  }
-
-  .gantt-cell {
-    border-right: 1px solid var(--border);
-    min-height: 38px;
-  }
-
-  .gantt-bar {
-    position: absolute;
-    height: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
-    opacity: 0.85;
-  }
-
-  .today-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--red);
-    z-index: 5;
-    opacity: 0.7;
-  }
-
-  .today-line::after {
-    content: 'TODAY';
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--red);
-  }
-
-  /* ── PHASE TIMELINE ── */
-  .phase-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .phase-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .phase-card:hover { border-color: var(--border-light); }
-
-  .phase-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .phase-card-header:hover { background: rgba(255,255,255,0.02); }
-
-  .phase-left {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .phase-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .phase-icon.pending { background: var(--surface2); }
-  .phase-icon.active { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); }
-  .phase-icon.done { background: var(--green-glow); border: 1px solid rgba(16,185,129,0.3); }
-
-  .phase-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-
-  .phase-subtitle {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-  }
-
-  .phase-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .phase-progress {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .progress-bar {
-    width: 80px;
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.5s ease;
-  }
-
-  .progress-fill.green { background: var(--green); }
-  .progress-fill.blue { background: #e0e0e0; }
-  .progress-fill.amber { background: var(--amber); }
-
-  .progress-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    min-width: 32px;
-    text-align: right;
-  }
-
-  .chevron {
-    width: 20px;
-    height: 20px;
-    color: var(--text-dim);
-    transition: transform 0.2s;
-  }
-
-  .phase-card.open .chevron { transform: rotate(180deg); }
-
-  .phase-tasks {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-    border-top: 0px solid transparent;
-  }
-
-  .phase-card.open .phase-tasks {
-    max-height: 2000px;
-    border-top: 1px solid var(--border);
-  }
-
-  .task-list {
-    padding: 0.5rem 1.25rem 1rem;
-  }
-
-  .task-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    padding: 0.45rem 0;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  .task-check {
-    width: 16px; height: 16px;
-    border-radius: 4px;
-    border: 1.5px solid var(--border-light);
-    flex-shrink: 0;
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .task-check.done {
-    background: var(--green);
-    border-color: var(--green);
-  }
-
-  .task-check.done svg { display: block; }
-  .task-check svg { display: none; }
-
-  .task-item.done { color: var(--text-dim); text-decoration: line-through; }
-
-  .task-item.inspection {
-    color: var(--amber);
-    font-weight: 600;
-  }
-
-  .task-item.inspection .task-check {
-    border-color: var(--amber);
-  }
-
-  .task-detail {
-    margin: -0.1rem 0 0.6rem 1.6rem;
-    padding: 0.6rem 0.8rem;
-    background: var(--surface2);
-    border-left: 2px solid var(--border-light);
-    border-radius: 0 6px 6px 0;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    line-height: 1.65;
-  }
-
-  .task-detail strong {
-    color: var(--text-muted);
-    font-weight: 600;
-  }
-
-  .task-detail .detail-line {
-    padding: 0.15rem 0;
-  }
-
-  .task-detail .detail-line.warn {
-    color: var(--amber);
-  }
-
-  .task-detail .detail-line.ref {
-    color: var(--text-dim);
-    font-style: italic;
-  }
-
-  .task-section-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #999;
-    padding: 0.75rem 0 0.25rem;
-    margin-top: 0.25rem;
-    border-top: 1px solid var(--border);
-  }
-
-  /* ── COST TABLE ── */
-  .cost-table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .cost-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-  }
-
-  .cost-table thead th {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    border-bottom: 1px solid var(--border);
-    background: var(--surface2);
-  }
-
-  .cost-table thead th:not(:first-child) { text-align: right; }
-
-  .cost-table tbody td {
-    padding: 0.6rem 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .cost-table tbody td:not(:first-child) {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    color: var(--text-muted);
-  }
-
-  .cost-table tbody tr:last-child td { border-bottom: none; }
-
-  .cost-table tfoot td {
-    padding: 0.75rem 1rem;
-    font-weight: 700;
-    border-top: 1px solid var(--border-light);
-    background: var(--surface2);
-  }
-
-  .cost-table tfoot td:not(:first-child) {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* ── REFERENCE FOOTER ── */
-  .ref-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  .ref-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-  }
-
-  .ref-card h4 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 0.5rem;
-  }
-
-  .ref-item {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    padding: 0.2rem 0;
-  }
-
-  .ref-item strong { color: var(--text); font-weight: 600; }
-  .ref-item a { color: #ccc; text-decoration: underline; text-decoration-color: #555; text-underline-offset: 2px; }
-  .ref-item a:hover { text-decoration: underline; }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    border-top: 1px solid var(--border);
-  }
-
-  footer a { color: #ccc; text-decoration: none; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .hero { height: 45vh; min-height: 350px; }
-    .hero-overlay { padding: 1.5rem; }
-    .hero h1 { font-size: 1.75rem; }
-    .hero-meta { gap: 1rem; }
-    .content { padding: 1.5rem 1rem; }
-    .gantt-row-label { font-size: 0.7rem; padding: 0.5rem 0.6rem; }
-    .gantt-header-label { padding: 0.5rem 0.6rem; }
-    .gantt-header, .gantt-row { grid-template-columns: 140px 1fr; }
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --bg:#faf8f3;
+    --surface:#ffffff;
+    --surface2:#f3efe6;
+    --ink:#1b1915;
+    --muted:#6c655a;
+    --faint:#9a9284;
+    --line:#e6e0d4;
+    --wine:#6e2b3a;
+    --forest:#33402c;
+    --olive:#55603f;
+    --gold:#b08d57;
+    --maxw:1160px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem;}
+  .eyebrow{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s,border-color .3s;border-bottom:1px solid transparent;}
+  nav.scrolled{background:rgba(250,248,243,0.92);backdrop-filter:blur(10px);border-bottom-color:var(--line);}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:1.05rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;flex-direction:column;line-height:1;color:#fff;transition:color .3s;}
+  nav.scrolled .brand{color:var(--ink);}
+  .brand .mark{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;letter-spacing:0.14em;}
+  .brand .tag{font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;opacity:0.75;margin-top:3px;}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{font-size:0.82rem;letter-spacing:0.04em;text-decoration:none;color:rgba(255,255,255,0.88);transition:color .2s;}
+  nav.scrolled .nav-links a{color:var(--muted);}
+  .nav-links a:hover{color:#fff;}
+  nav.scrolled .nav-links a:hover{color:var(--wine);}
+  .nav-portal{border:1px solid rgba(255,255,255,0.45);padding:0.5rem 1rem;border-radius:999px;font-weight:500;}
+  nav.scrolled .nav-portal{border-color:var(--line);}
+  .nav-portal:hover{background:rgba(255,255,255,0.12);}
+  nav.scrolled .nav-portal:hover{background:var(--surface2);}
+  .nav-toggle{display:none;background:none;border:none;color:inherit;font-size:1.5rem;cursor:pointer;}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(20,24,16,0.25) 0%,rgba(20,24,16,0.35) 45%,rgba(18,20,14,0.88) 100%),
+      #2c3324 url('/property/grove_vineyard/satellite.png') center/cover no-repeat;}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:7rem 1.5rem 5rem;width:100%;color:#fff;}
+  .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,120,70,0.25);border:1px solid rgba(160,210,150,0.4);
+    color:#d6f0cf;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:1.5rem;}
+  .hero .dot{width:7px;height:7px;border-radius:50%;background:#7ee787;box-shadow:0 0 0 0 rgba(126,231,135,0.7);animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(126,231,135,0.6);}70%{box-shadow:0 0 0 9px rgba(126,231,135,0);}100%{box-shadow:0 0 0 0 rgba(126,231,135,0);}}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:500;max-width:14ch;margin-bottom:1.25rem;text-shadow:0 2px 30px rgba(0,0,0,0.3);}
+  .hero p.lede{font-size:clamp(1.05rem,2vw,1.3rem);color:rgba(255,255,255,0.9);max-width:48ch;font-weight:300;margin-bottom:2rem;}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 1.6rem;border-radius:999px;font-size:0.9rem;font-weight:600;
+    letter-spacing:0.02em;text-decoration:none;transition:transform .15s,background .2s,box-shadow .2s;cursor:pointer;border:none;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--wine);color:#fff;box-shadow:0 8px 24px rgba(110,43,58,0.35);}
+  .btn-primary:hover{background:#7d3342;}
+  .btn-ghost{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.5);backdrop-filter:blur(4px);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.2);}
+  .btn-dark{background:var(--ink);color:#fff;}
+  .btn-dark:hover{background:#000;}
+  .hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;}
+
+  /* STAT STRIP */
+  .stats{background:var(--forest);color:#eee;}
+  .stats-grid{max-width:var(--maxw);margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+  .stat{text-align:center;}
+  .stat .n{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;color:#fff;line-height:1.1;}
+  .stat .l{font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-top:0.35rem;}
+
+  /* SECTIONS */
+  section.block{padding:6rem 0;}
+  section.block.alt{background:var(--surface);}
+  .sec-head{max-width:720px;margin-bottom:3rem;}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:0.8rem 0 1rem;}
+  .sec-head p{color:var(--muted);font-size:1.08rem;}
+  .lead-serif{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.4;color:var(--ink);max-width:24ch;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+  .prose p{color:var(--muted);margin-bottom:1.1rem;font-size:1.02rem;}
+  .prose p strong{color:var(--ink);font-weight:600;}
+
+  /* PILLARS */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+  .pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:2rem;transition:transform .2s,box-shadow .2s;}
+  .pillar:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,25,15,0.08);}
+  .pillar .ic{width:44px;height:44px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.2rem;}
+  .pillar h3{font-size:1.25rem;margin-bottom:0.6rem;}
+  .pillar p{color:var(--muted);font-size:0.95rem;}
+
+  /* LAND GALLERY */
+  .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:1rem;margin-top:1rem;}
+  .gcell{border-radius:12px;overflow:hidden;background:#2c3324 center/cover no-repeat;border:1px solid var(--line);position:relative;min-height:100%;}
+  .gcell.big{grid-row:span 2;}
+  .gcell .cap{position:absolute;left:0;right:0;bottom:0;padding:0.75rem 0.9rem;font-size:0.72rem;letter-spacing:0.04em;color:#fff;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);}
+  .factgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem 2rem;margin-top:2rem;}
+  .fact{border-top:2px solid var(--gold);padding-top:0.9rem;}
+  .fact .v{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--ink);}
+  .fact .k{font-size:0.8rem;color:var(--muted);letter-spacing:0.03em;}
+
+  /* TIMELINE */
+  .timeline{position:relative;margin-top:1rem;padding-left:2rem;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:2.2rem;}
+  .tl{position:relative;}
+  .tl::before{content:"";position:absolute;left:-2.57rem;top:4px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);}
+  .tl.win::before{border-color:var(--forest);background:var(--forest);}
+  .tl .yr{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:0.3rem;}
+  .tl.win .yr{color:var(--forest);}
+  .tl h4{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:0.25rem;}
+  .tl p{color:var(--muted);font-size:0.95rem;}
+
+  /* PHASES */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem;}
+  .phase{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:2rem;position:relative;overflow:hidden;}
+  .phase .ph-n{font-family:'Fraunces',serif;font-size:3rem;color:var(--surface2);position:absolute;top:0.5rem;right:1.2rem;font-weight:600;line-height:1;}
+  .phase .ph-tag{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .phase h3{font-size:1.3rem;margin:0.4rem 0 0.8rem;}
+  .phase ul{list-style:none;color:var(--muted);font-size:0.93rem;}
+  .phase li{padding-left:1.1rem;position:relative;margin-bottom:0.4rem;}
+  .phase li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+
+  /* USE OF FUNDS / PLACEHOLDER */
+  .fill{background:rgba(176,141,87,0.12);border-bottom:1px dashed var(--gold);padding:0 3px;border-radius:2px;color:var(--olive);font-style:italic;}
+  .uof{margin-top:2.5rem;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);}
+  .uof .uof-row{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:0.97rem;}
+  .uof .uof-row:last-child{border-bottom:none;}
+  .uof .uof-row span:first-child{color:var(--ink);font-weight:500;}
+  .uof .uof-row span:last-child{color:var(--muted);text-align:right;}
+
+  /* INVEST BAND */
+  .invest{background:var(--forest);color:#f3f1ea;}
+  .invest .wrap{padding:6rem 1.5rem;}
+  .invest h2{font-size:clamp(2rem,4vw,3rem);color:#fff;max-width:18ch;margin-bottom:1.25rem;}
+  .invest p{color:rgba(255,255,255,0.8);font-size:1.08rem;max-width:56ch;margin-bottom:1rem;}
+  .invest .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0;}
+  .invest .term{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:1.5rem;}
+  .invest .term .k{font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+  .invest .term .v{font-family:'Fraunces',serif;font-size:1.5rem;color:#fff;margin-top:0.4rem;}
+  .invest .fill{background:rgba(176,141,87,0.28);color:#f0e4d2;border-bottom-color:var(--gold);}
+
+  /* TEAM */
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:1rem;}
+  .member{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.5rem;}
+  .member .role{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:0.4rem;}
+  .member .name{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);}
+  .member .meta{font-size:0.85rem;color:var(--muted);margin-top:0.3rem;}
+
+  /* CONTACT */
+  .contact{text-align:center;}
+  .contact h2{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1rem;}
+  .contact p{color:var(--muted);font-size:1.1rem;max-width:46ch;margin:0 auto 2rem;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,0.65);font-size:0.85rem;}
+  footer .wrap{padding:3rem 1.5rem;}
+  .foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .foot-brand .mark{font-family:'Fraunces',serif;font-size:1.4rem;letter-spacing:0.14em;color:#fff;}
+  .foot-links{display:flex;gap:2rem;flex-wrap:wrap;}
+  .foot-links a{color:rgba(255,255,255,0.7);text-decoration:none;}
+  .foot-links a:hover{color:#fff;}
+  .disclaimer{padding-top:1.5rem;font-size:0.76rem;color:rgba(255,255,255,0.45);line-height:1.6;max-width:90ch;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:860px){
+    .two-col{grid-template-columns:1fr;gap:2rem;}
+    .pillars,.phases,.invest .terms{grid-template-columns:1fr;}
+    .team{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;}
+    .gcell.big{grid-column:span 2;grid-row:span 1;}
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:1.25rem;background:var(--bg);padding:1.5rem;border-bottom:1px solid var(--line);}
+    .nav-links.open a{color:var(--ink);}
+  }
+  @media(max-width:520px){
+    .team,.factgrid{grid-template-columns:1fr;}
+    section.block{padding:4rem 0;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .hero .dot{animation:none;}
   }
 </style>
 </head>
 <body>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <iframe class="hero-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5000!2d-123.215075!3d45.621437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus" allowfullscreen loading="lazy" style="border:0"></iframe>
-  <div class="hero-overlay">
-    <div class="hero-badge"><span class="pulse"></span> Permits Approved</div>
-    <h1>NW Timmerman Rd</h1>
-    <p class="hero-sub">Grove Vineyard — Vehicle Access & Culvert Grading</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">Parcel <span>2N4W 32S TL 0400 · R814774</span></div>
-      <div class="hero-meta-item">Location <span>Unincorporated Washington Co · 25.9 ac</span></div>
-      <div class="hero-meta-item">Owner <span>Grove Vineyard, LLC</span></div>
-      <div class="hero-meta-item">Driveway <span>729 LF + 100' Hammerhead</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── METRICS ── -->
-<section class="metrics">
-  <div class="metric-card">
-    <div class="metric-label">Overall Progress</div>
-    <div class="metric-value accent" id="overall-pct">5%</div>
-    <div class="metric-sub">2 of 44 tasks complete</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">Permits</div>
-    <div class="metric-value green">2</div>
-    <div class="metric-sub">BLDG-2514996 &middot; GRAD-2505132</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">Permit Expiration</div>
-    <div class="metric-value amber" id="days-left"></div>
-    <div class="metric-sub">January 13, 2028</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">Next Action</div>
-    <div class="metric-value" style="font-size:1.1rem;line-height:1.4;padding-top:0.25rem;color:var(--text);">Schedule pre-grading meeting</div>
-    <div class="metric-sub">Tony Cameron · 971-440-6875</div>
-  </div>
-  <div class="metric-card">
-    <div class="metric-label">Est. Material Cost</div>
-    <div class="metric-value">$12.7k</div>
-    <div class="metric-sub">Range: $10,000 – $14,735</div>
-  </div>
-</section>
-
-<!-- ── MAIN ── -->
-<div class="content">
-
-  <!-- PROPERTY & SITE PLAN -->
-  <div class="section-header">
-    <h2>Property &amp; Site Plan</h2>
-    <div class="line"></div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem;">
-    <a href="/property/grove_vineyard/satellite.png" target="_blank" style="display:block;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;">
-      <img src="/property/grove_vineyard/satellite.png" alt="Aerial — Grove Vineyard parcel R814774" style="width:100%;display:block;background:#111;" loading="lazy">
-      <div style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;">AERIAL · 25.9 ac · Esri World Imagery</div>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" style="text-decoration:none;">
+      <span class="mark">GROVE</span>
+      <span class="tag">Vineyard · Oregon</span>
     </a>
-    <a href="/property/grove_vineyard/siteplan.svg" target="_blank" style="display:block;border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;">
-      <img src="/property/grove_vineyard/siteplan.png" alt="A-101 Site Plan — dimensioned parcel boundary" style="width:100%;display:block;background:#fff;" loading="lazy">
-      <div style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;">A-101 SITE PLAN · 1&quot; = 400' · WashCo parcel polygon</div>
-    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="#opportunity">The Opportunity</a>
+      <a href="#land">The Land</a>
+      <a href="#story">The Story</a>
+      <a href="#plan">The Plan</a>
+      <a href="#invest">Invest</a>
+      <a href="/ops.html" class="nav-portal">Project Portal</a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu">☰</button>
   </div>
+</nav>
 
-  <div class="ref-grid">
-    <div class="ref-card">
-      <h4>Parcel</h4>
-      <div class="ref-item"><strong>Tax Lot:</strong> 2N4W §32 TL 0400 (2N4320000400)</div>
-      <div class="ref-item"><strong>Account:</strong> R814774</div>
-      <div class="ref-item"><strong>Area:</strong> 25.9 ac (1,128,225 sf)</div>
-      <div class="ref-item"><strong>Owner:</strong> Grove Vineyard, LLC</div>
-      <div class="ref-item"><strong>Jurisdiction:</strong> Unincorporated Washington Co</div>
-    </div>
-    <div class="ref-card">
-      <h4>Road Frontage</h4>
-      <div class="ref-item"><strong>Access:</strong> NW Timmerman Rd — county road (IRIS 236400)</div>
-      <div class="ref-item"><strong>Owner / Maint.:</strong> Washington County (both)</div>
-      <div class="ref-item"><strong>South boundary:</strong> NW Wilson River Hwy (OR-6) — ODOT, not the access</div>
-    </div>
-    <div class="ref-card" style="border-color:rgba(74,222,128,0.35);">
-      <h4>ROW Status</h4>
-      <div class="ref-item"><strong>Q (TODO 0.1):</strong> Does a ROW permit block work?</div>
-      <div class="ref-item"><strong>Answer:</strong> <span style="color:var(--text);">No — not a blocker</span></div>
-      <div class="ref-item">Permits issued &amp; paid (1/13/26). ROW work just needs a 2-workday call to Operations (Part-2A §7). Access + culvert already exist (prior permit GRAD-2312015 = Final). No ROWM record on file.</div>
-      <div class="ref-item"><a href="/property/grove_vineyard/ROW_DETERMINATION.md" target="_blank">Full write-up →</a></div>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="badge"><span class="dot"></span> Permits Issued — January 2026</span>
+    <h1>A permitted vineyard estate, ready to plant.</h1>
+    <p class="lede">±26 build-ready acres in the hills above Forest Grove — the heart of Oregon's Willamette Valley. Three years of entitlement work are done. The hard part is behind us.</p>
+    <div class="hero-cta">
+      <a href="#invest" class="btn btn-primary">The opportunity →</a>
+      <a href="#land" class="btn btn-ghost">See the land</a>
     </div>
   </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
 
-  <!-- TERRAIN / LIDAR -->
-  <div class="section-header">
-    <h2>Terrain — LiDAR</h2>
-    <div class="line"></div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="n">25.9 ac</div><div class="l">Entitled acreage</div></div>
+    <div class="stat"><div class="n">Willamette</div><div class="l">Valley · Forest Grove, OR</div></div>
+    <div class="stat"><div class="n">3 years</div><div class="l">Entitlement cleared</div></div>
+    <div class="stat"><div class="n">2 permits</div><div class="l">Issued &amp; paid</div></div>
   </div>
-  <div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">
-    Rendered from the USGS 3DEP 1-meter LiDAR digital elevation model (+ Washington County 10-ft contours). The numbers explain the engineering: this is steep ground, which is exactly why a geotechnical slope-stability analysis was required.
-  </div>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <div id="lidar-map" style="height:480px;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:0.4rem;background:#111;"></div>
-  <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:1.25rem;">Interactive — pan/zoom; use the layers control (top-right) to switch LiDAR hillshade, slope, elevation tint, and 10-ft contours over the aerial. Parcel outline in green. Sources: USGS 3DEP LiDAR · Washington County GIS · Esri imagery.</div>
-  <div class="ref-grid" style="margin-bottom:1rem;">
-    <div class="ref-card"><h4>Elevation</h4><div class="ref-item"><strong>388 – 570 ft</strong> across the parcel area</div><div class="ref-item">mean ≈ 490 ft</div></div>
-    <div class="ref-card"><h4>Relief</h4><div class="ref-item"><strong>~183 ft</strong> (55.7 m) of vertical drop</div><div class="ref-item">19 ten-foot contours cross the parcel</div></div>
-    <div class="ref-card"><h4>Why it matters</h4><div class="ref-item">Slopes exceed 15% — the trigger for the geotech slope-stability analysis (WCC 14.12.110/360) and a driver of the drainage-hazard review.</div></div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:0.85rem;margin-bottom:0.5rem;">
-    <figure style="margin:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
-      <img src="/property/grove_vineyard/terrain/tinted.png" alt="LiDAR elevation-tinted hillshade" style="width:100%;display:block;background:#111;" loading="lazy">
-      <figcaption style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--text-muted);background:var(--surface);">Elevation-tinted hillshade — relief + the drainage cut through the property (USGS 3DEP LiDAR).</figcaption>
-    </figure>
-    <figure style="margin:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
-      <img src="/property/grove_vineyard/terrain/slope.png" alt="LiDAR slope map" style="width:100%;display:block;background:#111;" loading="lazy">
-      <figcaption style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--text-muted);background:var(--surface);">Slope map — pale = the flatter cleared bench; orange/red = the steep forested edges + drainage corridor.</figcaption>
-    </figure>
-    <figure style="margin:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
-      <img src="/property/grove_vineyard/terrain/hillshade.png" alt="LiDAR multidirectional hillshade" style="width:100%;display:block;background:#111;" loading="lazy">
-      <figcaption style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--text-muted);background:var(--surface);">Multidirectional hillshade — bare-earth terrain (USGS 3DEP 1 m LiDAR DEM).</figcaption>
-    </figure>
-  </div>
-
-  <!-- OVERLAYS & CLEARANCES -->
-  <div class="section-header">
-    <h2>Overlays &amp; Clearances</h2>
-    <div class="line"></div>
-  </div>
-  <div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">
-    This is where most of the fight happened. A code-enforcement violation, a forced <strong>Type II Drainage Hazard Analysis</strong>, a county incompleteness letter, a full revise-and-resubmit, then <strong>approval with conditions</strong> — all before a single grading permit could issue. The overlays below were checked against the parcel (Washington County GIS + FEMA) and every one is now cleared, with the determinations on file.
-  </div>
-  <div class="ref-grid">
-    <div class="ref-card" style="border-color:rgba(74,222,128,0.35);">
-      <h4>FEMA Flood Overlay — CLEAR</h4>
-      <div class="ref-item"><strong>Finding:</strong> Parcel is <span style="color:var(--text);">outside</span> the FEMA Special Flood Hazard Area.</div>
-      <div class="ref-item">0 intersect across current &amp; preliminary Floodway / 100-yr / 500-yr, and outside the 100-yr 250′ buffer (WashCo GIS).</div>
-      <div class="ref-item"><strong>FIRM panel:</strong> 41067C0300E (eff. 2016-11-04)</div>
-      <div class="ref-item"><a href="/property/grove_vineyard/overlays/Exhibit_B_-_41067C0300E.pdf" target="_blank">FEMA FIRM panel exhibit →</a></div>
-    </div>
-    <div class="ref-card" style="border-color:rgba(74,222,128,0.35);">
-      <h4>Drainage Hazard Area — CLEARED w/ conditions</h4>
-      <div class="ref-item"><strong>Why triggered:</strong> a mapped Palustrine stream crosses the parcel (the culvert), so the county required a Drainage Hazard review.</div>
-      <div class="ref-item"><strong>Determination:</strong> Type II Drainage Hazard Analysis, Case <strong>L2500008-DHA</strong> — <span style="color:var(--text);">Approved with Conditions</span> (Mar 2025). Conditions rolled into GRAD-2505132.</div>
-      <div class="ref-item">Engineer: Emerio Design (Dan Boultinghouse, PE)</div>
-    </div>
-    <div class="ref-card">
-      <h4>Stream / Wetland</h4>
-      <div class="ref-item"><strong>Stream:</strong> one Palustrine stream on parcel (culvert crossing).</div>
-      <div class="ref-item"><strong>Wetland fill:</strong> none mapped.</div>
-      <div class="ref-item" style="color:var(--amber);">Keep all clearing/earthwork OUT of the riparian buffer (DSL / Corps / Clean Water Services / DEQ) — see the clearing checklist.</div>
-    </div>
-  </div>
-  <a href="/property/grove_vineyard/overlays/Exhibit_B_-_41067C0300E.pdf" target="_blank" style="display:block;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:1rem;background:#fff;">
-    <img src="/property/grove_vineyard/overlays/firm_41067C0300E.png" alt="FEMA FIRM panel 41067C0300E" style="width:100%;display:block;" loading="lazy">
-    <div style="padding:0.5rem 0.75rem;font-size:0.8rem;color:var(--text-muted);background:var(--surface);">FEMA FIRM panel 41067C0300E (eff. 2016-11-04) — the parcel maps OUTSIDE the flood hazard zones. Click for the full panel PDF.</div>
-  </a>
-
-  <div class="ref-card" style="margin-top:1rem;">
-    <h4>Documentation (DHA permit package L2500008-DHA)</h4>
-    <div class="ref-item"><a href="/property/grove_vineyard/overlays/Application_Narrative_20241220.pdf" target="_blank">DHA Application Narrative</a> (Type II Drainage Hazard Analysis)</div>
-    <div class="ref-item"><a href="/property/grove_vineyard/overlays/1916-001_Timmerman_Drainage_Letter_Signed.pdf" target="_blank">Signed Drainage Letter (1916-001)</a></div>
-    <div class="ref-item"><a href="/property/grove_vineyard/overlays/1916-001_NW_TIMMERMAN_RD_-_PLANNING.pdf" target="_blank">Planning Set</a></div>
-    <div class="ref-item"><a href="/property/grove_vineyard/overlays/Incompleteness_Letter_20241220.pdf" target="_blank">County Incompleteness Letter</a> · <a href="/property/grove_vineyard/overlays/Pre-app_waiver_signed.pdf" target="_blank">Pre-App Waiver</a> · <a href="/property/grove_vineyard/overlays/Exhibit_A_-_Assessor_s_Map.pdf" target="_blank">Assessor's Map</a></div>
-  </div>
-
-  <!-- PUBLIC RECORD VAULT -->
-  <div class="section-header">
-    <h2>Public Record — Document Vault</h2>
-    <div class="line"></div>
-  </div>
-  <div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">
-    Every public document we could pull on this parcel — assembled from Washington County Assessment &amp; Taxation, the permit portal, and the land-use file. Build in public means the receipts are public too.
-  </div>
-
-  <div class="cost-table-wrap">
-    <table class="cost-table">
-      <thead><tr><th>Recorded sale</th><th>Date</th><th>Grantor → Grantee</th><th>Recording #</th><th>Price</th></tr></thead>
-      <tbody>
-        <tr><td>Current owner</td><td>Jul 11, 2022</td><td>Yeung / Iriadi Trust → Grove Vineyard, LLC</td><td>2022045801</td><td>$420,000</td></tr>
-        <tr><td>Prior</td><td>Jul 3, 1995</td><td>Liu Trustee → Yeung</td><td>1995050160</td><td>$150,000</td></tr>
-        <tr><td>Prior</td><td>Aug 18, 1994</td><td>Harmon → Liu Trustee</td><td>1994077454</td><td>$113,000</td></tr>
-      </tbody>
-      <tfoot><tr><td>2025 valuation</td><td colspan="2">Real Market Value $288,660 · Assessed $36,730 (farm-deferred)</td><td colspan="2">26.61 ac · zoned farmland (vacant)</td></tr></tfoot>
-    </table>
-  </div>
-
-  <div class="ref-grid" style="margin-top:1rem;">
-    <div class="ref-card">
-      <h4>Assessment &amp; Taxation</h4>
-      <div class="ref-item"><a href="/property/grove_vineyard/records/AT_Property_Record_R814774.pdf" target="_blank">A&amp;T Property Record — Account R814774</a> (owner, sales history, valuation)</div>
-      <div class="ref-item"><a href="https://washcotax.co.washington.or.us/Property-Detail/PropertyQuickRefID/R814774" target="_blank">Live A&amp;T record (county portal) →</a></div>
-    </div>
-    <div class="ref-card">
-      <h4>Permits (issued)</h4>
-      <div class="ref-item"><a href="/property/grove_vineyard/records/Issued_Permit_GRAD-2505132.pdf" target="_blank">Grading Permit — GRAD-2505132</a></div>
-      <div class="ref-item"><a href="/property/grove_vineyard/records/Issued_Permit_BLDG-2514996.pdf" target="_blank">Culvert Permit — BLDG-2514996</a></div>
-      <div class="ref-item"><a href="/property/grove_vineyard/records/Permit_Conditions_GRAD-2505132.pdf" target="_blank">Permit Conditions (Part 1/2A/2B/3)</a></div>
-    </div>
-    <div class="ref-card">
-      <h4>Land Use / Overlays</h4>
-      <div class="ref-item"><a href="/property/grove_vineyard/overlays/Application_Narrative_20241220.pdf" target="_blank">DHA Application (Case L2500008-DHA)</a></div>
-      <div class="ref-item"><a href="/property/grove_vineyard/overlays/1916-001_Timmerman_Drainage_Letter_Signed.pdf" target="_blank">Signed Drainage Letter</a> · <a href="/property/grove_vineyard/overlays/Exhibit_B_-_41067C0300E.pdf" target="_blank">FEMA FIRM panel</a></div>
-      <div class="ref-item">Full DHA package in the Overlays section above.</div>
-    </div>
-    <div class="ref-card">
-      <h4>Plans &amp; imagery</h4>
-      <div class="ref-item"><a href="/property/grove_vineyard/siteplan.svg" target="_blank">A-101 Site Plan</a> · <a href="/property/grove_vineyard/satellite.png" target="_blank">Aerial</a></div>
-      <div class="ref-item"><a href="/property/grove_vineyard/property.yaml" target="_blank">Parcel data (YAML)</a> · <a href="/property/grove_vineyard/sources.md" target="_blank">Sources</a></div>
-    </div>
-    <div class="ref-card" style="border-color:rgba(251,191,36,0.35);">
-      <h4>Order-only (not free online)</h4>
-      <div class="ref-item">Recorded <strong>deed images</strong> (#2022045801 etc.) and any recorded land survey are viewable in the county lobby or by request — they aren't published online.</div>
-      <div class="ref-item">WashCo Recording: 503-846-8752 · recording@washingtoncountyor.gov ($4 first page).</div>
-    </div>
-  </div>
-
-  <!-- THE JOURNEY -->
-  <div class="section-header">
-    <h2>The Journey</h2>
-    <div class="line"></div>
-  </div>
-  <div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.25rem;">
-    Building rural vineyard infrastructure in Washington County is a multi-year regulatory marathon. Here's the real timeline — from buying the land to the permits finally issuing — documented in public.
-  </div>
-  <div style="border-left:2px solid var(--border-light);margin-left:0.5rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:1.1rem;">
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Jul 11, 2022</div><strong>Acquisition — purchased for $420,000.</strong> <span style="color:var(--text-muted);">Grove Vineyard, LLC bought the 26.61-acre parcel on NW Timmerman Rd (rec. #2022045801), financed via Cetan Funds + an FSA farm loan. Prior sales: $150K (1995), $113K (1994). Land survey commissioned in Forest Grove that fall.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Jun 2023</div><strong>Grove Vineyard, LLC formed.</strong> <span style="color:var(--text-muted);">Operating agreement executed; Value-Added Producer Grant explored.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Aug 2023</div><strong>First approach to the county.</strong> <span style="color:var(--text-muted);">Removal/Fill permit inquiry with Washington County for the existing access + creek culvert.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--red);letter-spacing:0.05em;text-transform:uppercase;">2023 — Setback</div><strong>Code-enforcement violation opened (ENFPDS23-00054).</strong> <span style="color:var(--text-muted);">The county flags the existing private road + culvert as unpermitted work. The clock — and the fines exposure — start.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Mar 2024</div><strong>Grading-permit effort begins.</strong> <span style="color:var(--text-muted);">Sommer / Grove Vineyard grading permit thread opens with the county.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Jun–Oct 2024</div><strong>Team assembled.</strong> <span style="color:var(--text-muted);">Rapid Soil Solutions engaged for geotech (Jun); Emerio Design engaged for civil + planning (Oct).</span></div>
-    <div><div style="font-size:0.78rem;color:var(--amber);letter-spacing:0.05em;text-transform:uppercase;">Dec 2024 — The gauntlet</div><strong>Forced into a Type II Drainage Hazard Analysis.</strong> <span style="color:var(--text-muted);">Because a stream crosses the parcel, the county requires a full DHA permit. Application submitted Dec 20 — then a county <em>incompleteness letter</em> sends it back for a revise-and-resubmit.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--green);letter-spacing:0.05em;text-transform:uppercase;">Mar 2025 — Win</div><strong>DHA approved with conditions (Case L2500008-DHA).</strong> <span style="color:var(--text-muted);">The drainage-hazard department is cleared. FEMA confirmed the parcel sits outside all flood zones. The conditions roll forward into the grading permit.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;">Aug–Sep 2025</div><strong>Culvert engineered + documented.</strong> <span style="color:var(--text-muted);">Rapid Soil (Mia Mahedy, PE) issues the stamped culvert field memo for the building permit.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--green);letter-spacing:0.05em;text-transform:uppercase;">Jan 13 2026 — Win</div><strong>Permits ISSUED.</strong> <span style="color:var(--text-muted);">Grading permit GRAD-2505132 and culvert permit BLDG-2514996 both issued and paid. Cleared to build.</span></div>
-    <div><div style="font-size:0.78rem;color:var(--text);letter-spacing:0.05em;text-transform:uppercase;">Now — 2026</div><strong>Site prep &amp; the pre-grading meeting.</strong> <span style="color:var(--text-muted);">Clearing the corridor, then the mandatory pre-grading meeting → grading → final inspection, which closes the violation. Deadline ~July 12, 2026.</span></div>
-  </div>
-
-  <!-- CORRESPONDENCE LOG -->
-  <div class="section-header">
-    <h2>Correspondence Log</h2>
-    <div class="line"></div>
-  </div>
-  <div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">
-    The paper trail with the county and the project team — curated milestones (dates, parties, subject). Private email bodies and addresses are kept off the public page on purpose.
-  </div>
-  <div class="cost-table-wrap">
-    <table class="cost-table">
-      <thead><tr><th>Date</th><th>Parties</th><th>Subject</th><th>Gist</th></tr></thead>
-      <tbody>
-        <tr><td>Aug 2023</td><td>Owner → Washington County</td><td>Removal / Fill Permit inquiry</td><td>First approach on the access + creek culvert</td></tr>
-        <tr><td>Mar 2024</td><td>Owner ↔ County (Building Svcs)</td><td>Grading Permit — Sommer / Grove Vineyard</td><td>Grading-permit thread opens</td></tr>
-        <tr><td>Jun 2024</td><td>Owner → Rapid Soil Solutions</td><td>Geotech vendor onboarding</td><td>Mia Mahedy, PE engaged for geotech</td></tr>
-        <tr><td>Oct–Nov 2024</td><td>Emerio Design ↔ Owner</td><td>Timmerman — civil + survey</td><td>Civil/planning engaged; survey coordinated</td></tr>
-        <tr><td>Dec 2024</td><td>County → Owner / Emerio</td><td>DHA application + Incompleteness Letter</td><td>Forced into Type II DHA; sent back to revise</td></tr>
-        <tr><td>Mar 2025</td><td>Emerio → Owner / Boss PDX</td><td>L2500008-DHA — Approval with Conditions</td><td>Drainage-hazard win; full package delivered</td></tr>
-        <tr><td>Sep 2025</td><td>Rapid Soil → Owner</td><td>Culvert field memo (stamped)</td><td>Culvert engineered for the building permit</td></tr>
-        <tr><td>Jan 2026</td><td>Owner / team</td><td>Permits Issued (Finally)</td><td>GRAD-2505132 + BLDG-2514996 issued</td></tr>
-        <tr><td>May 2026</td><td>County (M. Wilkins) ↔ Owner / Emerio</td><td>Violation ENFPDS23-00054</td><td>Pressure to reach final inspection / avoid fines</td></tr>
-        <tr><td>Jun 2026</td><td>Owner → Boss PDX (Caitlin)</td><td>Live project page + pre-grading meeting</td><td>Kickoff for site prep + scheduling the meeting</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- PRE-GRADING SITE MEETING -->
-  <div class="section-header">
-    <h2>Pre-Grading Site Meeting — Mon June 8 · 3pm</h2>
-    <div class="line"></div>
-  </div>
-
-  <!-- Confirmed banner -->
-  <div style="background:rgba(74,222,128,0.10);border:1px solid rgba(74,222,128,0.4);border-radius:8px;padding:0.9rem 1.1rem;margin-bottom:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-    <span style="font-size:1.25rem;line-height:1;">✅</span>
-    <div>
-      <div style="font-weight:700;color:var(--green);margin-bottom:0.25rem;">Confirmed — Monday June 8, 3pm at Timmerman Road</div>
-      <div style="font-size:0.88rem;color:var(--text-muted);">Caitlin coordinated with Tony Cameron directly. <strong>Just Lucas + Tony</strong> — Emerio and Rapid Soil confirmed they don't need to attend. Tony has Lucas's cell. Check the email thread: <em>GRAD-2505132 Pregrading Site Meeting</em> (Jun 4–5).</div>
-    </div>
-  </div>
-
-  <div class="ref-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
-
-    <!-- What to bring -->
-    <div class="ref-card" style="border-color:rgba(251,191,36,0.4);">
-      <h4>🎒 What to bring</h4>
-      <div class="ref-item"><strong>Printed plans — 1 set</strong>: Sheet 2 (Grading &amp; Erosion Control) + Sheet 3 (Driveway Plan &amp; Profile). Print links are in the next card. Tony will orient on Sheet 2.</div>
-      <div class="ref-item"><strong>Orange spray paint</strong> — mark driveway centerline, corridor edges, or hammerhead footprint on the ground if Tony asks you to show him where things go.</div>
-      <div class="ref-item"><strong>Survey flags / lath stakes</strong> — pin the alignment corners and hammerhead terminus. 12′ clearing corridor on each side of centerline.</div>
-      <div class="ref-item"><strong>Red / pink flags</strong> — mark the creek &amp; riparian no-touch setback downslope. Shows you know where the line is.</div>
-      <div class="ref-item"><strong>Phone with this page pulled up</strong> — all permit numbers, contacts, and inspection codes are here.</div>
-      <div class="ref-item"><strong>Boots + brush gear</strong> — site is overgrown. Be ready to walk the full corridor.</div>
-      <div class="ref-item"><strong>Tape measure</strong> — useful for confirming corridor width on the ground.</div>
-      <div class="ref-item" style="color:var(--text-muted);font-size:0.82rem;">Sign (2′×3′) is <em>not</em> required at the meeting — required ≥24hrs before first site disturbance. Post it the morning of Day 1.</div>
-    </div>
-
-    <!-- What to print -->
-    <div class="ref-card" style="border-color:rgba(139,92,246,0.4);">
-      <h4>🖨️ Print before you go — Approved Plan Set</h4>
-      <div class="ref-item" style="padding:0.35rem 0.5rem;background:rgba(139,92,246,0.08);border-radius:5px;border:1px solid rgba(139,92,246,0.3);">
-        <strong>→ <a href="/meeting-prep-jun8.html" target="_blank" style="color:var(--purple);">Open full printable prep sheet</a></strong>
-        <span style="color:var(--text-muted);font-size:0.82rem;"> — Cmd+P or File → Print → Save as PDF · 1 page · white background · print-ready</span>
-      </div>
-      <div class="ref-item" style="color:var(--text);">Plan sheets from the issued GRAD-2505132 set (<code style="font-size:0.82rem;background:var(--surface2);padding:0.1rem 0.3rem;border-radius:3px;">Approved_199839/</code>):</div>
-      <div class="ref-item"><a href="/Grove%20Vineyard%20LLC%202026/Approved_199839/sheet1-cover.pdf" target="_blank">Sheet 1 — Cover Sheet</a></div>
-      <div class="ref-item"><a href="/Grove%20Vineyard%20LLC%202026/Approved_199839/sheet2-grading.pdf" target="_blank"><strong>Sheet 2 — Grading &amp; Erosion Control Plan</strong> ← print this</a></div>
-      <div class="ref-item"><a href="/Grove%20Vineyard%20LLC%202026/Approved_199839/sheet3-driveway.pdf" target="_blank"><strong>Sheet 3 — Driveway Plan &amp; Profile</strong> ← print this</a></div>
-      <div class="ref-item"><a href="/Grove%20Vineyard%20LLC%202026/Approved_199839/sheet4-erosion.pdf" target="_blank">Sheet 4 — Erosion Control Notes &amp; Details</a></div>
-      <div class="ref-item"><a href="/Grove%20Vineyard%20LLC%202026/Approved_199839_Consolidated.pdf" target="_blank" style="color:var(--text-muted);">Full consolidated set (all sheets) →</a></div>
-      <div class="ref-item" style="color:var(--text-muted);font-size:0.82rem;">Part-2B §1: A watertight plan enclosure with the approved set must be at the site access point during construction. Set that up before Day 1 — not required for this meeting.</div>
-    </div>
-
-    <!-- Discussion topics -->
-    <div class="ref-card" style="border-color:rgba(74,222,128,0.35);">
-      <h4>🗣️ Discuss with Tony</h4>
-      <div class="ref-item"><strong>Walk the alignment.</strong> Show him where the driveway runs from the road to the hammerhead. Have it flagged or spray it on the spot. 12′ corridor, ~700 LF to terminus.</div>
-      <div class="ref-item"><strong>Inspection sequence.</strong> Confirm order: 501 Site Prep → 502 Fill → 503 Subgrade → 507 Erosion Control → 509 Driveway → 599 Final. Ask where 507 falls — some inspectors want it before 501.</div>
-      <div class="ref-item"><strong>Vegetation clearing now.</strong> "Can I start clearing brush and vegetation along the corridor before I post the sign, or does that count as disturbance?" Push to start as soon as possible.</div>
-      <div class="ref-item"><strong>Erosion control first call.</strong> "For the 507 inspection, I need to confirm culvert inlet protection at 503-681-4444 — is that separate from calling you, or do you coordinate it?"</div>
-      <div class="ref-item"><strong>Part-3 Acknowledgment Form / CCB on file.</strong> "Is my CCB 232383 (Boss PDX LLC) listed as grading contractor on the acknowledgment form in ProjectDox? The form I have shows the GC line blank — do I need to resubmit?" Must be on file before dirt moves.</div>
-      <div class="ref-item"><strong>Enforcement case ENFPDS23-00054.</strong> "I want to drive this to final grading and close that out — is there anything I should know about it from your side?"</div>
-      <div class="ref-item"><strong>Inspection turnaround.</strong> "What’s your typical response time once I call for an inspection?" — County target is 48–72hrs; plan equipment rentals around this.</div>
-    </div>
-
-    <!-- Know cold -->
-    <div class="ref-card">
-      <h4>📋 Know cold</h4>
-      <div class="ref-item"><strong>Grading permit:</strong> GRAD-2505132 &nbsp;·&nbsp; Project # P0285908</div>
-      <div class="ref-item"><strong>Building permit:</strong> BLDG-2514996 (culvert retroactive)</div>
-      <div class="ref-item"><strong>Parcel:</strong> 2N4W-32-400 &nbsp;·&nbsp; R814774 &nbsp;·&nbsp; 0 NW Timmerman Rd, Forest Grove OR 97116</div>
-      <div class="ref-item"><strong>You are:</strong> Owner + Grading Contractor — Boss PDX LLC, CCB 232383</div>
-      <div class="ref-item"><strong>Civil:</strong> Emerio Design — Chad Williams 503-746-8812</div>
-      <div class="ref-item"><strong>Geotech:</strong> Rapid Soil Solutions — Mia 503-816-3689 &nbsp;/&nbsp; Alexandria (backup, on vacation week of 6/9)</div>
-      <div class="ref-item"><strong>Tony Cameron</strong> (Grading Inspector) — 971-440-6875</div>
-      <div class="ref-item"><strong>Kim Allen</strong> (Engineering Assoc. / backup) — 503-846-6733</div>
-      <div class="ref-item"><strong>Enforcement case:</strong> ENFPDS23-00054 — open, closes at final grading (599)</div>
-      <div class="ref-item"><strong>Violation deadline:</strong> ~July 12, 2026. Need active, visible progress.</div>
-      <div class="ref-item"><strong>DHA cleared:</strong> L2500008-DHA Approved w/ conditions. FEMA: outside SFHA. Both done.</div>
-      <div class="ref-item"><strong>Permit expiry warning:</strong> No inspection calls for 180 days = permit expires. Keep moving.</div>
-    </div>
-
-  </div>
-
-  <!-- LIVE FIELD CHECKLIST -->
-  <div class="section-header">
-    <h2>Field Checklist — Live</h2>
-    <div class="line"></div>
-  </div>
-  <div id="checklist-intro" style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">
-    Workers: sign in with your email to check items off and comment. You'll get a one-time code by email. Click 💬 on any item to leave a note — ask a question and Claude will reply.
-  </div>
-  <div id="auth-bar" style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap;"></div>
-  <div id="daily-digest" style="display:none;background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(124,58,237,0.02));border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.2rem;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
-      <h3 style="margin:0;font-size:1rem;color:var(--purple);" id="digest-title">Today</h3>
-      <span style="font-size:0.75rem;color:var(--text-dim);" id="digest-meta"></span>
-    </div>
-    <div id="digest-priorities"></div>
-    <div style="margin-top:0.75rem;">
-      <button id="digest-chat-btn" style="background:var(--purple);color:#fff;border:none;padding:0.45rem 1rem;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;">Work through these →</button>
-    </div>
-  </div>
-  <span id="cl-status" style="color:var(--text-dim);font-size:0.8rem;display:block;margin-bottom:0.75rem;"></span>
-  <div id="checklist"></div>
-
-  <!-- DISCUSSION -->
-  <div class="section-header">
-    <h2>Discussion</h2>
-    <div class="line"></div>
-  </div>
-  <div id="comments-general"></div>
-  <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
-    <textarea id="cmt-body" rows="2" placeholder="Leave a note for the team…"
-      style="background:var(--surface);border:1px solid var(--border-light);color:var(--text);padding:0.6rem 0.75rem;border-radius:6px;font-size:0.9rem;resize:vertical;"></textarea>
-    <button id="cmt-send" style="align-self:flex-start;background:var(--green);color:#0a0a0a;border:none;padding:0.5rem 1.1rem;border-radius:6px;font-weight:600;cursor:pointer;">Post note</button>
-  </div>
-
-  <!-- AGENT CHAT -->
-  <div id="chat-section" style="display:none;">
-    <div class="section-header">
-      <h2>Agent Chat</h2>
-      <div class="line"></div>
-    </div>
-    <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;">
-      Ask the Grove agents about permits, inspections, scheduling, site prep, or anything about the project.
-    </div>
-    <div id="chat-agents" style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;"></div>
-    <div id="chat-messages" style="max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;padding:0.5rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;"></div>
-    <div style="display:flex;gap:0.5rem;">
-      <input id="chat-input" type="text" placeholder="Ask the agents…"
-        style="flex:1;background:var(--surface2);border:1px solid var(--border-light);color:var(--text);padding:0.6rem 0.75rem;border-radius:6px;font-size:0.9rem;">
-      <button id="chat-send" style="background:var(--purple);color:#fff;border:none;padding:0.5rem 1.1rem;border-radius:6px;font-weight:600;cursor:pointer;white-space:nowrap;">Send</button>
-    </div>
-    <div id="chat-status" style="color:var(--text-dim);font-size:0.8rem;margin-top:0.4rem;"></div>
-  </div>
-
-  <!-- GANTT -->
-  <div class="section-header">
-    <h2>Project Timeline</h2>
-    <div class="line"></div>
-  </div>
-
-  <div class="gantt-container">
-    <div class="gantt-header">
-      <div class="gantt-header-label">Phase</div>
-      <div class="gantt-months" id="gantt-months"></div>
-    </div>
-    <div id="gantt-body"></div>
-  </div>
-
-  <!-- PHASES -->
-  <div class="section-header">
-    <h2>Critical Path</h2>
-    <div class="line"></div>
-  </div>
-
-  <div class="phase-list" id="phase-list"></div>
-
-  <!-- COSTS -->
-  <div class="section-header">
-    <h2>Material & Equipment Budget</h2>
-    <div class="line"></div>
-  </div>
-
-  <div class="cost-table-wrap">
-    <table class="cost-table">
-      <thead>
-        <tr><th>Item</th><th>Qty</th><th>Low</th><th>Mid</th><th>High</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>1.5" minus crushed rock</td><td>265 tons</td><td>$4,770</td><td>$6,625</td><td>$7,950</td></tr>
-        <tr><td>3/4" minus crushed rock</td><td>90 tons</td><td>$1,620</td><td>$2,250</td><td>$2,700</td></tr>
-        <tr><td>Rock delivery (~24 loads)</td><td>24 loads</td><td>$2,400</td><td>$2,400</td><td>$2,400</td></tr>
-        <tr><td>Silt fence</td><td>200 LF</td><td>$60</td><td>$75</td><td>$90</td></tr>
-        <tr><td>Straw wattles / inlet protection</td><td>2–3 units</td><td>$15</td><td>$40</td><td>$60</td></tr>
-        <tr><td>Plate compactor rental</td><td>~1 week</td><td>$385</td><td>$385</td><td>$385</td></tr>
-        <tr><td>Laser level rental</td><td>1 unit</td><td>$50</td><td>$100</td><td>$150</td></tr>
-        <tr><td>Geotextile — Mirafi 500X</td><td>2 rolls</td><td>$700</td><td>$850</td><td>$1,000</td></tr>
-      </tbody>
-      <tfoot>
-        <tr><td>Total (materials & equipment)</td><td></td><td>$10,000</td><td>$12,725</td><td>$14,735</td></tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <!-- REFERENCE -->
-  <div class="section-header">
-    <h2>Key Contacts & Reference</h2>
-    <div class="line"></div>
-  </div>
-
-  <div class="ref-grid">
-    <div class="ref-card">
-      <h4>Washington County</h4>
-      <div class="ref-item"><strong>Inspections IVR:</strong> 503-846-3699</div>
-      <div class="ref-item"><strong>Text:</strong> "SCHEDULE" to 844-339-4609</div>
-      <div class="ref-item"><strong>Online:</strong> <a href="https://www.washcoOrACA.com" target="_blank">WashCoORACA.com</a></div>
-      <div class="ref-item"><strong>Building Services:</strong> 503-846-3470</div>
-      <div class="ref-item"><strong>ROW Operations:</strong> 503-846-7623</div>
-    </div>
-    <div class="ref-card">
-      <h4>County Contacts</h4>
-      <div class="ref-item"><strong>Tony Cameron</strong> (Grading Inspector) — 971-440-6875</div>
-      <div class="ref-item"><strong>Kim Allen</strong> (Engineering) — 503-846-6733</div>
-      <div class="ref-item"><strong>Kofi Nelson-Owusu</strong> (Bldg Engr) — 503-846-2846</div>
-      <div class="ref-item"><strong>Erosion Control:</strong> 503-681-4444</div>
-    </div>
-    <div class="ref-card">
-      <h4>Project Team</h4>
-      <div class="ref-item"><strong>Mia Mahedy, PE GE</strong> (Geotech EOR) — 503-816-3689</div>
-      <div class="ref-item"><strong>Chad Williams</strong> (Emerio Design, CE) — 503-746-8812</div>
-      <div class="ref-item"><strong>Boss PDX LLC</strong> (Contractor) — CCB 232383</div>
-    </div>
-    <div class="ref-card">
-      <h4>Quarry Sources</h4>
-      <div class="ref-item"><strong>Western Rock Resources</strong> — Laurelwood Quarry, Gaston</div>
-      <div class="ref-item"><strong>Gravel Monkey</strong> — <a href="https://mygravelmonkey.com" target="_blank">mygravelmonkey.com</a></div>
-      <div class="ref-item"><strong>Hello Gravel</strong> — 1-855-241-8884</div>
-    </div>
-  </div>
-
 </div>
 
+<!-- OPPORTUNITY -->
+<section class="block" id="opportunity">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="eyebrow">The Opportunity</span>
+        <p class="lead-serif" style="margin-top:1rem;">Most raw parcels never make it through. This one did.</p>
+      </div>
+      <div class="prose reveal">
+        <p>Grove is <strong>25.9 acres of permitted, build-ready land</strong> in one of the world's great cool-climate wine regions. Acquired in 2022, the property has since cleared a full Washington County entitlement process — drainage-hazard analysis, geotechnical slope-stability review, FEMA flood determination — culminating in <strong>issued grading and culvert permits in January 2026</strong>.</p>
+        <p>That matters because entitlement, not dirt, is where rural vineyard projects die. The regulatory path is slow, expensive, and uncertain. Grove is through it. What remains is execution on ground that is already cleared to build.</p>
+        <p>The vision is phased and patient: <strong>establish the vineyard, build the estate, and grow a brand</strong> — each stage de-risking and adding value to the one before.</p>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="ic">✓</div>
+        <h3>Entitled &amp; de-risked</h3>
+        <p>Permits in hand. Drainage hazard cleared with conditions (Case L2500008-DHA). Outside the FEMA flood hazard area. The approvals that stop most projects are done and on file.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ic">⛰</div>
+        <h3>Prime terroir</h3>
+        <p>Elevation, slope, and natural drainage in the hills above Forest Grove — the same cool-climate conditions that made the Willamette Valley world-famous for Pinot Noir.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ic">◳</div>
+        <h3>Phased upside</h3>
+        <p>A staged plan — vineyard, then estate, then brand — that lets capital enter at a de-risked basis and participate in value created at each step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAND -->
+<section class="block alt" id="land">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Land</span>
+      <h2>26 acres of Oregon hillside</h2>
+      <p>On NW Timmerman Rd in unincorporated Washington County, in the hills above Forest Grove. We know this ground down to the meter — the terrain below is rendered from USGS 3DEP 1-meter LiDAR.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="gcell big" style="background-image:url('/property/grove_vineyard/satellite.png');">
+        <div class="cap">Aerial — 25.9 ac parcel · Esri World Imagery</div>
+      </div>
+      <div class="gcell" style="background-image:url('/property/grove_vineyard/terrain/tinted.png');">
+        <div class="cap">Elevation-tinted relief</div>
+      </div>
+      <div class="gcell" style="background-image:url('/property/grove_vineyard/terrain/slope.png');">
+        <div class="cap">Slope &amp; aspect</div>
+      </div>
+      <div class="gcell" style="background-image:url('/property/grove_vineyard/terrain/hillshade.png');">
+        <div class="cap">Bare-earth hillshade (LiDAR)</div>
+      </div>
+      <div class="gcell" style="background:var(--forest);">
+        <div class="cap">Forest Grove · Willamette Valley, OR</div>
+      </div>
+    </div>
+    <div class="factgrid reveal">
+      <div class="fact"><div class="v">25.9 ac</div><div class="k">Entitled area (26.61 ac gross)</div></div>
+      <div class="fact"><div class="v">388–570 ft</div><div class="k">Elevation range · ~183 ft of relief</div></div>
+      <div class="fact"><div class="v">Farm-zoned</div><div class="k">Agricultural, farm-tax deferred</div></div>
+      <div class="fact"><div class="v">County road</div><div class="k">Direct frontage on NW Timmerman Rd</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Story</span>
+      <h2>Three years to a build-ready site</h2>
+      <p>Building rural vineyard infrastructure in Washington County is a regulatory marathon. Here is the real path — from acquisition to permits in hand.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl reveal"><div class="yr">Jul 2022</div><h4>Acquisition</h4><p>Grove Vineyard, LLC purchases the 26.61-acre parcel on NW Timmerman Rd, financed with farm lending. The long-term vision begins.</p></div>
+      <div class="tl reveal"><div class="yr">2023</div><h4>Entitlement begins — and gets hard</h4><p>First approach to the county on the existing access and creek culvert. The county flags prior work; the full entitlement process opens.</p></div>
+      <div class="tl reveal"><div class="yr">Dec 2024</div><h4>The gauntlet: Type II Drainage Hazard Analysis</h4><p>Because a mapped stream crosses the parcel, the county requires a full drainage-hazard review — engineered, submitted, revised, and resubmitted.</p></div>
+      <div class="tl win reveal"><div class="yr">Mar 2025 · Win</div><h4>Drainage hazard approved · FEMA cleared</h4><p>Case L2500008-DHA approved with conditions. FEMA confirms the parcel sits outside all flood hazard zones. The hardest approval is secured.</p></div>
+      <div class="tl win reveal"><div class="yr">Jan 2026 · Win</div><h4>Permits issued</h4><p>Grading permit GRAD-2505132 and culvert permit BLDG-2514996 both issued and paid. The site is cleared to build.</p></div>
+      <div class="tl reveal"><div class="yr">2026 →</div><h4>Site development</h4><p>Access and site preparation underway — the foundation for vineyard establishment and everything that follows.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Plan</span>
+      <h2>A phased path to an estate brand</h2>
+      <p>Capital is deployed in stages, each one building on de-risked ground and creating value for the next.</p>
+    </div>
+    <div class="phases">
+      <div class="phase reveal">
+        <div class="ph-n">I</div>
+        <div class="ph-tag">Now — Build-ready</div>
+        <h3>Site &amp; Vineyard</h3>
+        <ul>
+          <li>Complete permitted access &amp; site prep</li>
+          <li>Clearing, soil preparation, water</li>
+          <li>Vineyard establishment &amp; planting</li>
+        </ul>
+      </div>
+      <div class="phase reveal">
+        <div class="ph-n">II</div>
+        <div class="ph-tag">Next</div>
+        <h3>Estate &amp; Infrastructure</h3>
+        <ul>
+          <li>Utilities &amp; estate structures</li>
+          <li>Farm income from fruit</li>
+          <li>Foundations for production</li>
+        </ul>
+      </div>
+      <div class="phase reveal">
+        <div class="ph-n">III</div>
+        <div class="ph-tag">Vision</div>
+        <h3>Brand &amp; Hospitality</h3>
+        <ul>
+          <li>Estate winemaking &amp; label</li>
+          <li>Direct-to-consumer &amp; club</li>
+          <li>Tasting &amp; hospitality on site</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.4rem;margin:3.5rem 0 0.5rem;">Use of funds</h3>
+    <p style="color:var(--muted);">Allocations to be finalized with committed capital. Representative structure:</p>
+    <div class="uof reveal">
+      <div class="uof-row"><span>Phase I — site development &amp; vineyard establishment</span><span class="fill">[amount]</span></div>
+      <div class="uof-row"><span>Water, utilities &amp; estate infrastructure</span><span class="fill">[amount]</span></div>
+      <div class="uof-row"><span>Working capital &amp; carry to first harvest</span><span class="fill">[amount]</span></div>
+      <div class="uof-row"><span>Brand, production &amp; hospitality (Phase III)</span><span class="fill">[amount]</span></div>
+      <div class="uof-row"><span><strong>Total raise</strong></span><span class="fill">[total]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVEST -->
+<section class="invest" id="invest">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="color:var(--gold);">Invest in Grove</span>
+    <h2>A de-risked entry into Oregon wine country.</h2>
+    <p>We're in conversation with a small group of investors and partners about participating in Grove — through <strong>debt or equity</strong>, structured to fit. The entitlements that make or break a project are already secured; capital enters at a build-ready basis.</p>
+    <p>Flexible on structure, aligned on the long view.</p>
+    <div class="terms">
+      <div class="term"><div class="k">Structure</div><div class="v">Debt or equity</div></div>
+      <div class="term"><div class="k">Target raise</div><div class="v fill">[amount]</div></div>
+      <div class="term"><div class="k">Minimum</div><div class="v fill">[amount]</div></div>
+    </div>
+    <a href="mailto:invest@halemheights.com?subject=Grove%20Vineyard%20—%20Investment%20Inquiry" class="btn btn-primary">Request the investment memo →</a>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="block" id="team">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">The Team</span>
+      <h2>Built with professionals</h2>
+      <p>Grove is owned by Grove Vineyard, LLC and advanced by a licensed, credentialed project team.</p>
+    </div>
+    <div class="team">
+      <div class="member reveal"><div class="role">Owner / Developer</div><div class="name">Grove Vineyard, LLC</div><div class="meta">Forest Grove, Oregon</div></div>
+      <div class="member reveal"><div class="role">Site &amp; Grading</div><div class="name">Boss PDX, LLC</div><div class="meta">Licensed contractor · CCB 232383</div></div>
+      <div class="member reveal"><div class="role">Civil &amp; Planning</div><div class="name">Emerio Design</div><div class="meta">Engineering &amp; land use</div></div>
+      <div class="member reveal"><div class="role">Geotechnical</div><div class="name">Rapid Soil Solutions</div><div class="meta">Slope stability &amp; culvert (PE/GE)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block alt contact" id="contact">
+  <div class="wrap reveal">
+    <span class="eyebrow">Get in touch</span>
+    <h2>Let's talk about Grove.</h2>
+    <p>Investors, operators, and winemaking partners welcome. Reach out for the investment memo, the full entitlement file, or a walk of the land.</p>
+    <a href="mailto:invest@halemheights.com?subject=Grove%20Vineyard%20—%20Inquiry" class="btn btn-dark">invest@halemheights.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  &copy; 2026 <a href="https://halemheights.com">Halem Heights</a> &middot; Grove Vineyard, LLC &middot; Forest Grove, Oregon
-  <div style="margin-top:0.5rem;font-size:0.8rem;">
-    <a href="/CONTEXT.md">Project context</a> &middot;
-    <a href="/property/grove_vineyard/ROW_DETERMINATION.md">ROW determination</a> &middot;
-    <a href="/property/grove_vineyard/property.yaml">Parcel data</a>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="mark">GROVE</div>
+        <div style="margin-top:0.5rem;max-width:34ch;">A vineyard estate in the making — Forest Grove, Oregon.</div>
+      </div>
+      <div class="foot-links">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#land">Land</a>
+        <a href="#story">Story</a>
+        <a href="#plan">Plan</a>
+        <a href="#invest">Invest</a>
+        <a href="/ops.html">Project Portal</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      © 2026 Halem Heights · Grove Vineyard, LLC · Forest Grove, Oregon. &nbsp;This website is provided for informational purposes only and does not constitute an offer to sell, or the solicitation of an offer to buy, any security or other interest in Grove Vineyard, LLC. Any offer or sale will be made only to qualified investors pursuant to definitive offering documents and applicable exemptions under federal and state securities laws. Forward-looking statements reflect current intentions and are subject to change; nothing herein is a guarantee of future results.
+    </div>
   </div>
 </footer>
 
 <script>
-// ── DATA ──
-const phases = [
-  {
-    id: 'phase0',
-    title: 'Phase 0: Admin & Pre-Construction',
-    subtitle: 'Before any ground disturbance — START NOW',
-    icon: '📋',
-    status: 'active',
-    gantt: { start: 3, length: 2 },
-    color: '#3b82f6',
-    tasks: [
-      { section: 'RIGHT-OF-WAY — NOT A BLOCKER (resolved at permit issuance)' },
-      { text: 'No separate ROW permit gates this project — permits are issued & active',
-        done: true,
-        detail: [
-          'class:warn|✓ RESOLVED 2026-06-03: There is no open ROW-permit blocker. The grading permit (GRAD-2505132) and culvert permit (BLDG-2514996) are both ISSUED and paid in full (1/13/2026).',
-          '<strong>The stale premise:</strong> "ROW permit may be required prior to ISSUING the grading permit" comes from the Part-1 <em>pre-issuance</em> review comments (8/15/2025). Part-1 items are prerequisites for issuance — and the permit issued 1/13/2026, so they were already cleared.',
-          '<strong>The only live ROW condition</strong> (Part-2A General Condition #7): the grading permit doesn\'t cover ROW work, so <strong>notify County Operations (503-846-7623) at least 2 workdays before</strong> any work on the existing ROW. A courtesy call — not a separate approval gate.',
-          '<strong>The access already exists:</strong> Part-1 photos show the "existing private road from NW Timmerman" and the culvert "installed without permit." Built under the earlier permit GRAD-2312015 (now FINAL on the county portal). This project retroactively legalizes + upgrades it.',
-          '<strong>Portal verified:</strong> GRAD-2312015 = Final · GRAD-2505132 = Issued · BLDG-2514996 = Issued. All show "No ROWM data" — no separate ROW permit exists or is required.',
-          'class:ref|Ref: GRAD-2505132 Part-2A §7; Part-1 transmittal 8/15/2025; Accela portal permits.washingtoncountyor.gov'
-        ]
-      },
+  // sticky nav background
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 40); };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 
-      { section: 'PART-3 ACKNOWLEDGMENT FORM — ALL 4 SIGNATURES REQUIRED' },
-      { text: 'Collect signatures on Part-3 Acknowledgment Form from all parties',
-        done: false,
-        detail: [
-          '<strong>Purpose:</strong> All parties must confirm they have read and agree to comply with the conditions in Part-2A (General Conditions) and Part-2B (Project Specific Conditions) of the grading permit.',
-          '<strong>Required signatures (4):</strong>',
-          '&nbsp;&nbsp;1. <strong>Owner:</strong> Grove Vineyard, LLC — Lucas Sommer',
-          '&nbsp;&nbsp;2. <strong>Geotech Engineer:</strong> Rapid Soil Solutions — Mia Mahedy, PE GE',
-          '&nbsp;&nbsp;3. <strong>Civil Engineer:</strong> Emerio Design — Chad Williams',
-          '&nbsp;&nbsp;4. <strong>Grading Contractor:</strong> [Name, CCB #] — Must be identified',
-          '<strong>Format:</strong> Electronic signatures accepted.',
-          '<strong>Submit via:</strong> ProjectDox (Washington County\'s electronic plan review portal)',
-          'class:warn|⚠ The grading permit transmittal explicitly states: "When Part-1 and Part-3 items are submitted and reviewed and approvals are received... a grading permit may be issued upon payment of fees."',
-          'class:ref|Ref: GRAD-2505132 Grading Permit Package, Part-3 (page 9 of transmittal)'
-        ]
-      },
+  // mobile menu
+  var toggle = document.getElementById('navtoggle'), links = document.getElementById('navlinks');
+  toggle.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.addEventListener('click', function(e){ if(e.target.tagName==='A') links.classList.remove('open'); });
 
-      { section: 'GRADING CONTRACTOR DESIGNATION' },
-      { text: 'Provide grading contractor details to Washington County',
-        done: false,
-        detail: [
-          '<strong>Required info:</strong> Business name, address, email, telephone number, and CCB license number.',
-          '<strong>Submit to:</strong> Kim Allen — kim_allen@washingtoncountyor.gov or 503-846-6733',
-          '<strong>Contractor on building permit:</strong> Boss PDX LLC, Caitlin Heitz, CCB 232383 (440 9th Street, Lake Oswego, OR 97034)',
-          '<strong>Note:</strong> If the grading contractor differs from the building permit contractor, you need to designate them separately. Per Part-2A §15, all construction work stops if project team changes until a new acknowledgment form is completed and approved.',
-          'class:ref|Ref: GRAD-2505132 Part-1 §E.3, Part-2A §15'
-        ]
-      },
-
-      { section: 'FIRE MARSHAL APPROVAL' },
-      { text: 'Obtain Fire Marshal letter approving the proposed road work',
-        done: false,
-        detail: [
-          '<strong>Requirement:</strong> Part-1, Section E.4 requires "a letter/form from the Fire Marshal stating that they have reviewed and approved the proposed road work shown on the grading plan."',
-          '<strong>Key specs the Fire Marshal will verify:</strong>',
-          '&nbsp;&nbsp;• Minimum fire access loading: 75,000 lbs (HS-20)',
-          '&nbsp;&nbsp;• Road width: 20 feet required with supporting design calculations, unless a narrower width is permitted via letter from the project district Fire Marshall',
-          '&nbsp;&nbsp;• Current approved plans show 12\' wide corridor — this may require the Fire Marshal\'s explicit written approval for the narrower width',
-          '&nbsp;&nbsp;• Hammerhead turnaround: 100\' T at terminus — designed for fire truck turnaround',
-          '<strong>Contact:</strong> Banks Fire District or Washington County Fire Marshal\'s office',
-          'class:warn|⚠ The 12\' width vs. 20\' requirement is a potential issue. The Fire Marshal letter must specifically address this.',
-          'class:ref|Ref: GRAD-2505132 Part-1 §A.1.c, §E.4; WCC §14.12.340'
-        ]
-      },
-
-      { section: 'PRE-GRADING SITE MEETING — MANDATORY' },
-      { text: 'Schedule Pre-Grading Site Meeting with Washington County',
-        done: false,
-        detail: [
-          '<strong>Purpose:</strong> "To bridge the gap between plan review approval and actual site disturbances." This is explicitly required by the grading permit transmittal.',
-          '<strong>Contact to schedule:</strong>',
-          '&nbsp;&nbsp;• <strong>Tony Cameron</strong> (Grading Inspector) — 971-440-6875',
-          '&nbsp;&nbsp;• <strong>Kim Allen</strong> — 503-846-6733',
-          '<strong>All four parties must attend:</strong>',
-          '&nbsp;&nbsp;1. Owner (Lucas / Grove Vineyard, LLC)',
-          '&nbsp;&nbsp;2. Grading Contractor',
-          '&nbsp;&nbsp;3. Civil Engineer (Emerio Design — Chad Williams)',
-          '&nbsp;&nbsp;4. Geotechnical Engineer (Rapid Soil Solutions — Mia Mahedy)',
-          'class:warn|⚠ "If the meeting will be cancelled... there may be an additional charge of one hour for a second meeting." Do not schedule until all four parties can confirm attendance.',
-          'class:ref|Ref: GRAD-2505132 Grading Permit Transmittal, "Pre-Grading Site Meeting Mission" section'
-        ]
-      },
-      { text: 'Attend Pre-Grading Site Meeting — no work begins without this',
-        done: false,
-        detail: [
-          '<strong>Bring to meeting:</strong>',
-          '&nbsp;&nbsp;• Full set of approved plans (4 sheets + sheet index)',
-          '&nbsp;&nbsp;• Geotechnical Engineering Report (NW Timmerman Rd Geotech report)',
-          '&nbsp;&nbsp;• Drainage analysis letter (1916-001 Timmerman Drainage Letter)',
-          '&nbsp;&nbsp;• Mia\'s field memo with stamped culvert cross-section',
-          '&nbsp;&nbsp;• EOR letter dated May 6, 2025',
-          '<strong>Expect discussion of:</strong>',
-          '&nbsp;&nbsp;• Existing unpermitted culvert installation — county is aware (site photos from July 10, 2025 are in the grading review comments)',
-          '&nbsp;&nbsp;• Erosion control plan and sequencing',
-          '&nbsp;&nbsp;• Inspection schedule and coordination with Mia for geotech sign-offs',
-          '&nbsp;&nbsp;• Slope stability — site slope is >15%, county required slope stability analysis in geotech report'
-        ]
-      },
-
-      { section: 'CULVERT INSPECTION PREP — BLDG-2514996' },
-      { text: 'Gather and organize culvert installation photos',
-        done: false,
-        detail: [
-          '<strong>What Mia needs to see:</strong> Photos documenting the as-built condition of the 72" HEL-COR CMP culvert (12-gauge, 5×1 corrugation, 20-foot length).',
-          '<strong>Key installation details per the stamped field memo:</strong>',
-          '&nbsp;&nbsp;• Foundation: stripped of organics, 6" sand/fine granular bedding cushion over compacted native soil',
-          '&nbsp;&nbsp;• Haunch zone: clean granular aggregate placed/compacted in 4-6" lifts up to springline',
-          '&nbsp;&nbsp;• Backfill: advanced symmetrically, clean angular aggregate compacted to specification',
-          '&nbsp;&nbsp;• Cover: minimum 24" of compacted structural fill above crown per Contech design tables',
-          '&nbsp;&nbsp;• Current condition: 8" of angular gravel over culvert, now mixed with soil/vegetation after ~18 months of inactivity',
-          '<strong>Photo checklist:</strong>',
-          '&nbsp;&nbsp;• Culvert inlet and outlet faces',
-          '&nbsp;&nbsp;• Road surface over culvert',
-          '&nbsp;&nbsp;• Creek/stream channel upstream and downstream',
-          '&nbsp;&nbsp;• Any erosion, settlement, or vegetation growth',
-          '&nbsp;&nbsp;• Guardrail/barrier situation along creek crossing (county flagged "insufficient road shoulder requiring a vehicular guardrail barrier" in review comments)',
-          '<strong>Send to:</strong> Mia Mahedy — mia@rapidsoilsolutions.com',
-          'class:ref|Ref: Field memo culvert NW Timmerman rd rev 091225.pdf; GRAD-2505132 Part-1 §C'
-        ]
-      },
-      { text: 'Schedule Mia\'s site visit for culvert inspection',
-        done: false,
-        detail: [
-          '<strong>Contact:</strong> Mia Mahedy, PE GE — 503-816-3689 | mia@rapidsoilsolutions.com',
-          '<strong>Notice required:</strong> 48 hours minimum ("Please allow up to 48 hours notice for house inspection by phone" — per EOR letter)',
-          '<strong>What Mia will do on-site:</strong>',
-          '&nbsp;&nbsp;• Visual inspection of as-built culvert condition',
-          '&nbsp;&nbsp;• Verify culvert structural adequacy to support 75,000 lbs / 250 psf fire vehicular load per WCC §14.12.340(B)',
-          '&nbsp;&nbsp;• Review as-constructed cross-section details vs. stamped field memo',
-          '&nbsp;&nbsp;• Issue stamped field report certifying the installation',
-          '<strong>What must be on-site:</strong>',
-          '&nbsp;&nbsp;• Printed approved plans (all 4 sheets + sheet index)',
-          '&nbsp;&nbsp;• Culvert manufacturer specs (Contech HEL-COR 72" CMP)',
-          'class:warn|⚠ Mia\'s PE stamp expires 12/31/2026. All field reports requiring her stamp must be completed before that date.',
-          'class:ref|Ref: EOR letter 5/6/2025; BLDG-2514996 building permit application; GRAD-2505132 Part-1 §C'
-        ]
-      },
-
-      { section: 'SITE POSTING PREP (have ready before any disturbance)' },
-      { text: 'Obtain and prepare 2\'×3\' project sign from Building Services',
-        done: false,
-        detail: [
-          '<strong>Requirement:</strong> "At least 24 hours before site disturbance, the site shall be posted with a freestanding sign that is a minimum of 2\'×3\'... securely fastened to two sturdy posts and placed in a position that is legible from the street right-of-way, not more than 15\' off the right-of-way."',
-          '<strong>Sign must remain posted</strong> until final grading approval or final building approval, whichever occurs later.',
-          '<strong>Address must also be posted</strong> and readable from the street — required before calling your first inspection.',
-          '<strong>Lot corner pins</strong> must be available for "setback check" by inspector.',
-          'class:warn|⚠ "If the site is not properly posted at all times, enforcement action may be initiated; see Section 14.12.240 Grading violations." See WCC Ordinance 852.',
-          'class:ref|Ref: GRAD-2505132 Part-2A §1; Permit Inspection Instructions page 2'
-        ]
-      },
-    ]
-  },
-  {
-    id: 'phase1',
-    title: 'Phase 1: Culvert Sign-Off',
-    subtitle: 'BLDG-2514996',
-    icon: '🔩',
-    status: 'pending',
-    gantt: { start: 4, length: 2 },
-    color: '#8b5cf6',
-    tasks: [
-      { text: 'Print approved plans — place in watertight enclosure on-site', done: false },
-      { text: 'Mia conducts site inspection of as-built culvert', done: false },
-      { text: 'Mia issues stamped field report certifying installation', done: false },
-      { text: 'Submit stamped letter to WashCo (LUTBLDG@washingtoncountyor.gov)', done: false },
-      { text: 'Confirm sign-off on WashCoORACA.com under BLDG-2514996', done: false },
-    ]
-  },
-  {
-    id: 'phase2',
-    title: 'Phase 2: Site Prep & Erosion Control',
-    subtitle: 'Clearing → EC inspection required before grading',
-    icon: '🌲',
-    status: 'pending',
-    gantt: { start: 5, length: 3 },
-    color: '#10b981',
-    tasks: [
-      { text: 'Post 2\'x3\' project sign — legible from street, 24+ hrs before work', done: false },
-      { text: 'Post address visible from street', done: false },
-      { text: 'Place watertight plan enclosure at access point', done: false },
-      { text: 'Ensure lot corner pins available for setback check', done: false },
-      { text: 'Stake driveway alignment + hammerhead from survey points', done: false },
-      { text: 'Clear corridor — 729 LF, 12\' wide', done: false },
-      { text: 'Clear hammerhead turnaround area (100\' T)', done: false },
-      { text: 'Grub and remove stumps from subgrade zone', done: false },
-      { text: 'Gravel construction entrance at NW Timmerman Rd', done: true },
-      { text: 'Install silt fence along downslope edge', done: false },
-      { text: 'Call 503-681-4444 — confirm inlet protection requirements for 72" CMP', done: false },
-      { text: 'Install inlet/ditch protection at v-ditch outlets', done: false },
-      { text: '⚡ INSPECTION: Erosion Control (Code 507) — call 503-681-4444', done: false, inspection: true },
-    ]
-  },
-  {
-    id: 'phase3',
-    title: 'Phase 3: Rough Grading',
-    subtitle: 'Cut to grade, compact subgrade',
-    icon: '🚜',
-    status: 'pending',
-    gantt: { start: 7, length: 2 },
-    color: '#f59e0b',
-    tasks: [
-      { text: '⚡ INSPECTION: Site Preparation (Code 501)', done: false, inspection: true },
-      { text: 'Cut corridor to grade per plan profile', done: false },
-      { text: 'Grade and shape hammerhead', done: false },
-      { text: 'Strip remaining organics from subgrade', done: false },
-      { text: 'Shape v-ditches — 4:1 slopes, 1.5% grade', done: false },
-      { text: 'Compact subgrade (plate compactor)', done: false },
-      { text: '⚡ INSPECTION: Fill Inspection (Code 502)', done: false, inspection: true },
-      { text: 'Schedule Mia for proof roll (48hr notice)', done: false },
-      { text: 'Conduct proof roll — loaded truck over full 729\'', done: false },
-      { text: 'Fix soft spots, re-roll until pass', done: false },
-      { text: 'Mia issues stamped subgrade field report', done: false },
-      { text: '⚡ INSPECTION: Site Inspection (Code 503)', done: false, inspection: true },
-    ]
-  },
-  {
-    id: 'phase4',
-    title: 'Phase 4: Rock Section',
-    subtitle: '6" base + 2" surface = 8" total',
-    icon: '🪨',
-    status: 'pending',
-    gantt: { start: 9, length: 2 },
-    color: '#6366f1',
-    tasks: [
-      { text: 'Lay geotextile fabric (Mirafi 500X) over compacted subgrade', done: false },
-      { text: 'Spread & compact 6" base course — 1½" minus (~265 tons)', done: false },
-      { text: 'Dig test pits every 100 LF to verify 6" depth (~7-8 pits)', done: false },
-      { text: 'Mia inspects test pits & base course, issues stamped report', done: false },
-      { text: 'Spread & compact 2" surface course — ¾" minus (~90 tons)', done: false },
-      { text: 'Dress ditches, edges, and drainage outlets', done: false },
-    ]
-  },
-  {
-    id: 'phase5',
-    title: 'Phase 5: Final Closeout',
-    subtitle: 'Inspections, completion forms, as-builts',
-    icon: '✅',
-    status: 'pending',
-    gantt: { start: 10, length: 2 },
-    color: '#ec4899',
-    tasks: [
-      { text: '⚡ INSPECTION: Driveway / Private Road (Code 509)', done: false, inspection: true },
-      { text: 'Emerio Design prepares as-built / as-graded drawings', done: false },
-      { text: 'Civil Engineer\'s Project Completion Form → ProjectDox', done: false },
-      { text: 'Geotech Engineer\'s Project Completion Form → ProjectDox', done: false },
-      { text: 'Grading Contractor\'s Project Completion Form → ProjectDox', done: false },
-      { text: 'CE certifies cut/fill volume accuracy (fee adjustment may apply)', done: false },
-      { text: '⚡ INSPECTION: Final Grading (Code 599)', done: false, inspection: true },
-    ]
+  // reveal on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
-];
-
-// ── RENDER FUNCTIONS ──
-
-// Days until expiration
-const expDate = new Date(2028, 0, 13);
-const today = new Date();
-const daysLeft = Math.ceil((expDate - today) / (1000*60*60*24));
-document.getElementById('days-left').textContent = daysLeft + 'd';
-
-// Gantt months
-const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const currentMonth = today.getMonth(); // 0-indexed
-const ganttMonthsEl = document.getElementById('gantt-months');
-monthNames.forEach((m, i) => {
-  const div = document.createElement('div');
-  div.className = 'gantt-month' + (i === currentMonth ? ' current' : '');
-  div.textContent = m;
-  ganttMonthsEl.appendChild(div);
-});
-
-// Gantt rows
-const ganttBody = document.getElementById('gantt-body');
-phases.forEach(p => {
-  const row = document.createElement('div');
-  row.className = 'gantt-row';
-
-  const label = document.createElement('div');
-  label.className = 'gantt-row-label';
-  label.innerHTML = `<span class="dot" style="background:${p.color}"></span>${p.title.replace(/Phase \d+: /, '')}`;
-
-  const bars = document.createElement('div');
-  bars.className = 'gantt-bars';
-  for (let i = 0; i < 12; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'gantt-cell';
-    bars.appendChild(cell);
-  }
-
-  const bar = document.createElement('div');
-  bar.className = 'gantt-bar';
-  const leftPct = (p.gantt.start / 12) * 100;
-  const widthPct = (p.gantt.length / 12) * 100;
-  bar.style.left = leftPct + '%';
-  bar.style.width = widthPct + '%';
-  bar.style.background = p.color;
-  bars.appendChild(bar);
-
-  // today line
-  const todayPct = ((currentMonth + today.getDate()/30) / 12) * 100;
-  if (row === ganttBody.firstChild || !ganttBody.firstChild) {
-    // only add to first row area conceptually; we'll add globally
-  }
-
-  row.appendChild(label);
-  row.appendChild(bars);
-  ganttBody.appendChild(row);
-});
-
-// Add today line to first gantt-bars
-const firstBars = ganttBody.querySelector('.gantt-bars');
-if (firstBars) {
-  const todayLine = document.createElement('div');
-  todayLine.className = 'today-line';
-  const todayPct = ((currentMonth + today.getDate()/30) / 12) * 100;
-  todayLine.style.left = todayPct + '%';
-  // Actually, put the line on every row
-  ganttBody.querySelectorAll('.gantt-bars').forEach(b => {
-    const tl = document.createElement('div');
-    tl.className = 'today-line';
-    tl.style.left = todayPct + '%';
-    b.appendChild(tl);
-  });
-  // Remove the "TODAY" label from all but first
-  const allLines = ganttBody.querySelectorAll('.today-line');
-  allLines.forEach((l, i) => { if (i > 0) l.style.setProperty('--hide-label', '1'); });
-  // Use CSS to hide label on non-first
-  const style = document.createElement('style');
-  style.textContent = `.gantt-row:not(:first-child) .today-line::after { display: none; }`;
-  document.head.appendChild(style);
-}
-
-// Phase cards
-const phaseList = document.getElementById('phase-list');
-phases.forEach((p, idx) => {
-  const done = p.tasks.filter(t => t.done).length;
-  const total = p.tasks.length;
-  const pct = Math.round((done/total)*100);
-
-  const card = document.createElement('div');
-  card.className = 'phase-card' + (idx === 0 ? ' open' : '');
-
-  const statusClass = p.status === 'active' ? 'active' : (done === total ? 'done' : 'pending');
-  const fillClass = p.status === 'active' ? 'blue' : (done === total ? 'green' : 'amber');
-
-  card.innerHTML = `
-    <div class="phase-card-header" onclick="this.parentElement.classList.toggle('open')">
-      <div class="phase-left">
-        <div class="phase-icon ${statusClass}">${p.icon}</div>
-        <div>
-          <div class="phase-title">${p.title}</div>
-          <div class="phase-subtitle">${p.subtitle}</div>
-        </div>
-      </div>
-      <div class="phase-right">
-        <div class="phase-progress">
-          <div class="progress-bar"><div class="progress-fill ${fillClass}" style="width:${pct}%"></div></div>
-          <div class="progress-text">${done}/${total}</div>
-        </div>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-    </div>
-    <div class="phase-tasks">
-      <div class="task-list">
-        ${p.tasks.map(t => {
-          if (t.section) {
-            return `<div class="task-section-label">${t.section}</div>`;
-          }
-          let html = `<div class="task-item${t.done ? ' done' : ''}${t.inspection ? ' inspection' : ''}">
-            <div class="task-check${t.done ? ' done' : ''}">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            </div>
-            ${t.text}
-          </div>`;
-          if (t.detail && t.detail.length) {
-            html += `<div class="task-detail">${t.detail.map(d => {
-              if (d.startsWith('class:warn|')) return `<div class="detail-line warn">${d.replace('class:warn|','')}</div>`;
-              if (d.startsWith('class:ref|')) return `<div class="detail-line ref">${d.replace('class:ref|','')}</div>`;
-              return `<div class="detail-line">${d}</div>`;
-            }).join('')}</div>`;
-          }
-          return html;
-        }).join('')}
-      </div>
-    </div>
-  `;
-  phaseList.appendChild(card);
-});
-</script>
-
-<script>
-// ── LIVE CHECKLIST + COMMENTS (talks to server.py on this origin) ──
-(function(){
-  const S = document.createElement('style');
-  S.textContent = `
-    .cl-group{margin-bottom:1.1rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-    .cl-group h4{margin:0;padding:0.6rem 0.85rem;background:var(--surface);font-size:0.85rem;
-      letter-spacing:0.03em;color:var(--text);border-bottom:1px solid var(--border);}
-    .cl-row{display:flex;align-items:flex-start;gap:0.65rem;padding:0.6rem 0.85rem;border-bottom:1px solid var(--border);}
-    .cl-row:last-child{border-bottom:none;}
-    .cl-row input[type=checkbox]{margin-top:0.15rem;width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex:none;}
-    .cl-title{flex:1;font-size:0.9rem;color:var(--text);line-height:1.35;}
-    .cl-row.done .cl-title{color:var(--text-dim);text-decoration:line-through;}
-    .cl-pill{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;padding:0.1rem 0.45rem;border-radius:99px;flex:none;}
-    .cl-pill.done{background:var(--green-glow);color:var(--green);}
-    .cl-pill.open{background:var(--accent-glow);color:var(--accent);}
-    .cl-pill.cancelled{background:var(--red-glow);color:var(--red);}
-    .cl-pill.blocked{background:var(--red-glow);color:var(--red);}
-    .cl-pill.deferred{background:var(--amber-glow);color:var(--amber);}
-    .cl-cmt-btn{background:none;border:none;cursor:pointer;font-size:0.95rem;opacity:0.6;flex:none;}
-    .cl-cmt-btn:hover{opacity:1;}
-    .cl-thread{padding:0 0.85rem 0.6rem 2.1rem;}
-    .cmt{font-size:0.82rem;color:var(--text-muted);padding:0.25rem 0;border-top:1px dashed var(--border);}
-    .cmt b{color:var(--text);} .cmt .t{color:var(--text-dim);font-size:0.72rem;margin-left:0.4rem;}
-    .cl-mini{display:flex;gap:0.4rem;margin-top:0.4rem;}
-    .cl-mini input{flex:1;background:var(--bg);border:1px solid var(--border-light);color:var(--text);padding:0.35rem 0.5rem;border-radius:5px;font-size:0.8rem;}
-    .cl-mini button{background:var(--surface);border:1px solid var(--border-light);color:var(--text);border-radius:5px;padding:0.35rem 0.7rem;cursor:pointer;font-size:0.8rem;}
-  `;
-  document.head.appendChild(S);
-
-  const $ = s => document.querySelector(s);
-  const esc = s => (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-  const when = iso => { try { return new Date(iso).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});} catch(e){return '';} };
-  const api = (p,opt) => fetch(p, opt).then(r => r.json());
-  const openThreads = new Set();
-
-  // ── email magic-code auth ──
-  const inStyle = "background:var(--surface);border:1px solid var(--border-light);color:var(--text);padding:0.5rem 0.7rem;border-radius:6px;font-size:0.9rem;";
-  const btnStyle = "background:var(--green);color:#0a0a0a;border:none;padding:0.5rem 1rem;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.9rem;";
-  let SESSION = localStorage.getItem('grove_session') || '';
-  let EMAIL = localStorage.getItem('grove_email') || '';
-  const who = () => EMAIL;
-  const signedIn = () => !!SESSION && !!EMAIL;
-
-  async function write(path, body){
-    if(!signedIn()){ throw new Error('Sign in with your email first.'); }
-    const r = await fetch(path, {method:'POST',
-      headers:{'content-type':'application/json','X-Grove-Session':SESSION},
-      body: JSON.stringify(body)});
-    if(r.status===401){ SESSION=''; localStorage.removeItem('grove_session'); renderAuth(); throw new Error('Session expired — sign in again.'); }
-    if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.error||'Could not save.'); }
-    return r.json();
-  }
-
-  function renderAuth(){
-    const bar = $('#auth-bar');
-    if(signedIn()){
-      bar.innerHTML = `<span style="color:var(--text-muted);font-size:0.9rem;">Signed in as <b style="color:var(--text);">${esc(EMAIL)}</b></span>
-        <button id="signout" style="${btnStyle}background:var(--surface);color:var(--text-muted);border:1px solid var(--border-light);">Sign out</button>`;
-      $('#signout').onclick = ()=>{ SESSION=''; EMAIL=''; localStorage.removeItem('grove_session'); localStorage.removeItem('grove_email'); renderAuth(); };
-      $('#chat-section').style.display = '';
-      initChat();
-      loadDigest().then(() => handleDailyDeepLink());
-      return;
-    }
-    const cs = $('#chat-section');
-    if(cs) cs.style.display = 'none';
-    bar.innerHTML = `<input id="em" type="email" placeholder="you@bosspdx.com" style="${inStyle}min-width:220px;flex:1;">
-      <button id="sendcode" style="${btnStyle}">Email me a code</button>
-      <span id="authmsg" style="color:var(--text-dim);font-size:0.82rem;"></span>`;
-    $('#sendcode').onclick = async ()=>{
-      const email = $('#em').value.trim(); const msg=$('#authmsg');
-      if(!email){ msg.textContent='enter your email'; return; }
-      msg.textContent='sending…';
-      try {
-        const r = await fetch('/api/auth/request',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email})});
-        if(!r.ok){ const e=await r.json().catch(()=>({})); msg.textContent=e.error||'not allowed'; return; }
-        bar.innerHTML = `<span style="color:var(--text-muted);font-size:0.9rem;">Code sent to <b style="color:var(--text);">${esc(email)}</b>:</span>
-          <input id="codein" placeholder="6-digit code" style="${inStyle}width:130px;">
-          <button id="verify" style="${btnStyle}">Verify</button>
-          <span id="authmsg" style="color:var(--text-dim);font-size:0.82rem;"></span>`;
-        $('#verify').onclick = async ()=>{
-          const code = $('#codein').value.trim(); const m2=$('#authmsg');
-          m2.textContent='checking…';
-          const vr = await fetch('/api/auth/verify',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email,code})});
-          if(!vr.ok){ m2.textContent='invalid or expired code'; return; }
-          const d = await vr.json();
-          SESSION=d.token; EMAIL=d.email;
-          localStorage.setItem('grove_session',SESSION); localStorage.setItem('grove_email',EMAIL);
-          renderAuth();
-        };
-      } catch(e){ msg.textContent='error sending code'; }
-    };
-  }
-  renderAuth();
-
-  // section sort: numeric prefixes (0.1, 2.1) first in order, then the rest
-  function sortKey(s){ const m=(s||'').match(/^(\d+)\.(\d+)/); return m ? (+m[1])*100+(+m[2]) : 9000; }
-
-  async function loadChecklist(){
-    let data;
-    try { data = await api('/api/tasks'); }
-    catch(e){ $('#cl-status').textContent = 'tracker offline'; return; }
-    const tasks = (data.tasks||[]).filter(t => t.status!=='cancelled' || true);
-    const groups = {};
-    tasks.forEach(t => { const k=t.section||'Other'; (groups[k]=groups[k]||[]).push(t); });
-    const order = Object.keys(groups).sort((a,b)=>sortKey(a)-sortKey(b));
-    const cl = $('#checklist'); cl.innerHTML='';
-    let open=0, done=0;
-    order.forEach(sec => {
-      const g=document.createElement('div'); g.className='cl-group';
-      g.innerHTML = `<h4>${esc(sec.replace(/\*/g,''))}</h4>`;
-      groups[sec].forEach(t => {
-        if(t.status==='done') done++; else if(t.status==='open') open++;
-        const row=document.createElement('div'); row.className='cl-row'+(t.status==='done'?' done':'');
-        const checked = t.status==='done' ? 'checked' : '';
-        row.innerHTML = `
-          <input type="checkbox" ${checked} data-id="${t.id}">
-          <div class="cl-title">${esc(t.title)}
-            ${t.description?`<div style="color:var(--text-dim);font-size:0.78rem;margin-top:0.2rem;">${esc(t.description).slice(0,400)}</div>`:''}
-          </div>
-          <span class="cl-pill ${t.status}">${t.status}</span>
-          <button class="cl-cmt-btn" data-cmt="${t.id}" title="Notes">💬</button>`;
-        g.appendChild(row);
-        const thread=document.createElement('div'); thread.className='cl-thread'; thread.id='thread-'+t.id;
-        thread.style.display='none'; g.appendChild(thread);
-      });
-      cl.appendChild(g);
-    });
-    $('#cl-status').textContent = `${done} done · ${open} open`;
-    cl.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', onToggle));
-    cl.querySelectorAll('[data-cmt]').forEach(b => b.addEventListener('click', () => toggleThread(b.dataset.cmt)));
-    // re-open any threads that were open before this rebuild
-    openThreads.forEach(id => { const el=$('#thread-'+id); if(el){ el.style.display='block'; fillThread(id); } });
-  }
-
-  async function onToggle(e){
-    const cb=e.target, id=cb.dataset.id;
-    const status = cb.checked ? 'done' : 'open';
-    cb.disabled=true;
-    try { await write('/api/tasks/'+id, {status, by: who()}); await loadChecklist(); }
-    catch(err){ alert(err.message); cb.checked=!cb.checked; }
-    finally { cb.disabled=false; }
-  }
-
-  const cmtHtml = c => `<div class="cmt"><b>${esc(c.author)}</b><span class="t">${when(c.created_at)}</span><br>${esc(c.body)}</div>`;
-
-  async function fillThread(id){
-    const el=$('#thread-'+id); if(!el) return;
-    // don't clobber while the worker is typing in this thread's input
-    if(document.activeElement && document.activeElement.id === 'ti-'+id) return;
-    const d = await api('/api/comments?task='+id);
-    el.innerHTML = (d.comments||[]).map(cmtHtml).join('')
-      + `<div class="cl-mini"><input placeholder="Add a note (ask a question → Claude replies)…" id="ti-${id}"><button data-post="${id}">Send</button></div>`;
-    el.querySelector('[data-post]').addEventListener('click', async ()=>{
-      const body=$('#ti-'+id).value.trim(); if(!body) return;
-      try { await write('/api/comments', {task_id:id, body}); await fillThread(id); }
-      catch(err){ alert(err.message); }
-    });
-  }
-  async function toggleThread(id){
-    const el=$('#thread-'+id);
-    if(openThreads.has(id)){ openThreads.delete(id); el.style.display='none'; return; }
-    openThreads.add(id); el.style.display='block'; await fillThread(id);
-  }
-
-  async function loadGeneral(){
-    if(document.activeElement === $('#cmt-body')) return; // don't interrupt typing
-    const d = await api('/api/comments?task=general');
-    const box=$('#comments-general');
-    box.innerHTML = (d.comments||[]).length ? d.comments.map(cmtHtml).join('')
-      : '<div style="color:var(--text-dim);font-size:0.85rem;">No notes yet. Ask a question here and Claude will reply.</div>';
-  }
-  $('#cmt-send').addEventListener('click', async ()=>{
-    const body=$('#cmt-body').value.trim(); if(!body) return;
-    try { await write('/api/comments', {task_id:'general', body}); $('#cmt-body').value=''; await loadGeneral(); }
-    catch(err){ alert(err.message); }
-  });
-
-  // ── live auto-refresh ──
-  // Discussion + any open threads refresh every 7s (feels live, incl. Claude replies).
-  setInterval(() => { loadGeneral(); openThreads.forEach(id => fillThread(id)); }, 7000);
-  // Checklist refreshes every 20s, but only when nothing is being interacted with.
-  setInterval(() => {
-    const a = document.activeElement;
-    const busy = openThreads.size > 0 || (a && a.closest && a.closest('#checklist'));
-    if(!busy && !document.hidden) loadChecklist();
-  }, 20000);
-
-  // ── agent chat ──
-  let chatInited = false;
-  function initChat(){
-    if(chatInited) return;
-    chatInited = true;
-    loadChatAgents();
-    loadChatHistory();
-  }
-
-  async function loadChatAgents(){
-    try {
-      const d = await api('/api/agents');
-      const el = $('#chat-agents');
-      el.innerHTML = (d.agents||[]).map(a =>
-        `<span style="display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--purple);font-size:0.75rem;padding:2px 8px;border-radius:12px;">${esc(a.name)}</span>`
-      ).join('');
-    } catch(e){}
-  }
-
-  async function loadChatHistory(){
-    try {
-      const r = await fetch('/api/chat', {headers:{'X-Grove-Session':SESSION}});
-      if(!r.ok) return;
-      const d = await r.json();
-      renderChatMessages(d.messages||[]);
-    } catch(e){}
-  }
-
-  function renderChatMessages(msgs){
-    const el = $('#chat-messages');
-    if(!msgs.length){
-      el.innerHTML = '<div style="color:var(--text-dim);font-size:0.85rem;padding:1rem;text-align:center;">No messages yet. Ask something about the project.</div>';
-      return;
-    }
-    el.innerHTML = msgs.map(m => {
-      const isUser = m.role === 'user';
-      const rendered = isUser ? esc(m.body) : renderMd(m.body);
-      const agentTag = m.agent ? `<span style="color:var(--purple);font-size:0.7rem;opacity:0.7;">${esc(m.agent)}</span>` : '';
-      return `<div style="align-self:${isUser?'flex-end':'flex-start'};max-width:85%;padding:0.5rem 0.75rem;border-radius:${isUser?'12px 12px 2px 12px':'12px 12px 12px 2px'};background:${isUser?'var(--surface2)':'rgba(167,139,250,0.08)'};border:1px solid ${isUser?'var(--border)':'rgba(167,139,250,0.15)'};font-size:0.88rem;line-height:1.5;">
-        ${agentTag}
-        <div style="white-space:pre-wrap;">${rendered}</div>
-        <div style="font-size:0.7rem;color:var(--text-dim);margin-top:0.25rem;">${when(m.created_at)}</div>
-      </div>`;
-    }).join('');
-    el.scrollTop = el.scrollHeight;
-  }
-
-  function renderMd(s){
-    s = esc(s);
-    s = s.replace(/^### (.+)$/gm, '<strong style="font-size:1.05em;">$1</strong>');
-    s = s.replace(/^## (.+)$/gm, '<strong style="font-size:1.1em;">$1</strong>');
-    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    s = s.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    s = s.replace(/`(.+?)`/g, '<code style="background:rgba(255,255,255,0.06);padding:1px 4px;border-radius:3px;font-size:0.85em;">$1</code>');
-    s = s.replace(/^- (.+)$/gm, '• $1');
-    s = s.replace(/^\d+\. /gm, m => m);
-    return s;
-  }
-  function appendChatMsg(role, body, agent){
-    const el = $('#chat-messages');
-    const first = el.querySelector('[style*="text-align:center"]');
-    if(first) el.innerHTML = '';
-    const isUser = role === 'user';
-    const rendered = isUser ? esc(body) : renderMd(body);
-    const agentTag = agent ? `<span style="color:var(--purple);font-size:0.7rem;opacity:0.7;">${esc(agent)}</span>` : '';
-    el.insertAdjacentHTML('beforeend',
-      `<div style="align-self:${isUser?'flex-end':'flex-start'};max-width:85%;padding:0.5rem 0.75rem;border-radius:${isUser?'12px 12px 2px 12px':'12px 12px 12px 2px'};background:${isUser?'var(--surface2)':'rgba(167,139,250,0.08)'};border:1px solid ${isUser?'var(--border)':'rgba(167,139,250,0.15)'};font-size:0.88rem;line-height:1.5;">
-        ${agentTag}
-        <div style="white-space:pre-wrap;">${rendered}</div>
-        <div style="font-size:0.7rem;color:var(--text-dim);margin-top:0.25rem;">just now</div>
-      </div>`);
-    el.scrollTop = el.scrollHeight;
-  }
-
-  async function sendChat(){
-    const input = $('#chat-input');
-    const msg = input.value.trim();
-    if(!msg || !signedIn()) return;
-    input.value = '';
-    appendChatMsg('user', msg);
-    $('#chat-status').textContent = 'thinking…';
-    $('#chat-send').disabled = true;
-    try {
-      const r = await write('/api/chat', {message: msg});
-      appendChatMsg('assistant', r.reply, r.agent);
-      $('#chat-status').textContent = r.agent ? `answered by ${r.agent}` : '';
-    } catch(e){
-      appendChatMsg('assistant', 'Error: ' + e.message);
-      $('#chat-status').textContent = '';
-    }
-    $('#chat-send').disabled = false;
-    input.focus();
-  }
-
-  $('#chat-send').addEventListener('click', sendChat);
-  $('#chat-input').addEventListener('keydown', e => { if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendChat(); } });
-
-  // ── daily digest ──
-  const urgencyColors = { high: '#dc2626', medium: '#d97706', low: '#2563eb' };
-
-  async function loadDigest(){
-    try {
-      const r = await fetch('/api/digest');
-      if(!r.ok) return null;
-      const d = await r.json();
-      if(!d.digest) return null;
-      const dig = d.digest.content;
-      const el = $('#daily-digest');
-      $('#digest-title').textContent = dig.headline || 'Today';
-      $('#digest-meta').textContent = `${d.digest.date} · ${dig.stats?.days_to_deadline || '?'}d to deadline · ${dig.stats?.open || '?'} open`;
-      const pEl = $('#digest-priorities');
-      pEl.innerHTML = (dig.priorities||[]).map((p,i) =>
-        `<div style="border-left:3px solid ${urgencyColors[p.urgency]||'#888'};padding:4px 0 4px 10px;margin:6px 0;font-size:0.88rem;">
-          <strong>${i+1}. ${esc(p.title)}</strong><br>
-          <span style="color:var(--text-muted);font-size:0.82rem;">${esc(p.detail)}</span>
-        </div>`
-      ).join('');
-      el.style.display = '';
-      $('#digest-chat-btn').onclick = () => {
-        const cs = $('#chat-section');
-        if(cs) { cs.style.display=''; cs.scrollIntoView({behavior:'smooth'}); }
-        const input = $('#chat-input');
-        if(input) { input.value = "Let's work through today's priorities. What should I tackle first?"; input.focus(); }
-      };
-      return dig;
-    } catch(e){ return null; }
-  }
-
-  async function handleDailyDeepLink(){
-    if(!window.location.hash.startsWith('#daily')) return;
-    const dig = await loadDigest();
-    if(!dig) return;
-    // Auto-scroll to chat and seed it with the digest context
-    const cs = $('#chat-section');
-    if(cs && cs.style.display !== 'none'){
-      cs.scrollIntoView({behavior:'smooth'});
-      // Pre-fill the digest as a system message in chat
-      appendChatMsg('assistant',
-        `📋 **Daily Briefing — ${todayLabel()}**\n\n` +
-        (dig.priorities||[]).map((p,i) => `${i+1}. **${p.title}** — ${p.detail}`).join('\n') +
-        `\n\nWhat would you like to tackle first?`,
-        'grove-autonomy');
-    }
-  }
-  function todayLabel(){ return new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}); }
-
-  loadChecklist(); loadGeneral();
-})();
-</script>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
-<script>
-// ── Interactive LiDAR / terrain map ──
-(function(){
-  if (!window.L || !L.esri || !document.getElementById('lidar-map')) return;
-  const ring = [[-123.20856370,45.62210018],[-123.20857491,45.62054514],[-123.21485280,45.62056725],[-123.21583334,45.62066969],[-123.21654212,45.62088388],[-123.21716105,45.62088595],[-123.21716201,45.62135869],[-123.21712122,45.62135872],[-123.21712147,45.62148297],[-123.21710453,45.62148298],[-123.21709269,45.62151526],[-123.21706814,45.62159694],[-123.21705098,45.62167954],[-123.21704126,45.62176274],[-123.21703237,45.62188652],[-123.21373367,45.62187502],[-123.21373195,45.62211841],[-123.20856370,45.62210018]];
-  const ELEV = "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer";
-  const map = L.map('lidar-map', { scrollWheelZoom:false });
-  const aerial = L.esri.basemapLayer('Imagery').addTo(map);
-  const labels = L.esri.basemapLayer('ImageryLabels');
-  const hill = L.esri.imageMapLayer({ url: ELEV, opacity:0.55, renderingRule:{rasterFunction:'Hillshade Multidirectional'} });
-  const slope = L.esri.imageMapLayer({ url: ELEV, opacity:0.6, renderingRule:{rasterFunction:'Slope Map'} });
-  const tint = L.esri.imageMapLayer({ url: ELEV, opacity:0.6, renderingRule:{rasterFunction:'Hillshade Elevation Tinted'} });
-  const contours = L.esri.dynamicMapLayer({ url:"https://gispub.co.washington.or.us/server/rest/services/Intermap/Natural_Features/MapServer", layers:[1], opacity:0.85 });
-  hill.addTo(map);
-  const parcel = L.geoJSON({type:'Feature',geometry:{type:'Polygon',coordinates:[ring]}},
-    {style:{color:'#4ade80',weight:3,fillOpacity:0.04,fillColor:'#4ade80'}}).addTo(map);
-  parcel.bindTooltip('Grove Vineyard — 26.61 ac (R814774)', {sticky:true});
-  map.fitBounds(parcel.getBounds(), {padding:[30,30]});
-  L.control.layers(
-    { 'Aerial': aerial },
-    { 'LiDAR hillshade': hill, 'Slope': slope, 'Elevation tint': tint, '10-ft contours': contours, 'Aerial labels': labels, 'Parcel outline': parcel },
-    { collapsed:false }
-  ).addTo(map);
-  map.on('click', ()=> map.scrollWheelZoom.enable());
-})();
 </script>
 </body>
 </html>
