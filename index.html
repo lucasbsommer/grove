@@ -61,8 +61,13 @@
   .nav-toggle{display:none;background:none;border:none;color:inherit;font-size:1.5rem;cursor:pointer;}
 
   /* HERO */
+  /* Hero background layers stack front→back: tint, then a real photo (hero.jpg)
+     if present, then the aerial as fallback. Drop hero.jpg on the server to
+     upgrade the hero to real photography with no code change. */
   .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg,rgba(20,24,16,0.25) 0%,rgba(20,24,16,0.35) 45%,rgba(18,20,14,0.88) 100%),
+    background:
+      linear-gradient(180deg,rgba(20,24,16,0.25) 0%,rgba(20,24,16,0.35) 45%,rgba(18,20,14,0.88) 100%),
+      url('/property/grove_vineyard/hero.jpg') center/cover no-repeat,
       #2c3324 url('/property/grove_vineyard/satellite.png') center/cover no-repeat;}
   .hero-inner{max-width:var(--maxw);margin:0 auto;padding:7rem 1.5rem 5rem;width:100%;color:#fff;}
   .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,120,70,0.25);border:1px solid rgba(160,210,150,0.4);
@@ -266,7 +271,7 @@
       <div class="prose reveal">
         <p>Grove is <strong>25.9 acres of permitted, build-ready land</strong> in one of the world's great cool-climate wine regions. Acquired in 2022, the property has since cleared a full Washington County entitlement process — drainage-hazard analysis, geotechnical slope-stability review, FEMA flood determination — culminating in <strong>issued grading and culvert permits in January 2026</strong>.</p>
         <p>That matters because entitlement, not dirt, is where rural vineyard projects die. The regulatory path is slow, expensive, and uncertain. Grove is through it. What remains is execution on ground that is already cleared to build.</p>
-        <p>And Grove isn't raw land hunting for a concept. It's the estate home for <strong>Halem Heights — an established wine brand</strong> putting down roots on ground it controls.</p>
+        <p>And Grove isn't raw land hunting for a concept. It's the estate home for <strong><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(110,43,58,0.35);">Halem Heights</a> — an established wine brand</strong> putting down roots on ground it controls.</p>
         <p>The vision is phased and patient: <strong>establish the vineyard, build the estate, and bring the wine home</strong> — each stage de-risking and adding value to the one before.</p>
       </div>
     </div>
@@ -421,7 +426,7 @@
       <p>Grove is owned by Grove Vineyard, LLC and advanced by a licensed, credentialed project team.</p>
     </div>
     <div class="team">
-      <div class="member reveal"><div class="role">Wine Brand</div><div class="name">Halem Heights</div><div class="meta">Established Oregon wine label</div></div>
+      <div class="member reveal"><div class="role">Wine Brand</div><div class="name"><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Halem Heights ↗</a></div><div class="meta">Established Oregon wine label</div></div>
       <div class="member reveal"><div class="role">Owner / Developer</div><div class="name">Grove Vineyard, LLC</div><div class="meta">Forest Grove, Oregon</div></div>
       <div class="member reveal"><div class="role">Site &amp; Grading</div><div class="name">Boss PDX, LLC</div><div class="meta">Licensed contractor · CCB 232383</div></div>
       <div class="member reveal"><div class="role">Civil &amp; Planning</div><div class="name">Emerio Design</div><div class="meta">Engineering &amp; land use</div></div>
@@ -458,7 +463,7 @@
       </div>
     </div>
     <div class="disclaimer">
-      © 2026 Halem Heights · Grove Vineyard, LLC · Forest Grove, Oregon. &nbsp;This website is provided for informational purposes only and does not constitute an offer to sell, or the solicitation of an offer to buy, any security or other interest in Grove Vineyard, LLC. Any offer or sale will be made only to qualified investors pursuant to definitive offering documents and applicable exemptions under federal and state securities laws. Forward-looking statements reflect current intentions and are subject to change; nothing herein is a guarantee of future results.
+      © 2026 <a href="https://halemheights.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);">Halem Heights</a> · Grove Vineyard, LLC · Forest Grove, Oregon. &nbsp;This website is provided for informational purposes only and does not constitute an offer to sell, or the solicitation of an offer to buy, any security or other interest in Grove Vineyard, LLC. Any offer or sale will be made only to qualified investors pursuant to definitive offering documents and applicable exemptions under federal and state securities laws. Forward-looking statements reflect current intentions and are subject to change; nothing herein is a guarantee of future results.
     </div>
   </div>
 </footer>
