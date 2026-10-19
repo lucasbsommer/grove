@@ -213,6 +213,41 @@
     .reveal{opacity:1;transform:none;transition:none;}
     .hero .dot{animation:none;}
   }
+
+  /* ---- v2 upgrades ---- */
+  /* refined line icons instead of emoji */
+  .pillar .ic{background:linear-gradient(145deg,#ffffff,var(--surface2));border:1px solid var(--line);}
+  .pillar .ic svg{width:22px;height:22px;stroke:var(--wine);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* live photo gallery wall */
+  .photowall{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem;}
+  .pw{position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--surface2);
+    grid-column:span 4;aspect-ratio:3/2;border:1px solid var(--line);}
+  .pw.feat{grid-column:span 8;grid-row:span 2;aspect-ratio:auto;}
+  .pw img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+  .pw:hover img{transform:scale(1.045);}
+  .pw .pc{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 0.95rem 0.8rem;font-size:0.78rem;color:#fff;
+    letter-spacing:0.02em;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.62) 100%);
+    opacity:0;transition:opacity .3s;}
+  .pw:hover .pc{opacity:1;}
+  @media(max-width:860px){.pw,.pw.feat{grid-column:span 6;grid-row:auto;aspect-ratio:3/2;}}
+  @media(max-width:520px){.pw,.pw.feat{grid-column:span 12;}}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(15,13,10,0.94);z-index:200;display:none;align-items:center;justify-content:center;padding:2rem;}
+  .lb.open{display:flex;}
+  .lb img{max-width:100%;max-height:84vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,0.55);}
+  .lb .cap{position:absolute;bottom:1.4rem;left:0;right:0;text-align:center;color:rgba(255,255,255,0.85);font-size:0.9rem;padding:0 2rem;}
+  .lb .x{position:absolute;top:1rem;right:1.4rem;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1;opacity:0.8;}
+  .lb .x:hover{opacity:1;}
+  .lb .nv{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.6rem;cursor:pointer;opacity:0.65;padding:1rem;user-select:none;}
+  .lb .nv:hover{opacity:1;} .lb .prev{left:0.3rem;} .lb .next{right:0.3rem;}
+
+  /* site plan feature */
+  .planfeature{margin-top:2rem;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;}
+  .planfeature img{width:100%;display:block;}
+  .planfeature .cap{padding:0.85rem 1.1rem;font-size:0.8rem;color:var(--muted);border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
 </style>
 </head>
 <body>
@@ -277,17 +312,17 @@
     </div>
     <div class="pillars">
       <div class="pillar reveal">
-        <div class="ic">✓</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
         <h3>Entitled &amp; de-risked</h3>
         <p>Permits in hand. Drainage hazard cleared with conditions (Case L2500008-DHA). Outside the FEMA flood hazard area. The approvals that stop most projects are done and on file.</p>
       </div>
       <div class="pillar reveal">
-        <div class="ic">⛰</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m3 20 6-11 4 6 2-3 6 8z"/><circle cx="17" cy="6" r="2"/></svg></div>
         <h3>Prime terroir</h3>
         <p>Elevation, slope, and natural drainage in the hills above Forest Grove — the same cool-climate conditions that made the Willamette Valley world-famous for Pinot Noir.</p>
       </div>
       <div class="pillar reveal">
-        <div class="ic">◳</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></div>
         <h3>Phased upside</h3>
         <p>A staged plan — vineyard, then estate, then estate-grown wine under Halem Heights — that lets capital enter at a de-risked basis and participate in value created at each step.</p>
       </div>
@@ -326,6 +361,22 @@
       <div class="fact"><div class="v">Farm-zoned</div><div class="k">Agricultural, farm-tax deferred</div></div>
       <div class="fact"><div class="v">County road</div><div class="k">Direct frontage on NW Timmerman Rd</div></div>
     </div>
+    <div class="planfeature reveal">
+      <img src="/property/grove_vineyard/siteplan.png" alt="Grove Vineyard surveyed site plan — NW Timmerman Rd parcel" loading="lazy">
+      <div class="cap"><span>Surveyed site plan — Sheet A-101 · 1&quot; = 400&apos;</span><span>NW Timmerman Rd · Unincorporated Washington County, OR</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY (populated from /api/gallery; hidden until photos exist) -->
+<section class="block" id="gallery" hidden>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">On the Ground</span>
+      <h2>Photographs from the site</h2>
+      <p>The hillside, the access road, and the work underway at Grove — straight from the field.</p>
+    </div>
+    <div class="photowall" id="photowall"></div>
   </div>
 </section>
 
@@ -468,6 +519,15 @@
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <span class="x" id="lbx" aria-label="Close">&times;</span>
+  <span class="nv prev" id="lbprev" aria-label="Previous">&#8249;</span>
+  <img id="lbimg" alt="">
+  <span class="nv next" id="lbnext" aria-label="Next">&#8250;</span>
+  <div class="cap" id="lbcap"></div>
+</div>
+
 <script>
   // sticky nav background
   var nav = document.getElementById('nav');
@@ -488,6 +548,54 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
+
+  // ---- live photo gallery + dynamic hero ----
+  (function(){
+    var hero = document.querySelector('.hero');
+    var wall = document.getElementById('photowall');
+    var sec  = document.getElementById('gallery');
+    var photos = [];
+
+    fetch('/api/gallery').then(function(r){ return r.json(); }).then(function(d){
+      photos = (d && d.photos) || [];
+      if(!photos.length) return;
+      // upgrade the hero to the first real photograph
+      hero.style.backgroundImage =
+        "linear-gradient(180deg,rgba(20,24,16,0.28) 0%,rgba(20,24,16,0.38) 45%,rgba(18,20,14,0.9) 100%)," +
+        "url('" + photos[0].url + "')";
+      // build the wall
+      photos.forEach(function(p, i){
+        var fig = document.createElement('figure');
+        fig.className = 'pw' + (i === 0 ? ' feat' : '');
+        var im = document.createElement('img');
+        im.src = p.url; im.alt = p.caption || 'Grove Vineyard'; im.loading = 'lazy';
+        fig.appendChild(im);
+        if(p.caption){ var c = document.createElement('figcaption'); c.className = 'pc'; c.textContent = p.caption; fig.appendChild(c); }
+        fig.addEventListener('click', function(){ openLb(i); });
+        wall.appendChild(fig);
+      });
+      sec.hidden = false;
+      if (window.IntersectionObserver) sec.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    }).catch(function(){});
+
+    // lightbox
+    var lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
+        lbcap = document.getElementById('lbcap'), cur = 0;
+    function openLb(i){ cur = i; render(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function render(){ var p = photos[cur]; if(!p) return; lbimg.src = p.url; lbcap.textContent = p.caption || ''; }
+    function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+    function step(n){ if(!photos.length) return; cur = (cur + n + photos.length) % photos.length; render(); }
+    document.getElementById('lbx').onclick = close;
+    document.getElementById('lbprev').onclick = function(e){ e.stopPropagation(); step(-1); };
+    document.getElementById('lbnext').onclick = function(e){ e.stopPropagation(); step(1); };
+    lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') step(-1);
+      else if(e.key === 'ArrowRight') step(1);
+    });
+  })();
 </script>
 </body>
 </html>

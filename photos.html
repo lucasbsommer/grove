@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Grove — Photo Manager</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap');
+  :root{
+    --bg:#faf8f3; --surface:#fff; --surface2:#f3efe6; --ink:#1b1915; --muted:#6c655a;
+    --faint:#9a9284; --line:#e6e0d4; --wine:#6e2b3a; --forest:#33402c; --gold:#b08d57; --danger:#9a3b3b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.55;-webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;}
+  a{color:var(--wine);}
+  .wrap{max-width:720px;margin:0 auto;padding:1.25rem 1.1rem 4rem;}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.4rem 0 1.25rem;}
+  .brand{display:flex;flex-direction:column;line-height:1;}
+  .brand .mark{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;letter-spacing:0.14em;}
+  .brand .tag{font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:4px;}
+  .whoami{font-size:0.78rem;color:var(--muted);text-align:right;}
+  .whoami a{cursor:pointer;color:var(--muted);text-decoration:underline;}
+  .eyebrow{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem;}
+  .muted{color:var(--muted);}
+  .hint{font-size:0.82rem;color:var(--faint);margin-top:0.5rem;}
+  input[type=email],input[type=text]{width:100%;font:inherit;padding:0.85rem 1rem;border:1px solid var(--line);
+    border-radius:11px;background:var(--bg);color:var(--ink);margin-top:0.5rem;}
+  input:focus{outline:none;border-color:var(--gold);}
+  .codebox{letter-spacing:0.5em;text-align:center;font-size:1.3rem;font-family:'Fraunces',serif;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:0.95rem 1.4rem;
+    border-radius:999px;font-size:0.95rem;font-weight:600;border:none;cursor:pointer;transition:transform .12s,background .2s,opacity .2s;margin-top:0.9rem;}
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--wine);color:#fff;box-shadow:0 8px 22px rgba(110,43,58,0.28);}
+  .btn-ghost{background:var(--surface2);color:var(--ink);}
+  .btn[disabled]{opacity:0.5;pointer-events:none;}
+  .msg{font-size:0.86rem;margin-top:0.9rem;padding:0.7rem 0.9rem;border-radius:10px;display:none;}
+  .msg.show{display:block;}
+  .msg.err{background:#fbeaea;color:var(--danger);}
+  .msg.ok{background:#eaf2e6;color:var(--forest);}
+
+  /* uploader */
+  .drop{border:2px dashed var(--line);border-radius:16px;background:var(--surface);padding:2.2rem 1.2rem;text-align:center;
+    transition:border-color .2s,background .2s;cursor:pointer;}
+  .drop.drag{border-color:var(--gold);background:#fff;}
+  .drop .big{font-family:'Fraunces',serif;font-size:1.35rem;margin-bottom:0.3rem;}
+  .drop .camera{font-size:2.2rem;line-height:1;margin-bottom:0.7rem;}
+  input[type=file]{display:none;}
+  .queue{margin-top:1rem;display:flex;flex-direction:column;gap:0.6rem;}
+  .qitem{display:flex;align-items:center;gap:0.75rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0.6rem 0.8rem;font-size:0.85rem;}
+  .qitem .thumb{width:40px;height:40px;border-radius:8px;object-fit:cover;background:var(--surface2);flex:none;}
+  .qitem .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .qitem .st{font-size:0.78rem;color:var(--muted);flex:none;}
+  .qitem .st.done{color:var(--forest);} .qitem .st.fail{color:var(--danger);}
+  .bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;margin-top:4px;}
+  .bar>i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s;}
+
+  /* grid */
+  .sec-title{display:flex;align-items:baseline;justify-content:space-between;margin:2.2rem 0 0.9rem;}
+  .sec-title h2{font-size:1.4rem;}
+  .count{font-size:0.8rem;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.9rem;}
+  @media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr);}}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+  .tile .img{aspect-ratio:4/3;background:var(--surface2) center/cover no-repeat;position:relative;}
+  .tile .cap{font:inherit;font-size:0.8rem;border:none;background:transparent;color:var(--ink);padding:0.6rem 0.7rem 0.3rem;width:100%;resize:none;}
+  .tile .cap:focus{outline:none;background:var(--bg);}
+  .tile .row{display:flex;justify-content:space-between;align-items:center;padding:0.2rem 0.6rem 0.6rem;}
+  .tile .save{font-size:0.72rem;color:var(--gold);opacity:0;transition:opacity .2s;}
+  .tile .save.show{opacity:1;}
+  .tile .del{font-size:0.75rem;color:var(--danger);background:none;border:none;cursor:pointer;padding:0.2rem 0.3rem;}
+  .empty{color:var(--faint);text-align:center;padding:2rem 1rem;font-size:0.9rem;}
+  .hide{display:none!important;}
+  footer{margin-top:3rem;text-align:center;font-size:0.76rem;color:var(--faint);}
+  footer a{color:var(--faint);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a href="/" class="brand" style="text-decoration:none;color:inherit;">
+      <span class="mark">GROVE</span>
+      <span class="tag">Photo Manager</span>
+    </a>
+    <div class="whoami" id="whoami"></div>
+  </header>
+
+  <!-- SIGN IN -->
+  <section id="signin" class="hide">
+    <div class="card">
+      <span class="eyebrow">Sign in</span>
+      <h2 style="font-size:1.5rem;margin:0.5rem 0 0.4rem;">Private — team only</h2>
+      <p class="muted" style="font-size:0.9rem;">Enter your allowlisted email and we'll send a 6-digit code.</p>
+      <div id="step-email">
+        <input type="email" id="email" inputmode="email" autocomplete="email" placeholder="you@bosspdx.com" autocapitalize="none">
+        <button class="btn btn-primary" id="send-code">Email me a code</button>
+      </div>
+      <div id="step-code" class="hide">
+        <input type="text" id="code" class="codebox" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••">
+        <button class="btn btn-primary" id="verify">Verify &amp; sign in</button>
+        <button class="btn btn-ghost" id="back">Use a different email</button>
+      </div>
+      <div class="msg" id="auth-msg"></div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="app" class="hide">
+    <span class="eyebrow">Upload</span>
+    <h1 style="font-size:1.7rem;margin:0.35rem 0 0.9rem;">Add photos of the land</h1>
+    <label class="drop" id="drop" for="file">
+      <div class="camera">📷</div>
+      <div class="big">Tap to add photos</div>
+      <div class="muted" style="font-size:0.88rem;">Take a photo or choose from your library</div>
+      <div class="hint">JPEG, PNG, WebP or HEIC · up to 20&nbsp;MB each · you can pick several at once</div>
+    </label>
+    <input type="file" id="file" accept="image/*" multiple>
+    <div class="queue" id="queue"></div>
+    <div class="msg" id="up-msg"></div>
+
+    <div class="sec-title">
+      <h2>On the site</h2>
+      <span class="count" id="count"></span>
+    </div>
+    <p class="muted" style="font-size:0.84rem;margin:-0.4rem 0 0.9rem;">These appear in the public gallery. Add a caption, or remove any shot.</p>
+    <div class="grid" id="grid"></div>
+    <div class="empty hide" id="empty">No photos yet. Add your first one above.</div>
+  </section>
+
+  <footer>
+    Grove Vineyard · <a href="/">back to site</a> · <a href="/ops.html">project portal</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var TOKEN = localStorage.getItem('grove_session') || '';
+  var EMAIL = localStorage.getItem('grove_email') || '';
+  var $ = function(id){ return document.getElementById(id); };
+
+  function show(el,on){ el.classList.toggle('hide', !on); }
+  function flash(el, text, kind){
+    el.textContent = text; el.className = 'msg show ' + (kind||'');
+    if(kind==='ok') setTimeout(function(){ el.classList.remove('show'); }, 3500);
+  }
+  function headers(extra){
+    var h = extra || {}; if(TOKEN) h['X-Grove-Session'] = TOKEN; return h;
+  }
+
+  // ---------- auth ----------
+  function renderWho(){
+    if(EMAIL){ $('whoami').innerHTML = EMAIL + '<br><a id="signout">Sign out</a>'; $('signout').onclick = signOut; }
+    else $('whoami').textContent = '';
+  }
+  function signOut(){
+    localStorage.removeItem('grove_session'); localStorage.removeItem('grove_email');
+    TOKEN=''; EMAIL=''; renderWho(); gate();
+  }
+  async function checkSession(){
+    if(!TOKEN) return false;
+    try{
+      var r = await fetch('/api/auth/me', {headers: headers()});
+      if(!r.ok) return false;
+      var d = await r.json(); if(d.email){ EMAIL=d.email; localStorage.setItem('grove_email', d.email); return true; }
+    }catch(e){}
+    return false;
+  }
+  async function gate(){
+    renderWho();
+    var ok = await checkSession();
+    show($('signin'), !ok); show($('app'), ok);
+    if(ok) loadGallery();
+  }
+
+  $('send-code').onclick = async function(){
+    var email = $('email').value.trim().toLowerCase();
+    if(!email){ flash($('auth-msg'),'Enter your email.','err'); return; }
+    this.disabled = true; this.textContent = 'Sending…';
+    try{
+      var r = await fetch('/api/auth/request', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({email:email})});
+      var d = await r.json();
+      if(!r.ok){ flash($('auth-msg'), d.error || 'Could not send code.', 'err'); }
+      else { window._email = email; show($('step-email'),false); show($('step-code'),true); flash($('auth-msg'),'Code sent to '+email+'.','ok'); $('code').focus(); }
+    }catch(e){ flash($('auth-msg'),'Network error.','err'); }
+    this.disabled = false; this.textContent = 'Email me a code';
+  };
+  $('back').onclick = function(){ show($('step-code'),false); show($('step-email'),true); $('auth-msg').classList.remove('show'); };
+  $('verify').onclick = async function(){
+    var code = $('code').value.trim();
+    if(code.length<6){ flash($('auth-msg'),'Enter the 6-digit code.','err'); return; }
+    this.disabled = true; this.textContent = 'Verifying…';
+    try{
+      var r = await fetch('/api/auth/verify', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({email:window._email, code:code})});
+      var d = await r.json();
+      if(!r.ok){ flash($('auth-msg'), d.error || 'Invalid code.', 'err'); }
+      else {
+        TOKEN=d.token; EMAIL=d.email;
+        localStorage.setItem('grove_session', d.token); localStorage.setItem('grove_email', d.email);
+        gate();
+      }
+    }catch(e){ flash($('auth-msg'),'Network error.','err'); }
+    this.disabled = false; this.textContent = 'Verify & sign in';
+  };
+
+  // ---------- upload ----------
+  var fileInput = $('file'), drop = $('drop'), queue = $('queue');
+  fileInput.addEventListener('change', function(){ handleFiles(this.files); this.value=''; });
+  ['dragenter','dragover'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('drag'); }); });
+  ['dragleave','drop'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('drag'); }); });
+  drop.addEventListener('drop', function(e){ if(e.dataTransfer && e.dataTransfer.files) handleFiles(e.dataTransfer.files); });
+
+  function handleFiles(files){
+    var list = Array.prototype.slice.call(files).filter(function(f){ return f.type.indexOf('image/')===0; });
+    if(!list.length){ flash($('up-msg'),'Those weren’t images.','err'); return; }
+    list.forEach(uploadOne);
+  }
+  function uploadOne(file){
+    var row = document.createElement('div'); row.className='qitem';
+    var img = document.createElement('img'); img.className='thumb';
+    try{ img.src = URL.createObjectURL(file); }catch(e){}
+    var nm = document.createElement('div'); nm.className='nm';
+    nm.innerHTML = '<div>'+ (file.name||'photo') +'</div><div class="bar"><i></i></div>';
+    var st = document.createElement('div'); st.className='st'; st.textContent='0%';
+    row.appendChild(img); row.appendChild(nm); row.appendChild(st);
+    queue.insertBefore(row, queue.firstChild);
+    var barFill = nm.querySelector('.bar>i');
+
+    var xhr = new XMLHttpRequest();
+    var qs = '?name='+encodeURIComponent(file.name||'photo');
+    xhr.open('POST', '/api/gallery/upload'+qs, true);
+    xhr.setRequestHeader('Content-Type', file.type);
+    if(TOKEN) xhr.setRequestHeader('X-Grove-Session', TOKEN);
+    xhr.upload.onprogress = function(e){ if(e.lengthComputable){ var p=Math.round(e.loaded/e.total*100); barFill.style.width=p+'%'; st.textContent=p+'%'; } };
+    xhr.onload = function(){
+      if(xhr.status>=200 && xhr.status<300){ st.textContent='Added'; st.className='st done'; barFill.style.width='100%'; loadGallery(); setTimeout(function(){ row.remove(); }, 1500); }
+      else if(xhr.status===401){ st.textContent='Sign in'; st.className='st fail'; gate(); }
+      else { var m='Failed'; try{ m=JSON.parse(xhr.responseText).error||m; }catch(e){} st.textContent=m; st.className='st fail'; }
+    };
+    xhr.onerror = function(){ st.textContent='Network error'; st.className='st fail'; };
+    xhr.send(file);
+  }
+
+  // ---------- gallery grid ----------
+  async function loadGallery(){
+    try{
+      var r = await fetch('/api/gallery'); var d = await r.json();
+      var photos = d.photos || [];
+      $('count').textContent = photos.length ? (photos.length + (photos.length===1?' photo':' photos')) : '';
+      show($('empty'), photos.length===0);
+      var grid = $('grid'); grid.innerHTML='';
+      photos.forEach(function(p){ grid.appendChild(tile(p)); });
+    }catch(e){}
+  }
+  function tile(p){
+    var el = document.createElement('div'); el.className='tile';
+    var im = document.createElement('div'); im.className='img'; im.style.backgroundImage="url('"+p.url+"')";
+    var cap = document.createElement('textarea'); cap.className='cap'; cap.rows=2; cap.placeholder='Add a caption…'; cap.value=p.caption||'';
+    var row = document.createElement('div'); row.className='row';
+    var save = document.createElement('span'); save.className='save'; save.textContent='Saved ✓';
+    var del = document.createElement('button'); del.className='del'; del.textContent='Remove';
+    row.appendChild(save); row.appendChild(del);
+    el.appendChild(im); el.appendChild(cap); el.appendChild(row);
+
+    var t;
+    cap.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(function(){ saveCaption(p.name, cap.value, save); }, 700); });
+    del.addEventListener('click', function(){
+      if(!confirm('Remove this photo from the site?')) return;
+      fetch('/api/gallery/delete', {method:'POST', headers:headers({'content-type':'application/json'}), body:JSON.stringify({name:p.name})})
+        .then(function(){ loadGallery(); });
+    });
+    return el;
+  }
+  function saveCaption(name, caption, saveEl){
+    fetch('/api/gallery/caption', {method:'POST', headers:headers({'content-type':'application/json'}), body:JSON.stringify({name:name, caption:caption})})
+      .then(function(r){ if(r.ok){ saveEl.classList.add('show'); setTimeout(function(){ saveEl.classList.remove('show'); }, 1800); } });
+  }
+
+  gate();
+})();
+</script>
+</body>
+</html>
