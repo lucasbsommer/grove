@@ -72,6 +72,11 @@
   .tile .save{font-size:0.72rem;color:var(--gold);opacity:0;transition:opacity .2s;}
   .tile .save.show{opacity:1;}
   .tile .del{font-size:0.75rem;color:var(--danger);background:none;border:none;cursor:pointer;padding:0.2rem 0.3rem;}
+  .tile .hero-btn{font-size:0.74rem;background:none;border:none;cursor:pointer;color:var(--muted);padding:0.2rem 0.3rem;}
+  .tile .hero-btn.on{color:var(--gold);font-weight:600;}
+  .tile .img{position:relative;}
+  .tile .herobadge{position:absolute;top:0.5rem;left:0.5rem;background:rgba(176,141,87,0.95);color:#fff;
+    font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;font-weight:600;}
   .empty{color:var(--faint);text-align:center;padding:2rem 1rem;font-size:0.9rem;}
   .hide{display:none!important;}
   footer{margin-top:3rem;text-align:center;font-size:0.76rem;color:var(--faint);}
@@ -257,15 +262,23 @@
   function tile(p){
     var el = document.createElement('div'); el.className='tile';
     var im = document.createElement('div'); im.className='img'; im.style.backgroundImage="url('"+p.url+"')";
+    if(p.hero){ var bdg=document.createElement('span'); bdg.className='herobadge'; bdg.textContent='★ Hero'; im.appendChild(bdg); }
     var cap = document.createElement('textarea'); cap.className='cap'; cap.rows=2; cap.placeholder='Add a caption…'; cap.value=p.caption||'';
     var row = document.createElement('div'); row.className='row';
+    var heroBtn = document.createElement('button'); heroBtn.className='hero-btn'+(p.hero?' on':'');
+    heroBtn.textContent = p.hero ? '★ Hero photo' : 'Set as hero';
     var save = document.createElement('span'); save.className='save'; save.textContent='Saved ✓';
     var del = document.createElement('button'); del.className='del'; del.textContent='Remove';
-    row.appendChild(save); row.appendChild(del);
+    row.appendChild(heroBtn); row.appendChild(save); row.appendChild(del);
     el.appendChild(im); el.appendChild(cap); el.appendChild(row);
 
     var t;
     cap.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(function(){ saveCaption(p.name, cap.value, save); }, 700); });
+    heroBtn.addEventListener('click', function(){
+      var body = p.hero ? {name:''} : {name:p.name};  // tap again to clear
+      fetch('/api/gallery/hero', {method:'POST', headers:headers({'content-type':'application/json'}), body:JSON.stringify(body)})
+        .then(function(){ loadGallery(); });
+    });
     del.addEventListener('click', function(){
       if(!confirm('Remove this photo from the site?')) return;
       fetch('/api/gallery/delete', {method:'POST', headers:headers({'content-type':'application/json'}), body:JSON.stringify({name:p.name})})

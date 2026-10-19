@@ -559,10 +559,11 @@
     fetch('/api/gallery').then(function(r){ return r.json(); }).then(function(d){
       photos = (d && d.photos) || [];
       if(!photos.length) return;
-      // upgrade the hero to the first real photograph
+      // upgrade the hero: the photo chosen in the manager, else the newest
+      var heroPhoto = photos.filter(function(p){ return p.hero; })[0] || photos[0];
       hero.style.backgroundImage =
         "linear-gradient(180deg,rgba(20,24,16,0.28) 0%,rgba(20,24,16,0.38) 45%,rgba(18,20,14,0.9) 100%)," +
-        "url('" + photos[0].url + "')";
+        "url('" + heroPhoto.url + "')";
       // build the wall
       photos.forEach(function(p, i){
         var fig = document.createElement('figure');
