@@ -248,6 +248,25 @@
   .planfeature img{width:100%;display:block;}
   .planfeature .cap{padding:0.85rem 1.1rem;font-size:0.8rem;color:var(--muted);border-top:1px solid var(--line);
     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  /* entitlement documents */
+  .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+  .doccard{display:flex;gap:0.9rem;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:1.1rem 1.15rem;text-decoration:none;color:inherit;
+    transition:transform .18s,box-shadow .18s,border-color .18s;}
+  .doccard:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(30,25,15,0.09);border-color:var(--gold);}
+  .doccard .pdf{flex:none;width:38px;height:46px;border-radius:5px;background:var(--surface2);
+    border:1px solid var(--line);position:relative;display:flex;align-items:flex-end;justify-content:center;}
+  .doccard .pdf::after{content:"PDF";font-size:0.52rem;font-weight:700;letter-spacing:0.04em;color:var(--wine);
+    background:#fff;padding:1px 3px;border-radius:2px;margin-bottom:5px;}
+  .doccard>span:last-child{display:block;}
+  .doccard .dt,.doccard .dm,.doccard .dl{display:block;}
+  .doccard .dt{font-size:0.98rem;font-weight:600;color:var(--ink);line-height:1.25;}
+  .doccard .dm{font-size:0.8rem;color:var(--muted);margin-top:0.25rem;}
+  .doccard .dl{font-size:0.72rem;color:var(--gold);font-weight:600;margin-top:0.55rem;letter-spacing:0.03em;}
+  .docnote{font-size:0.82rem;color:var(--faint);margin-top:1.5rem;max-width:70ch;}
+  @media(max-width:860px){.docs{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.docs{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -263,6 +282,7 @@
       <a href="#opportunity">The Opportunity</a>
       <a href="#land">The Land</a>
       <a href="#story">The Story</a>
+      <a href="#documents">Permits</a>
       <a href="#plan">The Plan</a>
       <a href="#invest">Invest</a>
       <a href="/ops.html" class="nav-portal">Project Portal</a>
@@ -399,6 +419,52 @@
   </div>
 </section>
 
+<!-- DOCUMENTS -->
+<section class="block" id="documents">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Entitlement File</span>
+      <h2>The approvals, in the open</h2>
+      <p>Most vineyard pitches ask you to take the permits on faith. Here are the actual county-issued permits and engineered plans — straight from the Washington County record. Click any document to open it.</p>
+    </div>
+    <div class="docs reveal">
+      <a class="doccard" href="/docs/grove-grading-permit-GRAD-2505132.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Grading Permit — Issued</span><span class="dm">GRAD-2505132 · Washington County</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-culvert-permit-BLDG-2514996.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Culvert / Access Permit — Issued</span><span class="dm">BLDG-2514996 · Washington County</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-drainage-letter.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Drainage Hazard Letter</span><span class="dm">1916-001 · Emerio Design</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-approved-plans-cover.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Approved Plan Set — Cover</span><span class="dm">Sheet 001 · Stamped</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-grading-erosion-plan.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Grading &amp; Erosion Control Plan</span><span class="dm">Sheet 002</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-driveway-plan-profile.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Driveway Plan &amp; Profile</span><span class="dm">Sheet 003 · Permitted access</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-erosion-control-details.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Erosion Control Notes &amp; Details</span><span class="dm">Sheet 004</span><span class="dl">Open PDF →</span></span>
+      </a>
+      <a class="doccard" href="/docs/grove-geotech-report.pdf" target="_blank" rel="noopener">
+        <span class="pdf"></span>
+        <span><span class="dt">Geotechnical Report</span><span class="dm">Slope stability &amp; culvert · PE/GE</span><span class="dl">Open PDF →</span></span>
+      </a>
+    </div>
+    <p class="docnote">Documents are provided for informational purposes and reflect the county record as issued. Figures and conditions are subject to the governing permits and definitive documents.</p>
+  </div>
+</section>
+
 <!-- PLAN -->
 <section class="block alt" id="plan">
   <div class="wrap">
@@ -508,6 +574,7 @@
         <a href="#opportunity">Opportunity</a>
         <a href="#land">Land</a>
         <a href="#story">Story</a>
+        <a href="#documents">Permits</a>
         <a href="#plan">Plan</a>
         <a href="#invest">Invest</a>
         <a href="/ops.html">Project Portal</a>
