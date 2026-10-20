@@ -267,6 +267,17 @@
   .docnote{font-size:0.82rem;color:var(--faint);margin-top:1.5rem;max-width:70ch;}
   @media(max-width:860px){.docs{grid-template-columns:1fr 1fr;}}
   @media(max-width:520px){.docs{grid-template-columns:1fr;}}
+
+  /* monetization routes */
+  .routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:1.25rem;margin-top:1rem;}
+  .route{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.8rem;transition:transform .2s,box-shadow .2s;}
+  .route:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,25,15,0.08);}
+  .route .ic{width:44px;height:44px;border-radius:10px;background:linear-gradient(145deg,#fff,var(--surface2));border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
+  .route .ic svg{width:22px;height:22px;stroke:var(--wine);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+  .route h3{font-size:1.18rem;margin-bottom:0.5rem;}
+  .route p{color:var(--muted);font-size:0.95rem;}
+  .route.tbd{border-style:dashed;background:transparent;}
 </style>
 </head>
 <body>
@@ -284,6 +295,7 @@
       <a href="#story">The Story</a>
       <a href="#documents">Permits</a>
       <a href="#plan">The Plan</a>
+      <a href="#routes">Upside</a>
       <a href="#invest">Invest</a>
       <a href="/ops.html" class="nav-portal">Project Portal</a>
     </div>
@@ -296,7 +308,7 @@
   <div class="hero-inner">
     <span class="badge"><span class="dot"></span> Permits Issued — January 2026</span>
     <h1>A permitted vineyard estate, ready to plant.</h1>
-    <p class="lede">~30.7 acres across two contiguous parcels in the hills above Forest Grove — the future estate home of Halem Heights, in the heart of Oregon's Willamette Valley. The 25.9-acre main parcel is fully permitted; three years of entitlement work are done. The hard part is behind us.</p>
+    <p class="lede">~30.7 acres across two contiguous parcels in the hills above Forest Grove, in the heart of Oregon's Willamette Valley — paired with Halem Heights, an established, licensed wine brand with active distribution and existing inventory. The 25.9-acre main parcel is fully permitted; three years of entitlement work are done. The hard part is behind us.</p>
     <div class="hero-cta">
       <a href="#invest" class="btn btn-primary">The opportunity →</a>
       <a href="#land" class="btn btn-ghost">See the land</a>
@@ -326,7 +338,8 @@
       <div class="prose reveal">
         <p>Grove is <strong>~30.7 acres across two contiguous parcels</strong> in one of the world's great cool-climate wine regions. The <strong>25.9-acre main parcel</strong>, acquired in 2022, has since cleared a full Washington County entitlement process — drainage-hazard analysis, geotechnical slope-stability review, FEMA flood determination — culminating in <strong>issued grading and culvert permits in January 2026</strong>. A contiguous <strong>4.76-acre parcel directly to the north</strong> rounds out the estate.</p>
         <p>That matters because entitlement, not dirt, is where rural vineyard projects die. The regulatory path is slow, expensive, and uncertain. Grove is through it. What remains is execution on ground that is already cleared to build.</p>
-        <p>And Grove isn't raw land hunting for a concept. It's the estate home for <strong><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(110,43,58,0.35);">Halem Heights</a> — an established wine brand</strong> putting down roots on ground it controls.</p>
+        <p>And Grove isn't raw land hunting for a concept — it comes with a going brand. <strong><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(110,43,58,0.35);">Halem Heights</a>, an established Oregon wine label</strong>, is part of the project today: <strong>the license, active distribution, and existing inventory are in hand</strong>. The land and a real brand, together.</p>
+        <p>Carrying cost is minimal. Both parcels sit under Oregon <strong>farm-use (EFU) tax deferral</strong>, so the only ongoing liability is the annual property tax — the main parcel's 2025 bill was just <strong>$526</strong>.</p>
         <p>The vision is phased and patient: <strong>establish the vineyard, build the estate, and bring the wine home</strong> — each stage de-risking and adding value to the one before.</p>
       </div>
     </div>
@@ -380,7 +393,7 @@
       <div class="fact"><div class="v">25.9 ac</div><div class="k">Permitted main parcel · R814774 (TL 400)</div></div>
       <div class="fact"><div class="v">4.76 ac</div><div class="k">North parcel · R814079 (TL 900)</div></div>
       <div class="fact"><div class="v">388–570 ft</div><div class="k">Elevation range · ~183 ft of relief</div></div>
-      <div class="fact"><div class="v">Farm-zoned</div><div class="k">Agricultural (EFU), farm-tax deferred</div></div>
+      <div class="fact"><div class="v">$526 / yr</div><div class="k">2025 property tax — EFU farm-deferred (main parcel) · the only carrying cost</div></div>
       <div class="fact"><div class="v">County road</div><div class="k">Direct frontage on NW Timmerman Rd</div></div>
     </div>
     <div class="planfeature reveal">
@@ -520,6 +533,44 @@
   </div>
 </section>
 
+<!-- ROUTES / MONETIZATION -->
+<section class="block" id="routes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Upside &amp; Optionality</span>
+      <h2>More than one way to win</h2>
+      <p>The entitlements, highway access, and location open several independent routes to return — each able to stand on its own, and several able to run side by side.</p>
+    </div>
+    <div class="routes">
+      <div class="route reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h3>EV charging / Supercharger</h3>
+        <p>Frontage on the northern, coast-bound highway (OR-6) — a candidate Tesla Supercharger or EV charging site on the route to the beach.</p>
+      </div>
+      <div class="route reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Managed vineyard</h3>
+        <p>Planted and farmed under a vineyard-management partner such as Results Partners — they operate the vineyard and pay you for the fruit.</p>
+      </div>
+      <div class="route reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3 5 3v13M9 21v-4h2v4"/></svg></div>
+        <h3>Custom-crush winery</h3>
+        <p>An on-site custom-crush facility in the model of Carlton Winemakers Studio — winemakers pay to produce on shared equipment.</p>
+      </div>
+      <div class="route reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22c0-6 3-9 8-10-1 6-4 9-8 10zM12 22c0-5-3-7-7-8 1 5 4 7 7 8zM12 22V9"/></svg></div>
+        <h3>Vine nursery</h3>
+        <p>A grapevine nursery and vine-production operation serving the Willamette Valley's expanding vineyard acreage.</p>
+      </div>
+      <div class="route tbd reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+        <h3>More under evaluation</h3>
+        <p>Additional uses to be determined as the site develops. (TBD)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INVEST -->
 <section class="invest" id="invest">
   <div class="wrap reveal">
@@ -545,7 +596,7 @@
       <p>Grove is owned by Grove Vineyard, LLC and advanced by a licensed, credentialed project team.</p>
     </div>
     <div class="team">
-      <div class="member reveal"><div class="role">Wine Brand</div><div class="name"><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Halem Heights ↗</a></div><div class="meta">Established Oregon wine label</div></div>
+      <div class="member reveal"><div class="role">Wine Brand</div><div class="name"><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Halem Heights ↗</a></div><div class="meta">Licensed label · distribution &amp; inventory — part of the project</div></div>
       <div class="member reveal"><div class="role">Owner / Developer</div><div class="name">Grove Vineyard, LLC</div><div class="meta">Forest Grove, Oregon</div></div>
       <div class="member reveal"><div class="role">Site &amp; Grading</div><div class="name">Boss PDX, LLC</div><div class="meta">Licensed contractor · CCB 232383</div></div>
       <div class="member reveal"><div class="role">Civil &amp; Planning</div><div class="name">Emerio Design</div><div class="meta">Engineering &amp; land use</div></div>
@@ -578,6 +629,7 @@
         <a href="#story">Story</a>
         <a href="#documents">Permits</a>
         <a href="#plan">Plan</a>
+        <a href="#routes">Upside</a>
         <a href="#invest">Invest</a>
         <a href="/ops.html">Project Portal</a>
       </div>
