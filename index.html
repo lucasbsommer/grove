@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grove — A Permitted Vineyard Estate in Oregon Wine Country</title>
-<meta name="description" content="Grove Vineyard — ~30.7 acres across two contiguous parcels in the hills above Forest Grove, Oregon's Willamette Valley. The 25.9-acre main parcel is fully permitted and build-ready; grading & culvert permits issued January 2026.">
-<meta property="og:title" content="Grove — A Permitted Vineyard Estate in Oregon Wine Country">
-<meta property="og:description" content="~30.7 acres across two parcels in Oregon's Willamette Valley — the 25.9-acre main parcel permitted and build-ready. The hard part is done.">
+<title>Grove: Entitled Land near Forest Grove, Oregon</title>
+<meta name="description" content="Grove is about 30.7 acres across two contiguous parcels near Forest Grove, Oregon. The 25.9-acre main parcel is entitled; grading and culvert permits were issued January 2026. End use is open.">
+<meta property="og:title" content="Grove: Entitled Land near Forest Grove, Oregon">
+<meta property="og:description" content="About 30.7 acres across two parcels in Washington County, Oregon. The 25.9-acre main parcel is entitled, with permits issued January 2026. End use is open.">
 <meta property="og:type" content="website">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -61,13 +61,12 @@
   .nav-toggle{display:none;background:none;border:none;color:inherit;font-size:1.5rem;cursor:pointer;}
 
   /* HERO */
-  /* Hero background layers stack front→back: tint, then a real photo (hero.jpg)
-     if present, then the aerial as fallback. Drop hero.jpg on the server to
-     upgrade the hero to real photography with no code change. */
+  /* Hero background layers stack front→back: tint, then a real site photo,
+     then the aerial as fallback. */
   .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;
     background:
       linear-gradient(180deg,rgba(20,24,16,0.25) 0%,rgba(20,24,16,0.35) 45%,rgba(18,20,14,0.88) 100%),
-      url('/property/grove_vineyard/hero.jpg') center/cover no-repeat,
+      url('/media/hero.jpg') center/cover no-repeat,
       #2c3324 url('/property/grove_vineyard/satellite.png') center/cover no-repeat;}
   .hero-inner{max-width:var(--maxw);margin:0 auto;padding:7rem 1.5rem 5rem;width:100%;color:#fff;}
   .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,120,70,0.25);border:1px solid rgba(160,210,150,0.4);
@@ -145,7 +144,12 @@
   .phase h3{font-size:1.3rem;margin:0.4rem 0 0.8rem;}
   .phase ul{list-style:none;color:var(--muted);font-size:0.93rem;}
   .phase li{padding-left:1.1rem;position:relative;margin-bottom:0.4rem;}
-  .phase li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+  .phase li::before{content:"·";position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+  /* responsive video embed */
+  .videowrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:#000;margin-top:1rem;}
+  .videowrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
 
   /* USE OF FUNDS / PLACEHOLDER */
   .fill{background:rgba(176,141,87,0.12);border-bottom:1px dashed var(--gold);padding:0 3px;border-radius:2px;color:var(--olive);font-style:italic;}
@@ -287,15 +291,14 @@
   <div class="nav-inner">
     <a href="#top" class="brand" style="text-decoration:none;">
       <span class="mark">GROVE</span>
-      <span class="tag">Vineyard · Oregon</span>
+      <span class="tag">Forest Grove, Oregon</span>
     </a>
     <div class="nav-links" id="navlinks">
-      <a href="#opportunity">The Opportunity</a>
-      <a href="#land">The Land</a>
-      <a href="#story">The Story</a>
+      <a href="#opportunity">Overview</a>
+      <a href="#land">Land</a>
+      <a href="#gallery">Photos</a>
       <a href="#documents">Permits</a>
-      <a href="#plan">The Plan</a>
-      <a href="#routes">Upside</a>
+      <a href="#routes">Uses</a>
       <a href="#invest">Invest</a>
       <a href="/ops.html" class="nav-portal">Project Portal</a>
     </div>
@@ -306,11 +309,11 @@
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-inner">
-    <span class="badge"><span class="dot"></span> Permits Issued — January 2026</span>
-    <h1>A permitted vineyard estate, ready to plant.</h1>
-    <p class="lede">~30.7 acres across two contiguous parcels in the hills above Forest Grove, in the heart of Oregon's Willamette Valley — paired with Halem Heights, an established, licensed wine brand with active distribution and existing inventory. The 25.9-acre main parcel is fully permitted; three years of entitlement work are done. The hard part is behind us.</p>
+    <span class="badge"><span class="dot"></span> Permits issued · January 2026</span>
+    <h1>Entitled land above Forest Grove, Oregon.</h1>
+    <p class="lede">About 30.7 acres across two contiguous parcels in Washington County. The 25.9-acre main parcel has cleared the county entitlement process, with grading and culvert permits issued in January 2026. The hard regulatory work is done. What the land becomes is still open.</p>
     <div class="hero-cta">
-      <a href="#invest" class="btn btn-primary">The opportunity →</a>
+      <a href="#opportunity" class="btn btn-primary">What this is</a>
       <a href="#land" class="btn btn-ghost">See the land</a>
     </div>
   </div>
@@ -320,10 +323,10 @@
 <!-- STATS -->
 <div class="stats">
   <div class="stats-grid">
-    <div class="stat"><div class="n">30.7 ac</div><div class="l">Two parcels · 25.9 permitted</div></div>
-    <div class="stat"><div class="n">Willamette</div><div class="l">Valley · Forest Grove, OR</div></div>
-    <div class="stat"><div class="n">3 years</div><div class="l">Entitlement cleared</div></div>
-    <div class="stat"><div class="n">2 permits</div><div class="l">Issued &amp; paid</div></div>
+    <div class="stat"><div class="n">30.7 ac</div><div class="l">Two contiguous parcels</div></div>
+    <div class="stat"><div class="n">25.9 ac</div><div class="l">Entitled main parcel</div></div>
+    <div class="stat"><div class="n">Jan 2026</div><div class="l">Grading &amp; culvert permits issued</div></div>
+    <div class="stat"><div class="n">$526</div><div class="l">2025 property tax, main parcel</div></div>
   </div>
 </div>
 
@@ -332,32 +335,31 @@
   <div class="wrap">
     <div class="two-col">
       <div class="reveal">
-        <span class="eyebrow">The Opportunity</span>
-        <p class="lead-serif" style="margin-top:1rem;">Most raw parcels never make it through. This one did.</p>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);">What this is</h2>
       </div>
       <div class="prose reveal">
-        <p>Grove is <strong>~30.7 acres across two contiguous parcels</strong> in one of the world's great cool-climate wine regions. The <strong>25.9-acre main parcel</strong>, acquired in 2022, has since cleared a full Washington County entitlement process — drainage-hazard analysis, geotechnical slope-stability review, FEMA flood determination — culminating in <strong>issued grading and culvert permits in January 2026</strong>. A contiguous <strong>4.76-acre parcel directly to the north</strong> rounds out the estate.</p>
-        <p>That matters because entitlement, not dirt, is where rural vineyard projects die. The regulatory path is slow, expensive, and uncertain. Grove is through it. What remains is execution on ground that is already cleared to build.</p>
-        <p>And Grove isn't raw land hunting for a concept — it comes with a going brand. <strong><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(110,43,58,0.35);">Halem Heights</a>, an established Oregon wine label</strong>, is part of the project today: <strong>the license, active distribution, and existing inventory are in hand</strong>. The land and a real brand, together.</p>
-        <p>Carrying cost is minimal. Both parcels sit under Oregon <strong>farm-use (EFU) tax deferral</strong>, so the only ongoing liability is the annual property tax — the main parcel's 2025 bill was just <strong>$526</strong>.</p>
-        <p>The vision is phased and patient: <strong>establish the vineyard, build the estate, and bring the wine home</strong> — each stage de-risking and adding value to the one before.</p>
+        <p>Grove is about <strong>30.7 acres</strong> on NW Timmerman Road in unincorporated Washington County, Oregon, west of Forest Grove. It is two contiguous parcels: a <strong>25.9-acre main parcel</strong> and a <strong>4.76-acre parcel directly to the north</strong>.</p>
+        <p>The main parcel is entitled. Between 2022 and 2026 it went through the full Washington County process: drainage-hazard analysis, geotechnical slope review, and a FEMA flood determination. Grading permit GRAD-2505132 and culvert permit BLDG-2514996 were issued in January 2026. That is the step that stops most rural projects, and it is finished.</p>
+        <p>Carrying cost is low. Both parcels are under Oregon farm-use (EFU) assessment, so the main parcel's <strong>2025 property tax was $526</strong>.</p>
+        <p>Site and grading work is done by <strong>Boss PDX</strong>, a licensed contractor (CCB 232383) controlled by one of the partners. Development is handled at cost, without an outside contractor's margin, which is a direct saving on the largest near-term expense.</p>
+        <p>What the land becomes is not fixed. A vineyard is one option. The property also carries an existing Oregon wine brand, <a href="https://halemheights.com" target="_blank" rel="noopener" style="color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(110,43,58,0.35);">Halem Heights</a> (license, distribution, and inventory), which is available if a wine use is pursued. Other uses are listed further down. None is committed.</p>
       </div>
     </div>
     <div class="pillars">
       <div class="pillar reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3>Entitled &amp; de-risked</h3>
-        <p>Permits in hand. Drainage hazard cleared with conditions (Case L2500008-DHA). Outside the FEMA flood hazard area. The approvals that stop most projects are done and on file.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="m3 20 6-11 4 6 2-3 6 8z"/><circle cx="17" cy="6" r="2"/></svg></div>
-        <h3>Prime terroir</h3>
-        <p>Elevation, slope, and natural drainage in the hills above Forest Grove — the same cool-climate conditions that made the Willamette Valley world-famous for Pinot Noir.</p>
+        <h3>Entitled</h3>
+        <p>Grading and culvert permits issued. Drainage hazard cleared with conditions (Case L2500008). Outside the FEMA flood hazard area. The approvals are done and on file.</p>
       </div>
       <div class="pillar reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></div>
-        <h3>Phased upside</h3>
-        <p>A staged plan — vineyard, then estate, then estate-grown wine under Halem Heights — that lets capital enter at a de-risked basis and participate in value created at each step.</p>
+        <h3>Low carry</h3>
+        <p>Both parcels sit under Oregon EFU farm assessment. The 2025 property tax on the main parcel was $526. There is no structure to maintain and no debt service required to hold it.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+        <h3>Use is open</h3>
+        <p>The entitlements and location support several independent uses. A vineyard is one. Nothing is locked in, and more than one use could run on the site.</p>
       </div>
     </div>
   </div>
@@ -367,13 +369,12 @@
 <section class="block alt" id="land">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">The Land</span>
-      <h2>30 acres of Oregon hillside</h2>
-      <p>Two contiguous parcels on NW Timmerman Rd in unincorporated Washington County, in the hills above Forest Grove. We know this ground down to the meter — the terrain below is rendered from USGS 3DEP 1-meter LiDAR.</p>
+      <h2>The land</h2>
+      <p>Two contiguous parcels on NW Timmerman Rd in unincorporated Washington County, west of Forest Grove. The terrain views below are rendered from USGS 3DEP 1-meter LiDAR.</p>
     </div>
     <div class="gallery reveal">
       <div class="gcell big" style="background-image:url('/property/grove_vineyard/satellite.png');">
-        <div class="cap">Aerial — main 25.9 ac parcel · Esri World Imagery</div>
+        <div class="cap">Aerial, main 25.9 ac parcel · Esri World Imagery</div>
       </div>
       <div class="gcell" style="background-image:url('/property/grove_vineyard/terrain/tinted.png');">
         <div class="cap">Elevation-tinted relief</div>
@@ -390,28 +391,43 @@
     </div>
     <div class="factgrid reveal">
       <div class="fact"><div class="v">30.7 ac</div><div class="k">Two contiguous parcels (combined)</div></div>
-      <div class="fact"><div class="v">25.9 ac</div><div class="k">Permitted main parcel · R814774 (TL 400)</div></div>
+      <div class="fact"><div class="v">25.9 ac</div><div class="k">Entitled main parcel · R814774 (TL 400)</div></div>
       <div class="fact"><div class="v">4.76 ac</div><div class="k">North parcel · R814079 (TL 900)</div></div>
-      <div class="fact"><div class="v">388–570 ft</div><div class="k">Elevation range · ~183 ft of relief</div></div>
-      <div class="fact"><div class="v">$526 / yr</div><div class="k">2025 property tax — EFU farm-deferred (main parcel) · the only carrying cost</div></div>
+      <div class="fact"><div class="v">388–570 ft</div><div class="k">Elevation range · about 183 ft of relief</div></div>
+      <div class="fact"><div class="v">$526 / yr</div><div class="k">2025 property tax, EFU farm-assessed (main parcel)</div></div>
       <div class="fact"><div class="v">County road</div><div class="k">Direct frontage on NW Timmerman Rd</div></div>
     </div>
     <div class="planfeature reveal">
-      <img src="/property/grove_vineyard/siteplan.png" alt="Grove Vineyard surveyed site plan — NW Timmerman Rd parcel" loading="lazy">
-      <div class="cap"><span>Surveyed site plan — main parcel, Sheet A-101 · 1&quot; = 400&apos;</span><span>Plus a contiguous 4.76-ac parcel to the north · Washington County, OR</span></div>
+      <img src="/property/grove_vineyard/siteplan.png" alt="Grove Vineyard surveyed site plan, NW Timmerman Rd parcel" loading="lazy">
+      <div class="cap"><span>Surveyed site plan, main parcel, Sheet A-101 · 1&quot; = 400&apos;</span><span>Plus a contiguous 4.76-ac parcel to the north · Washington County, OR</span></div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY (populated from /api/gallery; hidden until photos exist) -->
-<section class="block" id="gallery" hidden>
+<!-- GALLERY (static site photos, plus any uploaded via /api/gallery) -->
+<section class="block" id="gallery">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">On the Ground</span>
       <h2>Photographs from the site</h2>
-      <p>The hillside, the access road, and the work underway at Grove — straight from the field.</p>
+      <p>The land, the access road, the culvert, and the drainage work. Straight from the field.</p>
     </div>
     <div class="photowall" id="photowall"></div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="block alt" id="video">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>On site</h2>
+      <p>Timmerman Road after clearing.</p>
+    </div>
+    <div class="videowrap reveal">
+      <iframe src="https://www.youtube-nocookie.com/embed/b6DBY6MKv4k?rel=0"
+        title="Timmerman post clearing" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
@@ -419,17 +435,16 @@
 <section class="block" id="story">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">The Story</span>
-      <h2>Three years to a build-ready site</h2>
-      <p>Building rural vineyard infrastructure in Washington County is a regulatory marathon. Here is the real path — from acquisition to permits in hand.</p>
+      <h2>How it got entitled</h2>
+      <p>Entitling rural land in Washington County is a long process. Here is the record, from acquisition to permits in hand.</p>
     </div>
     <div class="timeline">
-      <div class="tl reveal"><div class="yr">Jul 2022</div><h4>Acquisition</h4><p>Grove Vineyard, LLC purchases the main parcel on NW Timmerman Rd, financed with farm lending. The long-term vision begins.</p></div>
-      <div class="tl reveal"><div class="yr">2023</div><h4>Entitlement begins — and gets hard</h4><p>First approach to the county on the existing access and creek culvert. The county flags prior work; the full entitlement process opens.</p></div>
-      <div class="tl reveal"><div class="yr">Dec 2024</div><h4>The gauntlet: Type II Drainage Hazard Analysis</h4><p>Because a mapped stream crosses the parcel, the county requires a full drainage-hazard review — engineered, submitted, revised, and resubmitted.</p></div>
-      <div class="tl win reveal"><div class="yr">Mar 2025 · Win</div><h4>Drainage hazard approved · FEMA cleared</h4><p>Case L2500008-DHA approved with conditions. FEMA confirms the parcel sits outside all flood hazard zones. The hardest approval is secured.</p></div>
-      <div class="tl win reveal"><div class="yr">Jan 2026 · Win</div><h4>Permits issued</h4><p>Grading permit GRAD-2505132 and culvert permit BLDG-2514996 both issued and paid. The site is cleared to build.</p></div>
-      <div class="tl reveal"><div class="yr">2026 →</div><h4>Site development</h4><p>Access and site preparation underway — the foundation for vineyard establishment and everything that follows.</p></div>
+      <div class="tl reveal"><div class="yr">Jul 2022</div><h4>Acquisition</h4><p>Grove Vineyard, LLC bought the main parcel on NW Timmerman Rd, financed with farm lending.</p></div>
+      <div class="tl reveal"><div class="yr">2023</div><h4>Entitlement opens</h4><p>First approach to the county on the existing access and creek culvert. The county flagged prior work, and the full entitlement process began.</p></div>
+      <div class="tl reveal"><div class="yr">Dec 2024</div><h4>Type II Drainage Hazard Analysis</h4><p>Because a mapped stream crosses the parcel, the county required a full drainage-hazard review: engineered, submitted, revised, and resubmitted.</p></div>
+      <div class="tl win reveal"><div class="yr">Mar 2025</div><h4>Drainage hazard approved, FEMA cleared</h4><p>Case L2500008 approved with conditions. FEMA confirmed the parcel sits outside all flood hazard zones.</p></div>
+      <div class="tl win reveal"><div class="yr">Jan 2026</div><h4>Permits issued</h4><p>Grading permit GRAD-2505132 and culvert permit BLDG-2514996 both issued and paid.</p></div>
+      <div class="tl reveal"><div class="yr">2026</div><h4>Site work</h4><p>Access and site preparation are underway under the issued permits. End use is still to be decided.</p></div>
     </div>
   </div>
 </section>
@@ -438,18 +453,17 @@
 <section class="block" id="documents">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">The Entitlement File</span>
-      <h2>The approvals, in the open</h2>
-      <p>Most vineyard pitches ask you to take the permits on faith. Here are the actual county-issued permits and engineered plans — straight from the Washington County record. Click any document to open it.</p>
+      <h2>The approvals, on file</h2>
+      <p>The county-issued permits and engineered plans, from the Washington County record. Click any document to open it.</p>
     </div>
     <div class="docs reveal">
       <a class="doccard" href="/docs/grove-grading-permit-GRAD-2505132.pdf" target="_blank" rel="noopener">
         <span class="pdf"></span>
-        <span><span class="dt">Grading Permit — Issued</span><span class="dm">GRAD-2505132 · Washington County</span><span class="dl">Open PDF →</span></span>
+        <span><span class="dt">Grading Permit (Issued)</span><span class="dm">GRAD-2505132 · Washington County</span><span class="dl">Open PDF →</span></span>
       </a>
       <a class="doccard" href="/docs/grove-culvert-permit-BLDG-2514996.pdf" target="_blank" rel="noopener">
         <span class="pdf"></span>
-        <span><span class="dt">Culvert / Access Permit — Issued</span><span class="dm">BLDG-2514996 · Washington County</span><span class="dl">Open PDF →</span></span>
+        <span><span class="dt">Culvert / Access Permit (Issued)</span><span class="dm">BLDG-2514996 · Washington County</span><span class="dl">Open PDF →</span></span>
       </a>
       <a class="doccard" href="/docs/grove-drainage-letter.pdf" target="_blank" rel="noopener">
         <span class="pdf"></span>
@@ -457,7 +471,7 @@
       </a>
       <a class="doccard" href="/docs/grove-approved-plans-cover.pdf" target="_blank" rel="noopener">
         <span class="pdf"></span>
-        <span><span class="dt">Approved Plan Set — Cover</span><span class="dm">Sheet 001 · Stamped</span><span class="dl">Open PDF →</span></span>
+        <span><span class="dt">Approved Plan Set, Cover</span><span class="dm">Sheet 001 · Stamped</span><span class="dl">Open PDF →</span></span>
       </a>
       <a class="doccard" href="/docs/grove-grading-erosion-plan.pdf" target="_blank" rel="noopener">
         <span class="pdf"></span>
@@ -484,51 +498,39 @@
 <section class="block alt" id="plan">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">The Plan</span>
-      <h2>A phased path to an estate brand</h2>
-      <p>Capital is deployed in stages, each one building on de-risked ground and creating value for the next.</p>
+      <h2>Where it stands</h2>
+      <p>No end use is committed. This is the current status, nothing more.</p>
     </div>
     <div class="phases">
       <div class="phase reveal">
-        <div class="ph-n">I</div>
-        <div class="ph-tag">Now — Build-ready</div>
-        <h3>Site &amp; Vineyard</h3>
+        <div class="ph-tag">Done</div>
+        <h3>Entitlement</h3>
         <ul>
-          <li>Complete permitted access &amp; site prep</li>
-          <li>Clearing, soil preparation, water</li>
-          <li>Vineyard establishment &amp; planting</li>
+          <li>Acquisition, 2022</li>
+          <li>Drainage-hazard approval (Case L2500008)</li>
+          <li>FEMA flood determination cleared</li>
+          <li>Grading &amp; culvert permits issued, Jan 2026</li>
         </ul>
       </div>
       <div class="phase reveal">
-        <div class="ph-n">II</div>
-        <div class="ph-tag">Next</div>
-        <h3>Estate &amp; Infrastructure</h3>
+        <div class="ph-tag">Now</div>
+        <h3>Site work</h3>
         <ul>
-          <li>Utilities &amp; estate structures</li>
-          <li>Farm income from fruit</li>
-          <li>Foundations for production</li>
+          <li>Access and driveway under the issued permits</li>
+          <li>Culvert replaced at the creek crossing</li>
+          <li>Clearing and site preparation</li>
         </ul>
       </div>
       <div class="phase reveal">
-        <div class="ph-n">III</div>
-        <div class="ph-tag">Vision</div>
-        <h3>Estate Wine &amp; Hospitality</h3>
+        <div class="ph-tag">Open</div>
+        <h3>End use</h3>
         <ul>
-          <li>Estate-grown fruit for Halem Heights</li>
-          <li>Direct-to-consumer &amp; wine club</li>
-          <li>Tasting &amp; hospitality on site</li>
+          <li>Vineyard, planted or managed</li>
+          <li>Charging site on the highway frontage</li>
+          <li>Custom-crush or vine nursery</li>
+          <li>Decision not yet made</li>
         </ul>
       </div>
-    </div>
-
-    <h3 style="font-size:1.4rem;margin:3.5rem 0 0.5rem;">Use of funds</h3>
-    <p style="color:var(--muted);">Allocations to be finalized with committed capital. Representative structure:</p>
-    <div class="uof reveal">
-      <div class="uof-row"><span>Phase I — site development &amp; vineyard establishment</span><span class="fill">[amount]</span></div>
-      <div class="uof-row"><span>Water, utilities &amp; estate infrastructure</span><span class="fill">[amount]</span></div>
-      <div class="uof-row"><span>Working capital &amp; carry to first harvest</span><span class="fill">[amount]</span></div>
-      <div class="uof-row"><span>Brand, production &amp; hospitality (Phase III)</span><span class="fill">[amount]</span></div>
-      <div class="uof-row"><span><strong>Total raise</strong></span><span class="fill">[total]</span></div>
     </div>
   </div>
 </section>
@@ -537,35 +539,39 @@
 <section class="block" id="routes">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Upside &amp; Optionality</span>
-      <h2>More than one way to win</h2>
-      <p>The entitlements, highway access, and location open several independent routes to return — each able to stand on its own, and several able to run side by side.</p>
+      <h2>Possible uses</h2>
+      <p>Nothing here is committed. These are independent uses the entitlements, highway access, and location make possible. Any one could stand on its own, and some could run side by side.</p>
     </div>
     <div class="routes">
       <div class="route reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <h3>EV charging / Supercharger</h3>
-        <p>Frontage on the northern, coast-bound highway (OR-6) — a candidate Tesla Supercharger or EV charging site on the route to the beach.</p>
+        <h3>EV charging site</h3>
+        <p>Frontage on the coast-bound highway (OR-6). A possible charging or Supercharger site on the route to the beach.</p>
       </div>
       <div class="route reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Managed vineyard</h3>
-        <p>Planted and farmed under a vineyard-management partner such as Results Partners — they operate the vineyard and pay you for the fruit.</p>
+        <p>Planted and farmed under a vineyard-management operator such as Results Partners, who runs the vineyard and pays for the fruit.</p>
       </div>
       <div class="route reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3 5 3v13M9 21v-4h2v4"/></svg></div>
         <h3>Custom-crush winery</h3>
-        <p>An on-site custom-crush facility in the model of Carlton Winemakers Studio — winemakers pay to produce on shared equipment.</p>
+        <p>An on-site custom-crush facility in the model of Carlton Winemakers Studio, where winemakers pay to produce on shared equipment.</p>
       </div>
       <div class="route reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22c0-6 3-9 8-10-1 6-4 9-8 10zM12 22c0-5-3-7-7-8 1 5 4 7 7 8zM12 22V9"/></svg></div>
         <h3>Vine nursery</h3>
-        <p>A grapevine nursery and vine-production operation serving the Willamette Valley's expanding vineyard acreage.</p>
+        <p>A grapevine nursery and vine-production operation serving vineyard acreage in the surrounding valley.</p>
+      </div>
+      <div class="route reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/></svg></div>
+        <h3>Hold</h3>
+        <p>Carry the land under EFU assessment at about $526 a year in property tax while the right use is decided.</p>
       </div>
       <div class="route tbd reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
-        <h3>More under evaluation</h3>
-        <p>Additional uses to be determined as the site develops. (TBD)</p>
+        <h3>Other</h3>
+        <p>Additional uses as the site develops. Not yet determined.</p>
       </div>
     </div>
   </div>
@@ -574,16 +580,15 @@
 <!-- INVEST -->
 <section class="invest" id="invest">
   <div class="wrap reveal">
-    <span class="eyebrow" style="color:var(--gold);">Invest in Grove</span>
-    <h2>A de-risked entry into Oregon wine country.</h2>
-    <p>We're in conversation with a small group of investors and partners about participating in Grove — through <strong>debt or equity</strong>, structured to fit. The entitlements that make or break a project are already secured; capital enters at a build-ready basis.</p>
-    <p>Flexible on structure, aligned on the long view.</p>
+    <h2>Participating in Grove.</h2>
+    <p>We are talking with a small group about participating in Grove, as <strong>debt or equity</strong>, structured to fit. The entitlement risk is already retired, and development runs through a partner-controlled contractor at cost, so capital comes in at a build-ready basis.</p>
+    <p>No end use is committed, and we are flexible on structure.</p>
     <div class="terms">
       <div class="term"><div class="k">Structure</div><div class="v">Debt or equity</div></div>
       <div class="term"><div class="k">Target raise</div><div class="v fill">[amount]</div></div>
       <div class="term"><div class="k">Minimum</div><div class="v fill">[amount]</div></div>
     </div>
-    <a href="mailto:invest@halemheights.com?subject=Grove%20Vineyard%20—%20Investment%20Inquiry" class="btn btn-primary">Request the investment memo →</a>
+    <a href="mailto:invest@halemheights.com?subject=Grove%20Inquiry" class="btn btn-primary">Request the details</a>
   </div>
 </section>
 
@@ -591,16 +596,15 @@
 <section class="block" id="team">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">The Team</span>
-      <h2>Built with professionals</h2>
-      <p>Grove is owned by Grove Vineyard, LLC and advanced by a licensed, credentialed project team.</p>
+      <h2>Who is involved</h2>
+      <p>Grove is owned by Grove Vineyard, LLC and worked by a licensed, credentialed team.</p>
     </div>
     <div class="team">
-      <div class="member reveal"><div class="role">Wine Brand</div><div class="name"><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Halem Heights ↗</a></div><div class="meta">Licensed label · distribution &amp; inventory — part of the project</div></div>
       <div class="member reveal"><div class="role">Owner / Developer</div><div class="name">Grove Vineyard, LLC</div><div class="meta">Forest Grove, Oregon</div></div>
-      <div class="member reveal"><div class="role">Site &amp; Grading</div><div class="name">Boss PDX, LLC</div><div class="meta">Licensed contractor · CCB 232383</div></div>
+      <div class="member reveal"><div class="role">Site &amp; Grading</div><div class="name">Boss PDX, LLC</div><div class="meta">Licensed contractor, CCB 232383. Partner-controlled, so site work is done at cost.</div></div>
       <div class="member reveal"><div class="role">Civil &amp; Planning</div><div class="name">Emerio Design</div><div class="meta">Engineering &amp; land use</div></div>
       <div class="member reveal"><div class="role">Geotechnical</div><div class="name">Rapid Soil Solutions</div><div class="meta">Slope stability &amp; culvert (PE/GE)</div></div>
+      <div class="member reveal"><div class="role">Wine brand (optional use)</div><div class="name"><a href="https://halemheights.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Halem Heights ↗</a></div><div class="meta">Licensed label with distribution and inventory. Available if a wine use is pursued.</div></div>
     </div>
   </div>
 </section>
@@ -608,10 +612,9 @@
 <!-- CONTACT -->
 <section class="block alt contact" id="contact">
   <div class="wrap reveal">
-    <span class="eyebrow">Get in touch</span>
-    <h2>Let's talk about Grove.</h2>
-    <p>Investors, operators, and winemaking partners welcome. Reach out for the investment memo, the full entitlement file, or a walk of the land.</p>
-    <a href="mailto:invest@halemheights.com?subject=Grove%20Vineyard%20—%20Inquiry" class="btn btn-dark">invest@halemheights.com</a>
+    <h2>Get in touch.</h2>
+    <p>Investors and operators welcome. Reach out for the details, the full entitlement file, or a walk of the land.</p>
+    <a href="mailto:invest@halemheights.com?subject=Grove%20Inquiry" class="btn btn-dark">invest@halemheights.com</a>
   </div>
 </section>
 
@@ -621,15 +624,15 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="mark">GROVE</div>
-        <div style="margin-top:0.5rem;max-width:34ch;">A vineyard estate in the making — Forest Grove, Oregon.</div>
+        <div style="margin-top:0.5rem;max-width:34ch;">Entitled land. Forest Grove, Oregon.</div>
       </div>
       <div class="foot-links">
-        <a href="#opportunity">Opportunity</a>
+        <a href="#opportunity">Overview</a>
         <a href="#land">Land</a>
-        <a href="#story">Story</a>
+        <a href="#gallery">Photos</a>
         <a href="#documents">Permits</a>
-        <a href="#plan">Plan</a>
-        <a href="#routes">Upside</a>
+        <a href="#plan">Status</a>
+        <a href="#routes">Uses</a>
         <a href="#invest">Invest</a>
         <a href="/ops.html">Project Portal</a>
       </div>
@@ -670,37 +673,58 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  // ---- live photo gallery + dynamic hero ----
+  // ---- photo gallery (static site photos + any uploads) + lightbox ----
   (function(){
     var hero = document.querySelector('.hero');
     var wall = document.getElementById('photowall');
-    var sec  = document.getElementById('gallery');
-    var photos = [];
 
+    // Real site photos committed to /media. First entry renders large.
+    var FIELD = [
+      {url:'/media/winter-rows.jpg',       caption:'Winter morning on the planted rows.', feat:true},
+      {url:'/media/driveway-build.jpg',    caption:'New driveway going in. Deere 135G at the crossing.'},
+      {url:'/media/culvert-installed.jpg', caption:'The replacement culvert, installed.'},
+      {url:'/media/culvert-through.jpg',   caption:'Looking through the new culvert.'},
+      {url:'/media/field-treeline.jpg',    caption:'Grass field to the treeline at the property edge.'},
+      {url:'/media/access-road.jpg',       caption:'The farm road climbing the field edge.'},
+      {url:'/media/grass-rows.jpg',        caption:'Grass-seed rows under the Coast Range.'},
+      {url:'/media/brush-cleared.jpg',     caption:'Brush and stumps cleared from the work area.'},
+      {url:'/media/access-build.jpg',      caption:'Access-road work at the culvert.'},
+      {url:'/media/drainage-markup.jpg',   caption:'The mapped stream crossing, marked during drainage review.'},
+      {url:'/media/old-crossing.jpg',      caption:'Old timber and rock pulled from the creek crossing.'},
+      {url:'/media/public-notice.jpg',     caption:'Washington County public notice. Case L2500008.'}
+    ];
+
+    var photos = [];
+    function addFig(p, i){
+      var fig = document.createElement('figure');
+      fig.className = 'pw' + (p.feat ? ' feat' : '');
+      var im = document.createElement('img');
+      im.src = p.url; im.alt = p.caption || 'Grove'; im.loading = 'lazy';
+      fig.appendChild(im);
+      if(p.caption){ var c = document.createElement('figcaption'); c.className = 'pc'; c.textContent = p.caption; fig.appendChild(c); }
+      var idx = i;
+      fig.addEventListener('click', function(){ openLb(idx); });
+      wall.appendChild(fig);
+    }
+
+    // render the static photos immediately
+    FIELD.forEach(function(p){ photos.push(p); addFig(p, photos.length - 1); });
+
+    // then pull any photos uploaded from the field (phone uploader) and append them;
+    // an uploaded photo flagged hero overrides the hero background.
     fetch('/api/gallery').then(function(r){ return r.json(); }).then(function(d){
-      photos = (d && d.photos) || [];
-      if(!photos.length) return;
-      // upgrade the hero: the photo chosen in the manager, else the newest
-      var heroPhoto = photos.filter(function(p){ return p.hero; })[0] || photos[0];
-      hero.style.backgroundImage =
-        "linear-gradient(180deg,rgba(20,24,16,0.28) 0%,rgba(20,24,16,0.38) 45%,rgba(18,20,14,0.9) 100%)," +
-        "url('" + heroPhoto.url + "')";
-      // build the wall
-      photos.forEach(function(p, i){
-        var fig = document.createElement('figure');
-        fig.className = 'pw' + (i === 0 ? ' feat' : '');
-        var im = document.createElement('img');
-        im.src = p.url; im.alt = p.caption || 'Grove Vineyard'; im.loading = 'lazy';
-        fig.appendChild(im);
-        if(p.caption){ var c = document.createElement('figcaption'); c.className = 'pc'; c.textContent = p.caption; fig.appendChild(c); }
-        fig.addEventListener('click', function(){ openLb(i); });
-        wall.appendChild(fig);
-      });
-      sec.hidden = false;
-      if (window.IntersectionObserver) sec.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+      var up = (d && d.photos) || [];
+      if(!up.length) return;
+      var heroPhoto = up.filter(function(p){ return p.hero; })[0];
+      if(heroPhoto){
+        hero.style.backgroundImage =
+          "linear-gradient(180deg,rgba(20,24,16,0.28) 0%,rgba(20,24,16,0.38) 45%,rgba(18,20,14,0.9) 100%)," +
+          "url('" + heroPhoto.url + "')";
+      }
+      up.forEach(function(p){ photos.push(p); addFig(p, photos.length - 1); });
     }).catch(function(){});
 
-    // lightbox
+    // lightbox (shared)
     var lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
         lbcap = document.getElementById('lbcap'), cur = 0;
     function openLb(i){ cur = i; render(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
