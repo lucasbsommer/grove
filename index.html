@@ -285,7 +285,24 @@
   .route h3{font-size:1.18rem;margin-bottom:0.5rem;}
   .route p{color:var(--muted);font-size:0.95rem;}
   .route.tbd{border-style:dashed;background:transparent;}
+
+  /* charging feasibility + map */
+  #scmap{height:440px;width:100%;border-radius:14px;border:1px solid var(--line);z-index:0;background:var(--surface2);}
+  .scmap-wrap{margin-top:1.5rem;}
+  .scleg{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:0.9rem;font-size:0.82rem;color:var(--muted);}
+  .scleg span.item{display:inline-flex;align-items:center;gap:0.45rem;}
+  .scdot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none;}
+  .scdash{width:20px;height:0;border-top:3px dashed var(--gold);display:inline-block;}
+  .leaflet-popup-content{font-family:'Inter',sans-serif;font-size:0.82rem;line-height:1.5;}
+  .charge-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;}
+  @media(max-width:860px){.charge-cards{grid-template-columns:1fr;}}
+  .charge-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.7rem;}
+  .charge-card h3{font-size:1.12rem;margin-bottom:0.5rem;}
+  .charge-card p{color:var(--muted);font-size:0.93rem;}
+  .charge-src{font-size:0.8rem;color:var(--faint);margin-top:1.8rem;line-height:1.75;max-width:92ch;}
+  .charge-src a{color:var(--gold);}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 
@@ -609,6 +626,63 @@
   </div>
 </section>
 
+<!-- CHARGING FEASIBILITY -->
+<section class="block alt" id="charging">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>A closer look: highway charging</h2>
+      <p>One of the possible uses, examined. The frontage sits in a real gap in Tesla's Supercharger network, on the main road between the Willamette Valley and the coast. This is an option, not a committed plan.</p>
+    </div>
+
+    <div class="factgrid reveal" style="margin-top:0;">
+      <div class="fact"><div class="v">~18 mi</div><div class="k">To the nearest Supercharger east (Hillsboro, 12 stalls)</div></div>
+      <div class="fact"><div class="v">~32 mi</div><div class="k">To the nearest one west (Tillamook, 12 stalls)</div></div>
+      <div class="fact"><div class="v">~50 mi</div><div class="k">Of OR-6 to the coast with no Supercharger between</div></div>
+      <div class="fact"><div class="v">~6,200 / day</div><div class="k">Vehicles past the frontage, summer peaks (ODOT 2024)</div></div>
+    </div>
+
+    <div class="scmap-wrap reveal">
+      <div id="scmap"></div>
+      <div class="scleg">
+        <span class="item"><span class="scdot" style="background:#6e2b3a;"></span> Grove (OR-6 frontage)</span>
+        <span class="item"><span class="scdot" style="background:#c0392b;"></span> Existing Tesla Supercharger</span>
+        <span class="item"><span class="scdash"></span> OR-6 route to the coast (no charging between)</span>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:2.5rem;border:1px solid var(--line);border-radius:14px;padding:1.9rem;background:var(--surface);">
+      <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Tesla's own estimate: 4 V4 posts</h3>
+      <p style="color:var(--muted);font-size:0.98rem;margin-bottom:1.4rem;max-width:80ch;">From Tesla's Supercharger for Business configurator, a 4-post V4 build at the model's assumptions ($0.51/kWh sell price, $0.16/kWh power cost, 230 kWh/day of use growing 7% a year, and Tesla's $0.10/kWh network fee):</p>
+      <div class="factgrid" style="margin-top:0;">
+        <div class="fact"><div class="v">~$470k</div><div class="k">Upfront, all-in (hardware $250k + installation ~$220k)</div></div>
+        <div class="fact"><div class="v">~7 yr</div><div class="k">Estimated payback period</div></div>
+        <div class="fact"><div class="v">~$249k / yr</div><div class="k">Average yearly revenue (15-year model)</div></div>
+        <div class="fact"><div class="v">~$3.74M</div><div class="k">Total revenue over 15 years</div></div>
+      </div>
+      <p style="font-size:0.82rem;color:var(--faint);margin-top:1.4rem;max-width:88ch;">Tesla's figures are indicative, not a guarantee. The model assumes no rent for the land, and excludes taxes on hardware and the cost of the utility service upgrade, which on a rural parcel is the main variable. Source: <a href="https://www.tesla.com/supercharger-for-business" target="_blank" rel="noopener" style="color:var(--gold);">Tesla Supercharger for Business</a>.</p>
+    </div>
+
+    <div class="charge-cards">
+      <div class="charge-card reveal">
+        <h3>What it needs</h3>
+        <p>Roughly 1 to 2 MW of 480V three-phase service, a dedicated transformer, and a utility interconnection. On a rural parcel this is the gating item, so the first step is a utility load letter to confirm available power at the frontage.</p>
+      </div>
+      <div class="charge-card reveal">
+        <h3>Who builds it</h3>
+        <p>Under Tesla's program the owner buys the hardware and pays installation (about $45k to $65k per post), and Tesla runs the site for a $0.10/kWh fee. A third-party charging operator can also lease the pad and carry the capital instead.</p>
+      </div>
+      <div class="charge-card reveal">
+        <h3>The read</h3>
+        <p>Strong corridor ports gross $3,000 to $5,000 a month, but break-even needs roughly 15 to 25% use and demand charges can run $4,500 to $7,000 a month. The frontage works best as an amenity beside a destination, or as a leased pad, rather than a standalone bet.</p>
+      </div>
+    </div>
+
+    <p class="charge-src reveal">
+      Sources: Supercharger locations from <a href="https://supercharge.info" target="_blank" rel="noopener">supercharge.info</a>; frontage traffic from <a href="https://gis.odot.state.or.us/transgis/" target="_blank" rel="noopener">ODOT TransGIS</a> (AADT 2024). Program and cost model: <a href="https://www.tesla.com/supercharger-for-business" target="_blank" rel="noopener">Tesla Supercharger for Business</a> and <a href="https://electrek.co/2025/11/20/tesla-deploys-first-superchargers-owned-by-3rd-party-us/" target="_blank" rel="noopener">third-party ownership (Electrek)</a>. Power specs: <a href="https://insideevs.com/news/748952/tesla-v4-supercharger-speed-boost-325kw/" target="_blank" rel="noopener">Tesla V4 (InsideEVs)</a>. Independent economics: <a href="https://www.sciencedirect.com/science/article/pii/S2666792425000514" target="_blank" rel="noopener">corridor DC fast-charging study (2025)</a> and <a href="https://gcn.com/single-fast-charger-can-rack-500/22449" target="_blank" rel="noopener">demand charges (GCN)</a>. Federal <a href="https://www.oregon.gov/odot/climate/pages/nevi.aspx" target="_blank" rel="noopener">NEVI</a> funds currently target other Oregon corridors.
+    </p>
+  </div>
+</section>
+
 <!-- INVEST -->
 <section class="invest" id="invest">
   <div class="wrap reveal">
@@ -773,6 +847,37 @@
       else if(e.key === 'ArrowLeft') step(-1);
       else if(e.key === 'ArrowRight') step(1);
     });
+  })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  (function(){
+    var el = document.getElementById('scmap');
+    if(!el || !window.L) return;
+    var prop = [45.6214, -123.2151];
+    var chargers = [
+      {n:'Hillsboro, OR',    s:12, d:'~18 mi east',        ll:[45.5386,-122.8662]},
+      {n:'Scappoose, OR',    s:4,  d:'~19 mi northeast',   ll:[45.7562,-122.8764]},
+      {n:'Beaverton, OR',    s:12, d:'~21 mi east',        ll:[45.5010,-122.8096]},
+      {n:'Tillamook, OR',    s:12, d:'~32 mi west (coast)',ll:[45.4814,-123.8439]},
+      {n:'Seaside, OR',      s:8,  d:'~43 mi northwest',   ll:[46.0010,-123.9168]}
+    ];
+    var map = L.map(el, {scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom:18, attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    // schematic OR-6 coast route through the gap
+    L.polyline([[45.5386,-122.8662], prop, [45.4814,-123.8439]],
+      {color:'#b08d57', weight:3, dashArray:'7,8', opacity:0.85}).addTo(map);
+    var pts = [prop];
+    chargers.forEach(function(c){
+      pts.push(c.ll);
+      L.circleMarker(c.ll, {radius:8, color:'#fff', weight:2, fillColor:'#c0392b', fillOpacity:0.95})
+        .addTo(map).bindPopup('<b>'+c.n+'</b><br>Tesla Supercharger, '+c.s+' stalls<br>'+c.d);
+    });
+    L.circleMarker(prop, {radius:11, color:'#fff', weight:3, fillColor:'#6e2b3a', fillOpacity:1})
+      .addTo(map).bindPopup('<b>Grove</b><br>OR-6 frontage, Forest Grove');
+    map.fitBounds(pts, {padding:[45,45]});
   })();
 </script>
 </body>
