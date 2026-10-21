@@ -319,6 +319,7 @@
       <a href="#gallery">Photos</a>
       <a href="#documents">Permits</a>
       <a href="#routes">Uses</a>
+      <a href="#services">Water</a>
       <a href="#invest">Invest</a>
       <a href="/ops.html" class="nav-portal">Project Portal</a>
     </div>
@@ -700,6 +701,33 @@
   </div>
 </section>
 
+<!-- SERVICES: WATER & SEPTIC -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Water and septic</h2>
+      <p>The site is rural, so water comes from a well and waste from an on-site septic system. Both are routine here, and the well record is public, so the neighbors already show what to expect.</p>
+    </div>
+
+    <div style="height:440px;border-radius:10px;overflow:hidden;border:1px solid var(--line);margin-top:0.5rem;" class="reveal">
+      <div id="wellmap" style="height:100%;width:100%;"></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--faint);margin-top:0.8rem;max-width:90ch;">Every dot is a drilled well on file with the Oregon Water Resources Department within about two miles. Click one for its depth and yield. Positions are placed by section (the state locates most logs to the quarter-quarter, not an exact GPS point), so read them as the pattern of the area, not a precise address.</p>
+
+    <div class="factgrid reveal">
+      <div class="fact"><div class="v">191 wells</div><div class="k">On file within ~2 miles (OWRD well logs)</div></div>
+      <div class="fact"><div class="v">165 ft</div><div class="k">Median depth (range 30 to 510 ft)</div></div>
+      <div class="fact"><div class="v">~10 gpm</div><div class="k">Median yield, ample for domestic use</div></div>
+      <div class="fact"><div class="v">455 ft · 24 gpm</div><div class="k">Apolloni Vineyards' own well next door (OWRD log 66837, 2008)</div></div>
+    </div>
+    <p style="color:var(--muted);max-width:84ch;margin-top:0.4rem;">A well here would likely run 165 to 300 ft, with a handful of neighbors reaching 450 to 510 ft on the higher ground. Budgeting for drilling, casing, pump, and hookup, plan on roughly <strong>$18k to $28k</strong>, with a contingency toward $40k if it has to go deep.</p>
+
+    <h3 style="font-size:1.4rem;margin:2.6rem 0 0.4rem;" class="reveal">Septic</h3>
+    <p class="reveal" style="color:var(--muted);max-width:84ch;">Washington County Environmental Health permits on-site septic directly: a soil evaluation sets the system, then a construction permit, install, and final inspection. The building area sits well away from the drainage hazard overlay, so that is not a constraint on the drainfield. A standard gravity system runs about <strong>$10k to $18k</strong>; if the soils call for an engineered system (sand filter or pressurized drainfield) plan <strong>$20k to $35k</strong> with engineering. Existing permits and as-builts, including a commercial system like Apolloni's, are public but pulled by records request rather than an open map.</p>
+    <p class="reveal" style="color:var(--faint);font-size:0.85rem;max-width:84ch;margin-top:0.6rem;">Sources: <a href="https://apps.wrd.state.or.us/apps/gw/well_log/" target="_blank" rel="noopener" style="color:var(--gold);">Oregon WRD well-log database</a>; <a href="https://www.washingtoncountyor.gov/environmental-health/onsite-sewage" target="_blank" rel="noopener" style="color:var(--gold);">Washington County On-Site Sewage</a>. Well and septic figures are market estimates; actual cost comes from driller and installer bids and the county soil evaluation.</p>
+  </div>
+</section>
+
 <!-- INVEST -->
 <section class="invest" id="invest">
   <div class="wrap reveal">
@@ -897,6 +925,30 @@
     L.circleMarker(prop, {radius:11, color:'#fff', weight:3, fillColor:'#6e2b3a', fillOpacity:1})
       .addTo(map).bindPopup('<b>Grove</b><br>OR-6 frontage, Forest Grove');
     map.fitBounds(pts, {padding:[45,45]});
+  })();
+</script>
+<script>
+  (function(){
+    var el = document.getElementById('wellmap');
+    if(!el || !window.L) return;
+    var prop = [45.6214, -123.2151];
+    var WELLS = [{"lon":-123.22506,"lat":45.60867,"c":1,"dmin":160,"dmax":160,"ymin":10.0,"ymax":10.0},{"lon":-123.20473,"lat":45.59752,"c":2,"dmin":124,"dmax":450,"ymin":14.0,"ymax":14.0},{"lon":-123.20725,"lat":45.59938,"c":13,"dmin":30,"dmax":470,"ymin":0.5,"ymax":35.0},{"lon":-123.23554,"lat":45.59404,"c":1,"dmin":175,"dmax":175,"ymin":4.0,"ymax":4.0},{"lon":-123.21003,"lat":45.59011,"c":1,"dmin":80,"dmax":80,"ymin":5.0,"ymax":5.0},{"lon":-123.2252,"lat":45.645,"c":1,"dmin":205,"dmax":205,"ymin":10.0,"ymax":10.0},{"lon":-123.21512,"lat":45.64497,"c":4,"dmin":70,"dmax":200,"ymin":6.0,"ymax":10.0},{"lon":-123.18402,"lat":45.62683,"c":2,"dmin":165,"dmax":205,"ymin":15.0,"ymax":15.0},{"lon":-123.23528,"lat":45.62691,"c":3,"dmin":120,"dmax":280,"ymin":6.0,"ymax":25.0},{"lon":-123.2251,"lat":45.63414,"c":1,"dmin":200,"dmax":200,"ymin":1.0,"ymax":1.0},{"lon":-123.22762,"lat":45.62867,"c":8,"dmin":130,"dmax":245,"ymin":5.0,"ymax":30.0},{"lon":-123.23023,"lat":45.60867,"c":1,"dmin":60,"dmax":60,"ymin":16.0,"ymax":16.0},{"lon":-123.21477,"lat":45.60867,"c":5,"dmin":120,"dmax":320,"ymin":2.0,"ymax":8.0},{"lon":-123.20713,"lat":45.61415,"c":8,"dmin":75,"dmax":365,"ymin":3.0,"ymax":100.0},{"lon":-123.18926,"lat":45.60877,"c":1,"dmin":250,"dmax":250,"ymin":10.0,"ymax":10.0},{"lon":-123.17888,"lat":45.6196,"c":2,"dmin":130,"dmax":300,"ymin":10.0,"ymax":20.0},{"lon":-123.1995,"lat":45.60502,"c":2,"dmin":126,"dmax":165,"ymin":9.0,"ymax":14.0},{"lon":-123.19967,"lat":45.59381,"c":3,"dmin":252,"dmax":465,"ymin":5.0,"ymax":30.0},{"lon":-123.21487,"lat":45.60121,"c":3,"dmin":88,"dmax":400,"ymin":9.0,"ymax":60.0},{"lon":-123.22022,"lat":45.59382,"c":3,"dmin":100,"dmax":225,"ymin":2.0,"ymax":2.0},{"lon":-123.2456,"lat":45.59783,"c":1,"dmin":205,"dmax":205,"ymin":5.0,"ymax":5.0},{"lon":-123.1996,"lat":45.59755,"c":2,"dmin":220,"dmax":330,"ymin":3.0,"ymax":13.0},{"lon":-123.20457,"lat":45.61596,"c":1,"dmin":200,"dmax":200,"ymin":12.0,"ymax":12.0},{"lon":-123.22501,"lat":45.6123,"c":5,"dmin":140,"dmax":325,"ymin":2.0,"ymax":50.0},{"lon":-123.18433,"lat":45.594,"c":1,"dmin":200,"dmax":200,"ymin":45.0,"ymax":45.0},{"lon":-123.21986,"lat":45.61958,"c":2,"dmin":195,"dmax":225,"ymin":6.0,"ymax":12.0},{"lon":-123.23518,"lat":45.63783,"c":3,"dmin":140,"dmax":390,"ymin":null,"ymax":null},{"lon":-123.21987,"lat":45.6123,"c":2,"dmin":145,"dmax":220,"ymin":35.0,"ymax":35.0},{"lon":-123.24051,"lat":45.60869,"c":1,"dmin":230,"dmax":230,"ymin":20.0,"ymax":20.0},{"lon":-123.20985,"lat":45.59749,"c":3,"dmin":125,"dmax":465,"ymin":10.0,"ymax":15.0},{"lon":-123.23027,"lat":45.605,"c":1,"dmin":100,"dmax":100,"ymin":5.0,"ymax":5.0},{"lon":-123.20532,"lat":45.61285,"c":2,"dmin":150,"dmax":175,"ymin":5.0,"ymax":12.0},{"lon":-123.24046,"lat":45.61965,"c":1,"dmin":82,"dmax":82,"ymin":1.0,"ymax":1.0},{"lon":-123.22514,"lat":45.60132,"c":2,"dmin":75,"dmax":100,"ymin":3.0,"ymax":3.0},{"lon":-123.2201,"lat":45.59753,"c":3,"dmin":52,"dmax":170,"ymin":15.0,"ymax":15.0},{"lon":-123.22028,"lat":45.58649,"c":2,"dmin":65,"dmax":85,"ymin":4.0,"ymax":12.0},{"lon":-123.17879,"lat":45.63044,"c":1,"dmin":98,"dmax":98,"ymin":15.0,"ymax":15.0},{"lon":-123.19949,"lat":45.60872,"c":3,"dmin":180,"dmax":510,"ymin":27.0,"ymax":50.0},{"lon":-123.2203,"lat":45.59014,"c":1,"dmin":80,"dmax":80,"ymin":24.0,"ymax":24.0},{"lon":-123.18397,"lat":45.63045,"c":1,"dmin":110,"dmax":110,"ymin":11.0,"ymax":11.0},{"lon":-123.22238,"lat":45.59605,"c":1,"dmin":310,"dmax":310,"ymin":null,"ymax":null},{"lon":-123.23541,"lat":45.60867,"c":3,"dmin":52,"dmax":75,"ymin":5.0,"ymax":7.0},{"lon":-123.22258,"lat":45.59597,"c":1,"dmin":250,"dmax":250,"ymin":null,"ymax":null},{"lon":-123.23045,"lat":45.59399,"c":1,"dmin":160,"dmax":160,"ymin":null,"ymax":null},{"lon":-123.18955,"lat":45.5866,"c":1,"dmin":120,"dmax":120,"ymin":25.0,"ymax":25.0},{"lon":-123.19438,"lat":45.61961,"c":1,"dmin":250,"dmax":250,"ymin":25.0,"ymax":25.0},{"lon":-123.2151,"lat":45.59378,"c":5,"dmin":52,"dmax":130,"ymin":4.0,"ymax":10.0},{"lon":-123.19439,"lat":45.60506,"c":1,"dmin":190,"dmax":190,"ymin":20.0,"ymax":20.0},{"lon":-123.18679,"lat":45.59954,"c":2,"dmin":245,"dmax":250,"ymin":10.0,"ymax":12.0},{"lon":-123.2148,"lat":45.60495,"c":1,"dmin":70,"dmax":70,"ymin":9.0,"ymax":9.0},{"lon":-123.20997,"lat":45.59379,"c":1,"dmin":80,"dmax":80,"ymin":5.0,"ymax":5.0},{"lon":-123.20461,"lat":45.60499,"c":1,"dmin":200,"dmax":200,"ymin":25.0,"ymax":25.0},{"lon":-123.19201,"lat":45.59464,"c":1,"dmin":230,"dmax":230,"ymin":50.0,"ymax":50.0},{"lon":-123.2303,"lat":45.60136,"c":1,"dmin":200,"dmax":200,"ymin":7.0,"ymax":7.0},{"lon":-123.22773,"lat":45.59948,"c":8,"dmin":60,"dmax":146,"ymin":2.0,"ymax":7.0},{"lon":-123.23549,"lat":45.5977,"c":2,"dmin":125,"dmax":165,"ymin":5.0,"ymax":6.0},{"lon":-123.22541,"lat":45.59023,"c":1,"dmin":200,"dmax":200,"ymin":4.0,"ymax":4.0},{"lon":-123.21517,"lat":45.5901,"c":1,"dmin":380,"dmax":380,"ymin":null,"ymax":null},{"lon":-123.18951,"lat":45.59025,"c":1,"dmin":120,"dmax":120,"ymin":40.0,"ymax":40.0},{"lon":-123.19241,"lat":45.5919,"c":1,"dmin":300,"dmax":300,"ymin":300.0,"ymax":300.0},{"lon":-123.20715,"lat":45.62868,"c":4,"dmin":58,"dmax":380,"ymin":6.0,"ymax":22.0},{"lon":-123.24056,"lat":45.60138,"c":1,"dmin":245,"dmax":245,"ymin":5.0,"ymax":5.0},{"lon":-123.2406,"lat":45.59411,"c":1,"dmin":47,"dmax":47,"ymin":null,"ymax":null},{"lon":-123.24812,"lat":45.58529,"c":2,"dmin":130,"dmax":140,"ymin":1.0,"ymax":60.0},{"lon":-123.23024,"lat":45.65223,"c":1,"dmin":200,"dmax":200,"ymin":5.0,"ymax":5.0},{"lon":-123.22031,"lat":45.65222,"c":1,"dmin":210,"dmax":210,"ymin":3.0,"ymax":3.0},{"lon":-123.2202,"lat":45.64499,"c":2,"dmin":165,"dmax":200,"ymin":10.0,"ymax":50.0},{"lon":-123.22014,"lat":45.64136,"c":1,"dmin":200,"dmax":200,"ymin":8.0,"ymax":8.0},{"lon":-123.22766,"lat":45.64318,"c":2,"dmin":30,"dmax":100,"ymin":10.0,"ymax":10.0},{"lon":-123.21506,"lat":45.64135,"c":1,"dmin":125,"dmax":125,"ymin":6.0,"ymax":6.0},{"lon":-123.20732,"lat":45.64313,"c":2,"dmin":132,"dmax":182,"ymin":10.0,"ymax":10.0},{"lon":-123.19436,"lat":45.62323,"c":1,"dmin":190,"dmax":190,"ymin":20.0,"ymax":20.0},{"lon":-123.18391,"lat":45.63406,"c":2,"dmin":30,"dmax":280,"ymin":9.0,"ymax":20.0},{"lon":-123.18655,"lat":45.62864,"c":1,"dmin":87,"dmax":87,"ymin":50.0,"ymax":50.0},{"lon":-123.17885,"lat":45.6232,"c":2,"dmin":147,"dmax":295,"ymin":17.0,"ymax":17.0},{"lon":-123.20967,"lat":45.62322,"c":1,"dmin":500,"dmax":500,"ymin":5.0,"ymax":5.0},{"lon":-123.21478,"lat":45.62322,"c":2,"dmin":185,"dmax":245,"ymin":9.0,"ymax":9.0},{"lon":-123.23017,"lat":45.62324,"c":4,"dmin":100,"dmax":210,"ymin":2.0,"ymax":12.0},{"lon":-123.22503,"lat":45.62322,"c":2,"dmin":125,"dmax":240,"ymin":5.0,"ymax":12.0},{"lon":-123.2199,"lat":45.62321,"c":1,"dmin":200,"dmax":200,"ymin":5.0,"ymax":5.0},{"lon":-123.21995,"lat":45.62685,"c":1,"dmin":220,"dmax":220,"ymin":10.0,"ymax":10.0},{"lon":-123.23332,"lat":45.62657,"c":1,"dmin":90,"dmax":90,"ymin":2.5,"ymax":2.5},{"lon":-123.2328,"lat":45.62729,"c":1,"dmin":120,"dmax":120,"ymin":3.5,"ymax":3.5},{"lon":-123.23523,"lat":45.63056,"c":3,"dmin":140,"dmax":185,"ymin":10.0,"ymax":30.0},{"lon":-123.23016,"lat":45.63053,"c":2,"dmin":165,"dmax":275,"ymin":15.0,"ymax":15.0},{"lon":-123.23532,"lat":45.62326,"c":1,"dmin":100,"dmax":100,"ymin":null,"ymax":null},{"lon":-123.21999,"lat":45.63049,"c":1,"dmin":201,"dmax":201,"ymin":6.0,"ymax":6.0},{"lon":-123.23016,"lat":45.63417,"c":1,"dmin":115,"dmax":115,"ymin":6.0,"ymax":6.0},{"lon":-123.22656,"lat":45.6221,"c":1,"dmin":100,"dmax":100,"ymin":10.0,"ymax":10.0},{"lon":-123.21989,"lat":45.60866,"c":1,"dmin":170,"dmax":170,"ymin":null,"ymax":null},{"lon":-123.22764,"lat":45.61413,"c":3,"dmin":100,"dmax":300,"ymin":2.0,"ymax":7.0},{"lon":-123.23537,"lat":45.61232,"c":1,"dmin":345,"dmax":345,"ymin":8.0,"ymax":8.0},{"lon":-123.21475,"lat":45.6123,"c":2,"dmin":70,"dmax":245,"ymin":6.0,"ymax":6.0}];
+    var map = L.map(el, {scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom:18, attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    function col(d){ return d>=350 ? '#6e2b3a' : d>=200 ? '#b0623a' : '#4f7a3a'; }
+    WELLS.forEach(function(w){
+      var depth = w.dmin===w.dmax ? (w.dmin+' ft') : (w.dmin+' to '+w.dmax+' ft');
+      var yld = w.ymax ? (w.ymin===w.ymax ? (w.ymin+' gpm') : (w.ymin+' to '+w.ymax+' gpm')) : 'n/a';
+      var label = w.c>1 ? ('<b>'+w.c+' wells here</b><br>Depth '+depth+'<br>Yield '+yld)
+                        : ('<b>Well</b><br>Depth '+depth+'<br>Yield '+yld);
+      L.circleMarker([w.lat, w.lon], {radius: Math.min(5+w.c, 11), color:'#fff', weight:1.5, fillColor:col(w.dmax), fillOpacity:0.9})
+        .addTo(map).bindPopup(label);
+    });
+    L.circleMarker(prop, {radius:12, color:'#fff', weight:3, fillColor:'#b08d57', fillOpacity:1})
+      .addTo(map).bindPopup('<b>Grove</b><br>OR-6 frontage, Forest Grove');
+    map.setView(prop, 13);
   })();
 </script>
 </body>
